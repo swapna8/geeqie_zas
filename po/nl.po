@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GQview 1.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-26 14:33-0500\n"
+"POT-Creation-Date: 2005-05-14 15:32-0400\n"
 "PO-Revision-Date: 2005-02-26 18:35+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -228,7 +228,7 @@ msgstr "Oude miniaturen worden verwijderd..."
 msgid "Maintenance"
 msgstr "Beheer"
 
-#: src/cache_maint.c:792 src/utilops.c:904
+#: src/cache_maint.c:792 src/utilops.c:945
 msgid "Invalid folder"
 msgstr "Ongeldige map"
 
@@ -298,7 +298,7 @@ msgid "GQview thumbnail cache"
 msgstr "GQview miniaturen cache"
 
 #: src/cache_maint.c:1179 src/cache_maint.c:1199 src/cache_maint.c:1227
-#: src/preferences.c:1142 src/utilops.c:1505
+#: src/preferences.c:1142 src/utilops.c:1564
 msgid "Location:"
 msgstr "Locatie:"
 
@@ -389,8 +389,8 @@ msgstr "Bestand overschrijven"
 msgid "Overwrite existing file?"
 msgstr "Huidige bestand overschrijven?"
 
-#: src/collect-dlg.c:75 src/utilops.c:479 src/utilops.c:792 src/utilops.c:1649
-#: src/utilops.c:2196
+#: src/collect-dlg.c:75 src/utilops.c:507 src/utilops.c:828 src/utilops.c:1708
+#: src/utilops.c:2260
 msgid "_Overwrite"
 msgstr "_Overschrijven"
 
@@ -940,11 +940,11 @@ msgstr "oneindig"
 msgid "mode:"
 msgstr "modus:"
 
-#: src/exif.c:1483 src/utilops.c:1234
+#: src/exif.c:1483 src/utilops.c:1293
 msgid "on"
 msgstr "aan"
 
-#: src/exif.c:1486 src/utilops.c:1234
+#: src/exif.c:1486 src/utilops.c:1293
 msgid "off"
 msgstr "uit"
 
@@ -2123,7 +2123,7 @@ msgstr "Tabloid"
 msgid "page %d of %d"
 msgstr "pagina %d van %d"
 
-#: src/print.c:736 src/utilops.c:2067
+#: src/print.c:736 src/utilops.c:2128
 msgid "Preview"
 msgstr "Voorbeeld"
 
@@ -2476,7 +2476,7 @@ msgstr ""
 msgid "Failed to rename %s to %s."
 msgstr "Kon %s niet hernoemen tot %s."
 
-#: src/ui_pathsel.c:486 src/utilops.c:1288 src/utilops.c:1461
+#: src/ui_pathsel.c:486 src/utilops.c:1347 src/utilops.c:1520
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2485,7 +2485,7 @@ msgstr ""
 "Kan het bestand: \n"
 "%s niet verwijderen"
 
-#: src/ui_pathsel.c:487 src/utilops.c:1462
+#: src/ui_pathsel.c:487 src/utilops.c:1521
 msgid "File deletion failed"
 msgstr "Verwijderen van bestand mislukt"
 
@@ -2502,8 +2502,8 @@ msgstr ""
 "Het bestand: %s\n"
 "zal worden verwijderd"
 
-#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2035
-#: src/utilops.c:2255
+#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2096
+#: src/utilops.c:2320
 msgid "_Rename"
 msgstr "_Hernoemen"
 
@@ -2519,7 +2519,7 @@ msgstr "_Verwijderen"
 msgid "New folder"
 msgstr "Nieuw map"
 
-#: src/ui_pathsel.c:750 src/utilops.c:2325 src/view_dir_list.c:338
+#: src/ui_pathsel.c:750 src/utilops.c:2392 src/view_dir_list.c:338
 #: src/view_dir_tree.c:434
 #, c-format
 msgid ""
@@ -2529,7 +2529,7 @@ msgstr ""
 "Kan map:\n"
 "%s niet aanmaken"
 
-#: src/ui_pathsel.c:751 src/utilops.c:2326 src/view_dir_list.c:339
+#: src/ui_pathsel.c:751 src/utilops.c:2393 src/view_dir_list.c:339
 #: src/view_dir_tree.c:435
 msgid "Error creating folder"
 msgstr "Fout bij het aanmaken van map"
@@ -2555,53 +2555,53 @@ msgstr "Pad selecteren"
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: src/utilops.c:470 src/utilops.c:783 src/utilops.c:1640 src/utilops.c:2187
+#: src/utilops.c:498 src/utilops.c:819 src/utilops.c:1699 src/utilops.c:2251
 msgid "Overwrite file"
 msgstr "Overschrijf bestanden"
 
-#: src/utilops.c:475 src/utilops.c:788 src/utilops.c:1645 src/utilops.c:2192
+#: src/utilops.c:503 src/utilops.c:824 src/utilops.c:1704 src/utilops.c:2256
 msgid "Overwrite file?"
 msgstr "Bestand overschrijven?"
 
-#: src/utilops.c:476 src/utilops.c:789
+#: src/utilops.c:504 src/utilops.c:825
 msgid "Replace existing file with new file."
 msgstr "Huidige bestand vervangen door dit nieuwe bestand."
 
 # allen/alles
-#: src/utilops.c:480
+#: src/utilops.c:508
 msgid "Overwrite _all"
 msgstr "_Allen overschrijven"
 
-#: src/utilops.c:482
+#: src/utilops.c:510
 msgid "S_kip all"
 msgstr "Allen _overslaan"
 
-#: src/utilops.c:483
+#: src/utilops.c:511
 msgid "_Skip"
 msgstr "_Overslaan"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 msgid "Existing file"
 msgstr "Huidige bestand"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 msgid "New file"
 msgstr "Nieuw bestand"
 
-#: src/utilops.c:494 src/utilops.c:802 src/utilops.c:1746 src/utilops.c:1810
-#: src/utilops.c:2101
+#: src/utilops.c:522 src/utilops.c:838 src/utilops.c:1805 src/utilops.c:1869
+#: src/utilops.c:2162
 msgid "Auto rename"
 msgstr "Automatisch hernoemen"
 
-#: src/utilops.c:502 src/utilops.c:810
+#: src/utilops.c:530 src/utilops.c:846
 msgid "Rename"
 msgstr "Hernoemen"
 
-#: src/utilops.c:543
+#: src/utilops.c:571
 msgid "Source to copy matches destination"
 msgstr "Bron voor kopiëren is gelijk aan doel"
 
-#: src/utilops.c:544
+#: src/utilops.c:572
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2612,11 +2612,11 @@ msgstr ""
 "%s\n"
 "niet naar zichzelf kopieren."
 
-#: src/utilops.c:548
+#: src/utilops.c:576
 msgid "Source to move matches destination"
 msgstr "Te verplaatsen bron is gelijk aan doel"
 
-#: src/utilops.c:549
+#: src/utilops.c:577
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2627,15 +2627,15 @@ msgstr ""
 "%s\n"
 "niet naar zichzelf verplaatsen."
 
-#: src/utilops.c:557 src/utilops.c:644 src/utilops.c:1280
+#: src/utilops.c:585 src/utilops.c:672 src/utilops.c:1339
 msgid "Co_ntinue"
 msgstr "_Doorgaan"
 
-#: src/utilops.c:630 src/utilops.c:850
+#: src/utilops.c:658 src/utilops.c:886
 msgid "Error copying file"
 msgstr "Fout bij kopieren bestand"
 
-#: src/utilops.c:631
+#: src/utilops.c:659
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2650,11 +2650,11 @@ msgstr ""
 "%s\n"
 "tijdens het kopiëren van meerdere bestanden."
 
-#: src/utilops.c:635 src/utilops.c:855
+#: src/utilops.c:663 src/utilops.c:891
 msgid "Error moving file"
 msgstr "Fout bij het verplaatsen"
 
-#: src/utilops.c:636
+#: src/utilops.c:664
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2669,15 +2669,15 @@ msgstr ""
 "%s\n"
 "tijdens het verplaatsen van meerdere bestanden."
 
-#: src/utilops.c:774
+#: src/utilops.c:810
 msgid "Source matches destination"
 msgstr "Bron is gelijk aan doellocatie"
 
-#: src/utilops.c:775
+#: src/utilops.c:811
 msgid "Source and destination are the same, operation cancelled."
 msgstr "Bron is gelijk aan doellocatie, actie onderbroken"
 
-#: src/utilops.c:851
+#: src/utilops.c:887
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2690,7 +2690,7 @@ msgstr ""
 "naar:\n"
 "%s"
 
-#: src/utilops.c:856
+#: src/utilops.c:892
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2703,11 +2703,11 @@ msgstr ""
 "naar:\n"
 "%s"
 
-#: src/utilops.c:899
+#: src/utilops.c:940
 msgid "Invalid destination"
 msgstr "Ongeldige doellocatie"
 
-#: src/utilops.c:900
+#: src/utilops.c:941
 msgid ""
 "When operating with multiple files, please select\n"
 "a folder, not a file."
@@ -2715,67 +2715,67 @@ msgstr ""
 "Bij het werken met meerdere bestanden moet u een map\n"
 "selecteren, geen bestand."
 
-#: src/utilops.c:905
+#: src/utilops.c:946
 msgid "Please select an existing folder."
 msgstr "Selecteer een bestaande map."
 
-#: src/utilops.c:956
+#: src/utilops.c:1015
 msgid "Copy - GQview"
 msgstr "Kopiëren - GQview"
 
-#: src/utilops.c:957 src/view_dir_list.c:217 src/view_dir_tree.c:309
+#: src/utilops.c:1016 src/view_dir_list.c:217 src/view_dir_tree.c:309
 msgid "_Copy"
 msgstr "_Kopiëren"
 
-#: src/utilops.c:960
+#: src/utilops.c:1019
 msgid "Copy file"
 msgstr "Bestand kopiëren"
 
-#: src/utilops.c:964
+#: src/utilops.c:1023
 msgid "Copy multiple files"
 msgstr "Meerdere bestanden kopiëren"
 
-#: src/utilops.c:970
+#: src/utilops.c:1029
 msgid "Move - GQview"
 msgstr "Verplaatsen - GQview"
 
-#: src/utilops.c:971 src/view_dir_list.c:219 src/view_dir_tree.c:311
+#: src/utilops.c:1030 src/view_dir_list.c:219 src/view_dir_tree.c:311
 msgid "_Move"
 msgstr "_Verplaatsen"
 
-#: src/utilops.c:974
+#: src/utilops.c:1033
 msgid "Move file"
 msgstr "Bestand verplaatsen"
 
-#: src/utilops.c:978
+#: src/utilops.c:1037
 msgid "Move multiple files"
 msgstr "Meerdere bestanden verplaatsen"
 
-#: src/utilops.c:992 src/utilops.c:1502
+#: src/utilops.c:1051 src/utilops.c:1561
 msgid "File name:"
 msgstr "Bestandsnaam:"
 
-#: src/utilops.c:996
+#: src/utilops.c:1055
 msgid "Choose the destination folder."
 msgstr "Selecteer de doelmap."
 
-#: src/utilops.c:1123 src/utilops.c:1272 src/utilops.c:1289
+#: src/utilops.c:1182 src/utilops.c:1331 src/utilops.c:1348
 msgid "Delete failed"
 msgstr "Verwijderen mislukt"
 
-#: src/utilops.c:1124
+#: src/utilops.c:1183
 msgid "Unable to remove old file from trash folder"
 msgstr "Kan oud bestand niet uit de prullenbak verwijderen"
 
-#: src/utilops.c:1180 src/utilops.c:2318
+#: src/utilops.c:1239 src/utilops.c:2385
 msgid "Could not create folder"
 msgstr "Kon map niet aanmaken"
 
-#: src/utilops.c:1202
+#: src/utilops.c:1261
 msgid "Permission denied"
 msgstr "Toestemming geweigerd"
 
-#: src/utilops.c:1212
+#: src/utilops.c:1271
 #, c-format
 msgid ""
 "Unable to access or create the trash folder.\n"
@@ -2784,16 +2784,16 @@ msgstr ""
 "Kan de prullenbak-map niet benaderen of aanmaken.\n"
 "\"%s\""
 
-#: src/utilops.c:1216
+#: src/utilops.c:1275
 msgid "Turn off safe delete"
 msgstr "Veilig bestanden verwijdern uitzetten"
 
-#: src/utilops.c:1234
+#: src/utilops.c:1293
 #, c-format
 msgid "Safe delete: %s"
 msgstr "Veilig verwijderen: %s"
 
-#: src/utilops.c:1276
+#: src/utilops.c:1335
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2804,37 +2804,37 @@ msgstr ""
 "%s niet verwijderen\n"
 "Wilt u verder gaan met het verwijderen van bestanden?"
 
-#: src/utilops.c:1347
+#: src/utilops.c:1406
 #, c-format
 msgid "File %d of %d"
 msgstr "Bestand %d van %d"
 
-#: src/utilops.c:1416
+#: src/utilops.c:1475
 msgid "Delete files - GQview"
 msgstr "Bestand verwijderen - GQview"
 
-#: src/utilops.c:1420
+#: src/utilops.c:1479
 msgid "Delete multiple files"
 msgstr "Meerdere bestanden verwijderen"
 
-#: src/utilops.c:1438
+#: src/utilops.c:1497
 #, c-format
 msgid "Review %d files"
 msgstr "%d bestanden herzien"
 
-#: src/utilops.c:1494
+#: src/utilops.c:1553
 msgid "Delete file - GQview"
 msgstr "Bestand verwijderen - GQview"
 
-#: src/utilops.c:1498
+#: src/utilops.c:1557
 msgid "Delete file?"
 msgstr "Bestand verwijderen?"
 
-#: src/utilops.c:1646 src/utilops.c:2193
+#: src/utilops.c:1705 src/utilops.c:2257
 msgid "Replace existing file by renaming new file."
 msgstr "Huidige bestand vervangen door het nieuwe bestand te hernoemen."
 
-#: src/utilops.c:1661
+#: src/utilops.c:1720
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -2847,12 +2847,12 @@ msgstr ""
 "niet hernoemen tot:\n"
 "%s"
 
-#: src/utilops.c:1664 src/utilops.c:2208 src/view_file_list.c:448
+#: src/utilops.c:1723 src/utilops.c:2272 src/view_file_list.c:448
 #: src/view_file_list.c:454 src/view_file_list.c:460
 msgid "Error renaming file"
 msgstr "Fout bij het hernoemen van bestand"
 
-#: src/utilops.c:1747
+#: src/utilops.c:1806
 msgid ""
 "Can not auto rename with the selected\n"
 "number set, one or more files exist that\n"
@@ -2862,7 +2862,7 @@ msgstr ""
 "nummers. Een of meer bestanden komen overeen\n"
 "met de resulterende bestandsnamen.\n"
 
-#: src/utilops.c:1809
+#: src/utilops.c:1868
 #, c-format
 msgid ""
 "Failed to rename\n"
@@ -2873,43 +2873,43 @@ msgstr ""
 "\n"
 "Het getal was %d."
 
-#: src/utilops.c:2031 src/utilops.c:2249
+#: src/utilops.c:2092 src/utilops.c:2314
 msgid "Rename - GQview"
 msgstr "Hernoemen - GQview"
 
-#: src/utilops.c:2034
+#: src/utilops.c:2095
 msgid "Rename multiple files"
 msgstr "Meerdere bestanden hernoemen"
 
-#: src/utilops.c:2066
+#: src/utilops.c:2127
 msgid "Original Name"
 msgstr "Oorspronkelijke naam"
 
-#: src/utilops.c:2110 src/utilops.c:2262
+#: src/utilops.c:2171 src/utilops.c:2327
 msgid "Original name:"
 msgstr "Oorspronkelijke naam:"
 
-#: src/utilops.c:2113 src/utilops.c:2265
+#: src/utilops.c:2174 src/utilops.c:2330
 msgid "New name:"
 msgstr "Nieuw naam:"
 
-#: src/utilops.c:2128
+#: src/utilops.c:2192
 msgid "Begin text"
 msgstr "Begintekst"
 
-#: src/utilops.c:2136
+#: src/utilops.c:2200
 msgid "Start #"
 msgstr "Start #"
 
-#: src/utilops.c:2142
+#: src/utilops.c:2206
 msgid "End text"
 msgstr "Eindtekst"
 
-#: src/utilops.c:2150
+#: src/utilops.c:2214
 msgid "Padding:"
 msgstr "Opvulling:"
 
-#: src/utilops.c:2207 src/view_file_list.c:459
+#: src/utilops.c:2271 src/view_file_list.c:459
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -2922,11 +2922,11 @@ msgstr ""
 "niet hernoemen tot:\n"
 "%s"
 
-#: src/utilops.c:2252
+#: src/utilops.c:2317
 msgid "Rename file"
 msgstr "Bestand hernoemen"
 
-#: src/utilops.c:2311
+#: src/utilops.c:2378
 #, c-format
 msgid ""
 "The folder:\n"
@@ -2937,11 +2937,11 @@ msgstr ""
 "%s\n"
 "bestaat al."
 
-#: src/utilops.c:2312
+#: src/utilops.c:2379
 msgid "Folder exists"
 msgstr "Map bestaat"
 
-#: src/utilops.c:2317
+#: src/utilops.c:2384
 #, c-format
 msgid ""
 "The path:\n"
@@ -2952,11 +2952,11 @@ msgstr ""
 "%s\n"
 "bestaat al als bestand."
 
-#: src/utilops.c:2369
+#: src/utilops.c:2436
 msgid "New folder - GQview"
 msgstr "Nieuwe map - GQview"
 
-#: src/utilops.c:2372
+#: src/utilops.c:2439
 #, c-format
 msgid ""
 "Create folder in:\n"

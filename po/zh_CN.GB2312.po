@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gqview 0.9.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-26 14:33-0500\n"
+"POT-Creation-Date: 2005-05-14 15:32-0400\n"
 "PO-Revision-Date: 2001-02-21 17:46+0800\n"
 "Last-Translator: Wu Yulun <migr@operamail.com>\n"
 "Language-Team: Chinese <i18n-chinese@egroups.com>\n"
@@ -240,7 +240,7 @@ msgstr "正在清除旧的缩略图..."
 msgid "Maintenance"
 msgstr ""
 
-#: src/cache_maint.c:792 src/utilops.c:904
+#: src/cache_maint.c:792 src/utilops.c:945
 #, fuzzy
 msgid "Invalid folder"
 msgstr "非法文件名"
@@ -319,7 +319,7 @@ msgid "GQview thumbnail cache"
 msgstr "GQview 全屏"
 
 #: src/cache_maint.c:1179 src/cache_maint.c:1199 src/cache_maint.c:1227
-#: src/preferences.c:1142 src/utilops.c:1505
+#: src/preferences.c:1142 src/utilops.c:1564
 #, fuzzy
 msgid "Location:"
 msgstr "图像集"
@@ -415,8 +415,8 @@ msgstr "覆盖文件"
 msgid "Overwrite existing file?"
 msgstr "覆盖文件"
 
-#: src/collect-dlg.c:75 src/utilops.c:479 src/utilops.c:792 src/utilops.c:1649
-#: src/utilops.c:2196
+#: src/collect-dlg.c:75 src/utilops.c:507 src/utilops.c:828 src/utilops.c:1708
+#: src/utilops.c:2260
 #, fuzzy
 msgid "_Overwrite"
 msgstr "覆盖"
@@ -1003,12 +1003,12 @@ msgstr ""
 msgid "mode:"
 msgstr "平铺"
 
-#: src/exif.c:1483 src/utilops.c:1234
+#: src/exif.c:1483 src/utilops.c:1293
 #, fuzzy
 msgid "on"
 msgstr "无"
 
-#: src/exif.c:1486 src/utilops.c:1234
+#: src/exif.c:1486 src/utilops.c:1293
 msgid "off"
 msgstr ""
 
@@ -2290,7 +2290,7 @@ msgstr ""
 msgid "page %d of %d"
 msgstr ""
 
-#: src/print.c:736 src/utilops.c:2067
+#: src/print.c:736 src/utilops.c:2128
 msgid "Preview"
 msgstr ""
 
@@ -2676,7 +2676,7 @@ msgstr ""
 msgid "Failed to rename %s to %s."
 msgstr "将 %s 重命名为 %s 失败。"
 
-#: src/ui_pathsel.c:486 src/utilops.c:1288 src/utilops.c:1461
+#: src/ui_pathsel.c:486 src/utilops.c:1347 src/utilops.c:1520
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2685,7 +2685,7 @@ msgstr ""
 "无法删除文件：\n"
 "%s"
 
-#: src/ui_pathsel.c:487 src/utilops.c:1462
+#: src/ui_pathsel.c:487 src/utilops.c:1521
 msgid "File deletion failed"
 msgstr "文件删除失败"
 
@@ -2702,8 +2702,8 @@ msgstr ""
 "将要删除文件：\n"
 " %s"
 
-#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2035
-#: src/utilops.c:2255
+#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2096
+#: src/utilops.c:2320
 #, fuzzy
 msgid "_Rename"
 msgstr "重命名"
@@ -2723,7 +2723,7 @@ msgstr "删除"
 msgid "New folder"
 msgstr "求助 - GQview"
 
-#: src/ui_pathsel.c:750 src/utilops.c:2325 src/view_dir_list.c:338
+#: src/ui_pathsel.c:750 src/utilops.c:2392 src/view_dir_list.c:338
 #: src/view_dir_tree.c:434
 #, fuzzy, c-format
 msgid ""
@@ -2733,7 +2733,7 @@ msgstr ""
 "无法创建目录：\n"
 "%s"
 
-#: src/ui_pathsel.c:751 src/utilops.c:2326 src/view_dir_list.c:339
+#: src/ui_pathsel.c:751 src/utilops.c:2393 src/view_dir_list.c:339
 #: src/view_dir_tree.c:435
 #, fuzzy
 msgid "Error creating folder"
@@ -2761,59 +2761,59 @@ msgstr "全选"
 msgid "All files"
 msgstr "所有文件"
 
-#: src/utilops.c:470 src/utilops.c:783 src/utilops.c:1640 src/utilops.c:2187
+#: src/utilops.c:498 src/utilops.c:819 src/utilops.c:1699 src/utilops.c:2251
 msgid "Overwrite file"
 msgstr "覆盖文件"
 
-#: src/utilops.c:475 src/utilops.c:788 src/utilops.c:1645 src/utilops.c:2192
+#: src/utilops.c:503 src/utilops.c:824 src/utilops.c:1704 src/utilops.c:2256
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "覆盖文件"
 
-#: src/utilops.c:476 src/utilops.c:789
+#: src/utilops.c:504 src/utilops.c:825
 msgid "Replace existing file with new file."
 msgstr ""
 
-#: src/utilops.c:480
+#: src/utilops.c:508
 #, fuzzy
 msgid "Overwrite _all"
 msgstr "覆盖文件"
 
-#: src/utilops.c:482
+#: src/utilops.c:510
 #, fuzzy
 msgid "S_kip all"
 msgstr "跳过"
 
-#: src/utilops.c:483
+#: src/utilops.c:511
 #, fuzzy
 msgid "_Skip"
 msgstr "跳过"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 #, fuzzy
 msgid "Existing file"
 msgstr "移动文件错误"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 #, fuzzy
 msgid "New file"
 msgstr "求助 - GQview"
 
-#: src/utilops.c:494 src/utilops.c:802 src/utilops.c:1746 src/utilops.c:1810
-#: src/utilops.c:2101
+#: src/utilops.c:522 src/utilops.c:838 src/utilops.c:1805 src/utilops.c:1869
+#: src/utilops.c:2162
 #, fuzzy
 msgid "Auto rename"
 msgstr "菜单名"
 
-#: src/utilops.c:502 src/utilops.c:810
+#: src/utilops.c:530 src/utilops.c:846
 msgid "Rename"
 msgstr "重命名"
 
-#: src/utilops.c:543
+#: src/utilops.c:571
 msgid "Source to copy matches destination"
 msgstr "复制的源与目标相同"
 
-#: src/utilops.c:544
+#: src/utilops.c:572
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2824,11 +2824,11 @@ msgstr ""
 "%s\n"
 "复制到自身。"
 
-#: src/utilops.c:548
+#: src/utilops.c:576
 msgid "Source to move matches destination"
 msgstr "移动的源与目标相同"
 
-#: src/utilops.c:549
+#: src/utilops.c:577
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2839,16 +2839,16 @@ msgstr ""
 "%s\n"
 "移动到自身。"
 
-#: src/utilops.c:557 src/utilops.c:644 src/utilops.c:1280
+#: src/utilops.c:585 src/utilops.c:672 src/utilops.c:1339
 #, fuzzy
 msgid "Co_ntinue"
 msgstr "继续"
 
-#: src/utilops.c:630 src/utilops.c:850
+#: src/utilops.c:658 src/utilops.c:886
 msgid "Error copying file"
 msgstr "复制文件错误"
 
-#: src/utilops.c:631
+#: src/utilops.c:659
 #, fuzzy, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2862,11 +2862,11 @@ msgstr ""
 "%s\n"
 "。"
 
-#: src/utilops.c:635 src/utilops.c:855
+#: src/utilops.c:663 src/utilops.c:891
 msgid "Error moving file"
 msgstr "移动文件错误"
 
-#: src/utilops.c:636
+#: src/utilops.c:664
 #, fuzzy, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2880,15 +2880,15 @@ msgstr ""
 "%s\n"
 "。"
 
-#: src/utilops.c:774
+#: src/utilops.c:810
 msgid "Source matches destination"
 msgstr "源与目标相同"
 
-#: src/utilops.c:775
+#: src/utilops.c:811
 msgid "Source and destination are the same, operation cancelled."
 msgstr "源和目标相同，操作放弃。"
 
-#: src/utilops.c:851
+#: src/utilops.c:887
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2901,7 +2901,7 @@ msgstr ""
 "复制到：\n"
 "%s"
 
-#: src/utilops.c:856
+#: src/utilops.c:892
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2914,11 +2914,11 @@ msgstr ""
 "移动到：\n"
 "%s"
 
-#: src/utilops.c:899
+#: src/utilops.c:940
 msgid "Invalid destination"
 msgstr "无效的目标"
 
-#: src/utilops.c:900
+#: src/utilops.c:941
 #, fuzzy
 msgid ""
 "When operating with multiple files, please select\n"
@@ -2927,22 +2927,22 @@ msgstr ""
 "对于多文件操作，请选择目录，\n"
 "而不是文件。"
 
-#: src/utilops.c:905
+#: src/utilops.c:946
 #, fuzzy
 msgid "Please select an existing folder."
 msgstr "请选择一个已存在的目录"
 
-#: src/utilops.c:956
+#: src/utilops.c:1015
 #, fuzzy
 msgid "Copy - GQview"
 msgstr "求助 - GQview"
 
-#: src/utilops.c:957 src/view_dir_list.c:217 src/view_dir_tree.c:309
+#: src/utilops.c:1016 src/view_dir_list.c:217 src/view_dir_tree.c:309
 #, fuzzy
 msgid "_Copy"
 msgstr "复制"
 
-#: src/utilops.c:960
+#: src/utilops.c:1019
 #, fuzzy
 msgid "Copy file"
 msgstr ""
@@ -2950,22 +2950,22 @@ msgstr ""
 "%s\n"
 "重命名为："
 
-#: src/utilops.c:964
+#: src/utilops.c:1023
 #, fuzzy
 msgid "Copy multiple files"
 msgstr "将多个文件复制到："
 
-#: src/utilops.c:970
+#: src/utilops.c:1029
 #, fuzzy
 msgid "Move - GQview"
 msgstr "求助 - GQview"
 
-#: src/utilops.c:971 src/view_dir_list.c:219 src/view_dir_tree.c:311
+#: src/utilops.c:1030 src/view_dir_list.c:219 src/view_dir_tree.c:311
 #, fuzzy
 msgid "_Move"
 msgstr "移动"
 
-#: src/utilops.c:974
+#: src/utilops.c:1033
 #, fuzzy
 msgid "Move file"
 msgstr ""
@@ -2973,26 +2973,26 @@ msgstr ""
 "%s\n"
 "重命名为："
 
-#: src/utilops.c:978
+#: src/utilops.c:1037
 #, fuzzy
 msgid "Move multiple files"
 msgstr "将多个文件移动到："
 
-#: src/utilops.c:992 src/utilops.c:1502
+#: src/utilops.c:1051 src/utilops.c:1561
 #, fuzzy
 msgid "File name:"
 msgstr "重命名："
 
-#: src/utilops.c:996
+#: src/utilops.c:1055
 #, fuzzy
 msgid "Choose the destination folder."
 msgstr "源与目标相同"
 
-#: src/utilops.c:1123 src/utilops.c:1272 src/utilops.c:1289
+#: src/utilops.c:1182 src/utilops.c:1331 src/utilops.c:1348
 msgid "Delete failed"
 msgstr "删除失败"
 
-#: src/utilops.c:1124
+#: src/utilops.c:1183
 #, fuzzy
 msgid "Unable to remove old file from trash folder"
 msgstr ""
@@ -3000,16 +3000,16 @@ msgstr ""
 "%s\n"
 "移动到自身。"
 
-#: src/utilops.c:1180 src/utilops.c:2318
+#: src/utilops.c:1239 src/utilops.c:2385
 #, fuzzy
 msgid "Could not create folder"
 msgstr "无法创建目录"
 
-#: src/utilops.c:1202
+#: src/utilops.c:1261
 msgid "Permission denied"
 msgstr ""
 
-#: src/utilops.c:1212
+#: src/utilops.c:1271
 #, fuzzy, c-format
 msgid ""
 "Unable to access or create the trash folder.\n"
@@ -3018,17 +3018,17 @@ msgstr ""
 "无法创建目录：\n"
 "%s"
 
-#: src/utilops.c:1216
+#: src/utilops.c:1275
 #, fuzzy
 msgid "Turn off safe delete"
 msgstr "确认删除文件"
 
-#: src/utilops.c:1234
+#: src/utilops.c:1293
 #, fuzzy, c-format
 msgid "Safe delete: %s"
 msgstr "确认删除文件"
 
-#: src/utilops.c:1276
+#: src/utilops.c:1335
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -3039,41 +3039,41 @@ msgstr ""
 " %s\n"
 " 继续进行多文件删除操作？"
 
-#: src/utilops.c:1347
+#: src/utilops.c:1406
 #, c-format
 msgid "File %d of %d"
 msgstr ""
 
-#: src/utilops.c:1416
+#: src/utilops.c:1475
 #, fuzzy
 msgid "Delete files - GQview"
 msgstr "删除文件"
 
-#: src/utilops.c:1420
+#: src/utilops.c:1479
 #, fuzzy
 msgid "Delete multiple files"
 msgstr "重命名多个文件："
 
-#: src/utilops.c:1438
+#: src/utilops.c:1497
 #, fuzzy, c-format
 msgid "Review %d files"
 msgstr "%d 文件"
 
-#: src/utilops.c:1494
+#: src/utilops.c:1553
 #, fuzzy
 msgid "Delete file - GQview"
 msgstr "删除文件"
 
-#: src/utilops.c:1498
+#: src/utilops.c:1557
 #, fuzzy
 msgid "Delete file?"
 msgstr "删除文件"
 
-#: src/utilops.c:1646 src/utilops.c:2193
+#: src/utilops.c:1705 src/utilops.c:2257
 msgid "Replace existing file by renaming new file."
 msgstr ""
 
-#: src/utilops.c:1661
+#: src/utilops.c:1720
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -3086,19 +3086,19 @@ msgstr ""
 " 重命名为：\n"
 "%s"
 
-#: src/utilops.c:1664 src/utilops.c:2208 src/view_file_list.c:448
+#: src/utilops.c:1723 src/utilops.c:2272 src/view_file_list.c:448
 #: src/view_file_list.c:454 src/view_file_list.c:460
 msgid "Error renaming file"
 msgstr "重命名文件错误"
 
-#: src/utilops.c:1747
+#: src/utilops.c:1806
 msgid ""
 "Can not auto rename with the selected\n"
 "number set, one or more files exist that\n"
 "match the resulting name list.\n"
 msgstr ""
 
-#: src/utilops.c:1809
+#: src/utilops.c:1868
 #, fuzzy, c-format
 msgid ""
 "Failed to rename\n"
@@ -3106,47 +3106,47 @@ msgid ""
 "The number was %d."
 msgstr "将 %s 重命名为 %s 失败。"
 
-#: src/utilops.c:2031 src/utilops.c:2249
+#: src/utilops.c:2092 src/utilops.c:2314
 #, fuzzy
 msgid "Rename - GQview"
 msgstr "求助 - GQview"
 
-#: src/utilops.c:2034
+#: src/utilops.c:2095
 #, fuzzy
 msgid "Rename multiple files"
 msgstr "重命名多个文件："
 
-#: src/utilops.c:2066
+#: src/utilops.c:2127
 msgid "Original Name"
 msgstr ""
 
-#: src/utilops.c:2110 src/utilops.c:2262
+#: src/utilops.c:2171 src/utilops.c:2327
 #, fuzzy
 msgid "Original name:"
 msgstr "重命名："
 
-#: src/utilops.c:2113 src/utilops.c:2265
+#: src/utilops.c:2174 src/utilops.c:2330
 #, fuzzy
 msgid "New name:"
 msgstr "重命名："
 
-#: src/utilops.c:2128
+#: src/utilops.c:2192
 msgid "Begin text"
 msgstr ""
 
-#: src/utilops.c:2136
+#: src/utilops.c:2200
 msgid "Start #"
 msgstr ""
 
-#: src/utilops.c:2142
+#: src/utilops.c:2206
 msgid "End text"
 msgstr ""
 
-#: src/utilops.c:2150
+#: src/utilops.c:2214
 msgid "Padding:"
 msgstr ""
 
-#: src/utilops.c:2207 src/view_file_list.c:459
+#: src/utilops.c:2271 src/view_file_list.c:459
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -3159,7 +3159,7 @@ msgstr ""
 "重命名为：\n"
 "%s"
 
-#: src/utilops.c:2252
+#: src/utilops.c:2317
 #, fuzzy
 msgid "Rename file"
 msgstr ""
@@ -3167,7 +3167,7 @@ msgstr ""
 "%s\n"
 "重命名为："
 
-#: src/utilops.c:2311
+#: src/utilops.c:2378
 #, fuzzy, c-format
 msgid ""
 "The folder:\n"
@@ -3178,12 +3178,12 @@ msgstr ""
 "%s\n"
 "已存在。"
 
-#: src/utilops.c:2312
+#: src/utilops.c:2379
 #, fuzzy
 msgid "Folder exists"
 msgstr "平铺"
 
-#: src/utilops.c:2317
+#: src/utilops.c:2384
 #, c-format
 msgid ""
 "The path:\n"
@@ -3194,12 +3194,12 @@ msgstr ""
 "%s\n"
 "是一个已存在的文件。"
 
-#: src/utilops.c:2369
+#: src/utilops.c:2436
 #, fuzzy
 msgid "New folder - GQview"
 msgstr "求助 - GQview"
 
-#: src/utilops.c:2372
+#: src/utilops.c:2439
 #, fuzzy, c-format
 msgid ""
 "Create folder in:\n"

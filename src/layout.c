@@ -30,8 +30,8 @@
 
 #include "icons/tools.xpm"
 
-#define MAINWINDOW_DEF_WIDTH 620
-#define MAINWINDOW_DEF_HEIGHT 400
+#define MAINWINDOW_DEF_WIDTH 700
+#define MAINWINDOW_DEF_HEIGHT 500
 
 #define MAIN_WINDOW_DIV_HPOS -1
 #define MAIN_WINDOW_DIV_VPOS 200
@@ -1085,7 +1085,7 @@ static void layout_tools_setup(LayoutWindow *lw, GtkWidget *tools, GtkWidget *fi
 
 		if (save_window_positions)
 			{
-			hints = GDK_HINT_USER_POS | GDK_HINT_USER_SIZE;
+			hints = GDK_HINT_USER_POS;
 			}
 		else
 			{
@@ -1671,7 +1671,7 @@ LayoutWindow *layout_new(const gchar *path, gint popped, gint hidden)
 
 	if (save_window_positions)
 		{
-		hints = GDK_HINT_USER_POS | GDK_HINT_USER_SIZE;
+		hints = GDK_HINT_USER_POS;
 		}
 	else
 		{

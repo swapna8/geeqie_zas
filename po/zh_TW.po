@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gqview 1.3.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-26 14:33-0500\n"
+"POT-Creation-Date: 2005-05-14 15:32-0400\n"
 "PO-Revision-Date: 2004-02-09 22:08+0800\n"
 "Last-Translator: S.J. Luo <crystal@mickey.ee.nctu.edu.tw>\n"
 "Language-Team: traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -274,7 +274,7 @@ msgstr ""
 
 # 
 # src/collect-dlg.c:59
-#: src/cache_maint.c:792 src/utilops.c:904
+#: src/cache_maint.c:792 src/utilops.c:945
 #, fuzzy
 msgid "Invalid folder"
 msgstr "檔案名稱無效"
@@ -365,7 +365,7 @@ msgstr "GQview 全螢幕"
 # 
 # src/preferences.c:897
 #: src/cache_maint.c:1179 src/cache_maint.c:1199 src/cache_maint.c:1227
-#: src/preferences.c:1142 src/utilops.c:1505
+#: src/preferences.c:1142 src/utilops.c:1564
 #, fuzzy
 msgid "Location:"
 msgstr "圖像集"
@@ -486,8 +486,8 @@ msgstr "覆寫檔案"
 
 # 
 # src/collect-dlg.c:73 src/utilops.c:463 src/utilops.c:830 src/utilops.c:1036
-#: src/collect-dlg.c:75 src/utilops.c:479 src/utilops.c:792 src/utilops.c:1649
-#: src/utilops.c:2196
+#: src/collect-dlg.c:75 src/utilops.c:507 src/utilops.c:828 src/utilops.c:1708
+#: src/utilops.c:2260
 #, fuzzy
 msgid "_Overwrite"
 msgstr "覆寫"
@@ -1158,11 +1158,11 @@ msgid "mode:"
 msgstr "模式"
 
 # src/preferences.c:400
-#: src/exif.c:1483 src/utilops.c:1234
+#: src/exif.c:1483 src/utilops.c:1293
 msgid "on"
 msgstr "開啟"
 
-#: src/exif.c:1486 src/utilops.c:1234
+#: src/exif.c:1486 src/utilops.c:1293
 msgid "off"
 msgstr "關閉"
 
@@ -2687,7 +2687,7 @@ msgstr ""
 msgid "page %d of %d"
 msgstr "影像 %d/%d"
 
-#: src/print.c:736 src/utilops.c:2067
+#: src/print.c:736 src/utilops.c:2128
 msgid "Preview"
 msgstr "預覽"
 
@@ -3134,7 +3134,7 @@ msgstr "不能更改檔案名稱 %s 至 %s。"
 
 # 
 # src/ui_pathsel.c:343 src/utilops.c:675 src/utilops.c:727
-#: src/ui_pathsel.c:486 src/utilops.c:1288 src/utilops.c:1461
+#: src/ui_pathsel.c:486 src/utilops.c:1347 src/utilops.c:1520
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -3145,7 +3145,7 @@ msgstr ""
 
 # 
 # src/ui_pathsel.c:344 src/utilops.c:728
-#: src/ui_pathsel.c:487 src/utilops.c:1462
+#: src/ui_pathsel.c:487 src/utilops.c:1521
 msgid "File deletion failed"
 msgstr "刪除檔案失敗"
 
@@ -3168,8 +3168,8 @@ msgstr ""
 
 # src/ui_pathsel.c:437 src/ui_pathsel.c:460 src/utilops.c:944
 # src/utilops.c:1095
-#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2035
-#: src/utilops.c:2255
+#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2096
+#: src/utilops.c:2320
 msgid "_Rename"
 msgstr "更改名稱(_R)"
 
@@ -3191,7 +3191,7 @@ msgstr "新資料夾(_N)..."
 
 # 
 # src/ui_pathsel.c:517 src/utilops.c:1158
-#: src/ui_pathsel.c:750 src/utilops.c:2325 src/view_dir_list.c:338
+#: src/ui_pathsel.c:750 src/utilops.c:2392 src/view_dir_list.c:338
 #: src/view_dir_tree.c:434
 #, fuzzy, c-format
 msgid ""
@@ -3203,7 +3203,7 @@ msgstr ""
 
 # 
 # src/ui_pathsel.c:518 src/utilops.c:1159
-#: src/ui_pathsel.c:751 src/utilops.c:2326 src/view_dir_list.c:339
+#: src/ui_pathsel.c:751 src/utilops.c:2393 src/view_dir_list.c:339
 #: src/view_dir_tree.c:435
 #, fuzzy
 msgid "Error creating folder"
@@ -3242,74 +3242,74 @@ msgstr "所有檔案"
 
 # 
 # src/utilops.c:339 src/utilops.c:459 src/utilops.c:826 src/utilops.c:1032
-#: src/utilops.c:470 src/utilops.c:783 src/utilops.c:1640 src/utilops.c:2187
+#: src/utilops.c:498 src/utilops.c:819 src/utilops.c:1699 src/utilops.c:2251
 msgid "Overwrite file"
 msgstr "覆寫檔案"
 
 # 
 # src/utilops.c:339 src/utilops.c:459 src/utilops.c:826 src/utilops.c:1032
-#: src/utilops.c:475 src/utilops.c:788 src/utilops.c:1645 src/utilops.c:2192
+#: src/utilops.c:503 src/utilops.c:824 src/utilops.c:1704 src/utilops.c:2256
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "覆寫檔案"
 
-#: src/utilops.c:476 src/utilops.c:789
+#: src/utilops.c:504 src/utilops.c:825
 msgid "Replace existing file with new file."
 msgstr ""
 
 # 
 # src/utilops.c:339 src/utilops.c:459 src/utilops.c:826 src/utilops.c:1032
-#: src/utilops.c:480
+#: src/utilops.c:508
 #, fuzzy
 msgid "Overwrite _all"
 msgstr "覆寫檔案"
 
 # src/utilops.c:345
-#: src/utilops.c:482
+#: src/utilops.c:510
 #, fuzzy
 msgid "S_kip all"
 msgstr "全部略過"
 
 # 
 # src/utilops.c:345
-#: src/utilops.c:483
+#: src/utilops.c:511
 #, fuzzy
 msgid "_Skip"
 msgstr "略過"
 
 # 
 # src/utilops.c:387 src/utilops.c:495
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 #, fuzzy
 msgid "Existing file"
 msgstr "移動檔案發生錯誤"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 #, fuzzy
 msgid "New file"
 msgstr "新資料夾(_N)..."
 
 # src/preferences.c:930
-#: src/utilops.c:494 src/utilops.c:802 src/utilops.c:1746 src/utilops.c:1810
-#: src/utilops.c:2101
+#: src/utilops.c:522 src/utilops.c:838 src/utilops.c:1805 src/utilops.c:1869
+#: src/utilops.c:2162
 msgid "Auto rename"
 msgstr "自動更改名稱"
 
 # 
 # src/ui_pathsel.c:437 src/ui_pathsel.c:460 src/utilops.c:944
 # src/utilops.c:1095
-#: src/utilops.c:502 src/utilops.c:810
+#: src/utilops.c:530 src/utilops.c:846
 msgid "Rename"
 msgstr "更改名稱"
 
 # 
 # src/utilops.c:316
-#: src/utilops.c:543
+#: src/utilops.c:571
 msgid "Source to copy matches destination"
 msgstr "將要複製的來源地檔案和目的地檔案一樣"
 
 # src/utilops.c:317
-#: src/utilops.c:544
+#: src/utilops.c:572
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -3322,13 +3322,13 @@ msgstr ""
 
 # 
 # src/utilops.c:321
-#: src/utilops.c:548
+#: src/utilops.c:576
 msgid "Source to move matches destination"
 msgstr "將要移動的來源地檔案和目的地檔案一樣"
 
 # 
 # src/utilops.c:322
-#: src/utilops.c:549
+#: src/utilops.c:577
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -3341,18 +3341,18 @@ msgstr ""
 
 # 
 # src/utilops.c:328 src/utilops.c:394 src/utilops.c:668
-#: src/utilops.c:557 src/utilops.c:644 src/utilops.c:1280
+#: src/utilops.c:585 src/utilops.c:672 src/utilops.c:1339
 #, fuzzy
 msgid "Co_ntinue"
 msgstr "繼續"
 
 # src/utilops.c:382 src/utilops.c:490
-#: src/utilops.c:630 src/utilops.c:850
+#: src/utilops.c:658 src/utilops.c:886
 msgid "Error copying file"
 msgstr "複製檔案發生錯誤"
 
 # src/utilops.c:383
-#: src/utilops.c:631
+#: src/utilops.c:659
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -3368,12 +3368,12 @@ msgstr ""
 
 # 
 # src/utilops.c:387 src/utilops.c:495
-#: src/utilops.c:635 src/utilops.c:855
+#: src/utilops.c:663 src/utilops.c:891
 msgid "Error moving file"
 msgstr "移動檔案發生錯誤"
 
 # src/utilops.c:388
-#: src/utilops.c:636
+#: src/utilops.c:664
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -3389,19 +3389,19 @@ msgstr ""
 
 # 
 # src/utilops.c:450
-#: src/utilops.c:774
+#: src/utilops.c:810
 msgid "Source matches destination"
 msgstr "來源地和目的地一樣"
 
 # 
 # src/utilops.c:451
-#: src/utilops.c:775
+#: src/utilops.c:811
 msgid "Source and destination are the same, operation cancelled."
 msgstr "來源地和目的地一樣，取消操作。"
 
 # 
 # src/utilops.c:491
-#: src/utilops.c:851
+#: src/utilops.c:887
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -3416,7 +3416,7 @@ msgstr ""
 
 # 
 # src/utilops.c:496
-#: src/utilops.c:856
+#: src/utilops.c:892
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -3431,12 +3431,12 @@ msgstr ""
 
 # 
 # src/utilops.c:539
-#: src/utilops.c:899
+#: src/utilops.c:940
 msgid "Invalid destination"
 msgstr "無效的目的地"
 
 # src/utilops.c:540
-#: src/utilops.c:900
+#: src/utilops.c:941
 #, fuzzy
 msgid ""
 "When operating with multiple files, please select\n"
@@ -3447,96 +3447,96 @@ msgstr ""
 
 # 
 # src/utilops.c:544
-#: src/utilops.c:905
+#: src/utilops.c:946
 #, fuzzy
 msgid "Please select an existing folder."
 msgstr "請選擇一個存在的目錄"
 
 # src/main.c:129
-#: src/utilops.c:956
+#: src/utilops.c:1015
 #, fuzzy
 msgid "Copy - GQview"
 msgstr "求助 - GQview"
 
 # src/utilops.c:592
-#: src/utilops.c:957 src/view_dir_list.c:217 src/view_dir_tree.c:309
+#: src/utilops.c:1016 src/view_dir_list.c:217 src/view_dir_tree.c:309
 msgid "_Copy"
 msgstr "複製(_C)"
 
 # src/utilops.c:1090
-#: src/utilops.c:960
+#: src/utilops.c:1019
 #, fuzzy
 msgid "Copy file"
 msgstr "更改檔案名稱："
 
 # 
 # src/utilops.c:596
-#: src/utilops.c:964
+#: src/utilops.c:1023
 #, fuzzy
 msgid "Copy multiple files"
 msgstr "複製多個檔案到："
 
 # src/main.c:129
-#: src/utilops.c:970
+#: src/utilops.c:1029
 #, fuzzy
 msgid "Move - GQview"
 msgstr "求助 - GQview"
 
 # src/utilops.c:601
-#: src/utilops.c:971 src/view_dir_list.c:219 src/view_dir_tree.c:311
+#: src/utilops.c:1030 src/view_dir_list.c:219 src/view_dir_tree.c:311
 msgid "_Move"
 msgstr "移動(_M)"
 
 # src/utilops.c:1090
-#: src/utilops.c:974
+#: src/utilops.c:1033
 #, fuzzy
 msgid "Move file"
 msgstr "更改檔案名稱："
 
 # 
 # src/utilops.c:605
-#: src/utilops.c:978
+#: src/utilops.c:1037
 #, fuzzy
 msgid "Move multiple files"
 msgstr "移動多個檔案到："
 
 # src/utilops.c:980
-#: src/utilops.c:992 src/utilops.c:1502
+#: src/utilops.c:1051 src/utilops.c:1561
 #, fuzzy
 msgid "File name:"
 msgstr "檔案名稱："
 
 # 
 # src/utilops.c:450
-#: src/utilops.c:996
+#: src/utilops.c:1055
 #, fuzzy
 msgid "Choose the destination folder."
 msgstr "來源地和目的地一樣"
 
 # 
 # src/utilops.c:664 src/utilops.c:676
-#: src/utilops.c:1123 src/utilops.c:1272 src/utilops.c:1289
+#: src/utilops.c:1182 src/utilops.c:1331 src/utilops.c:1348
 msgid "Delete failed"
 msgstr "刪除失敗"
 
 # src/utilops.c:322
-#: src/utilops.c:1124
+#: src/utilops.c:1183
 msgid "Unable to remove old file from trash folder"
 msgstr "無法從資源回收筒中移除舊檔"
 
 # 
 # src/utilops.c:1151
-#: src/utilops.c:1180 src/utilops.c:2318
+#: src/utilops.c:1239 src/utilops.c:2385
 #, fuzzy
 msgid "Could not create folder"
 msgstr "無法建立目錄"
 
-#: src/utilops.c:1202
+#: src/utilops.c:1261
 msgid "Permission denied"
 msgstr "權限不足遭拒決"
 
 # src/ui_pathsel.c:517 src/utilops.c:1158
-#: src/utilops.c:1212
+#: src/utilops.c:1271
 #, c-format
 msgid ""
 "Unable to access or create the trash folder.\n"
@@ -3546,19 +3546,19 @@ msgstr ""
 "\"%s\""
 
 # src/preferences.c:667
-#: src/utilops.c:1216
+#: src/utilops.c:1275
 msgid "Turn off safe delete"
 msgstr "不使用安全刪除"
 
 # src/preferences.c:667
-#: src/utilops.c:1234
+#: src/utilops.c:1293
 #, c-format
 msgid "Safe delete: %s"
 msgstr "安全刪除: %s"
 
 # 
 # src/utilops.c:663
-#: src/utilops.c:1276
+#: src/utilops.c:1335
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -3569,51 +3569,51 @@ msgstr ""
 " %s\n"
 "要繼續刪除其它檔案？"
 
-#: src/utilops.c:1347
+#: src/utilops.c:1406
 #, c-format
 msgid "File %d of %d"
 msgstr "檔案 %d/%d"
 
 # 
 # src/utilops.c:707
-#: src/utilops.c:1416
+#: src/utilops.c:1475
 #, fuzzy
 msgid "Delete files - GQview"
 msgstr "刪除檔案"
 
 # 
 # src/utilops.c:942
-#: src/utilops.c:1420
+#: src/utilops.c:1479
 #, fuzzy
 msgid "Delete multiple files"
 msgstr "更改多個檔案的名稱："
 
 # src/dupe.c:67 src/dupe.c:1449
-#: src/utilops.c:1438
+#: src/utilops.c:1497
 #, c-format
 msgid "Review %d files"
 msgstr "回顧 %d 個檔案"
 
 # 
 # src/ui_pathsel.c:398 src/utilops.c:760
-#: src/utilops.c:1494
+#: src/utilops.c:1553
 #, fuzzy
 msgid "Delete file - GQview"
 msgstr "刪除檔案"
 
 # 
 # src/ui_pathsel.c:398 src/utilops.c:760
-#: src/utilops.c:1498
+#: src/utilops.c:1557
 #, fuzzy
 msgid "Delete file?"
 msgstr "刪除檔案"
 
-#: src/utilops.c:1646 src/utilops.c:2193
+#: src/utilops.c:1705 src/utilops.c:2257
 msgid "Replace existing file by renaming new file."
 msgstr ""
 
 # src/utilops.c:842
-#: src/utilops.c:1661
+#: src/utilops.c:1720
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -3629,12 +3629,12 @@ msgstr ""
 # 
 # src/filelist.c:809 src/filelist.c:815 src/filelist.c:821 src/utilops.c:845
 # src/utilops.c:1048
-#: src/utilops.c:1664 src/utilops.c:2208 src/view_file_list.c:448
+#: src/utilops.c:1723 src/utilops.c:2272 src/view_file_list.c:448
 #: src/view_file_list.c:454 src/view_file_list.c:460
 msgid "Error renaming file"
 msgstr "更改檔案名稱發生錯誤"
 
-#: src/utilops.c:1747
+#: src/utilops.c:1806
 msgid ""
 "Can not auto rename with the selected\n"
 "number set, one or more files exist that\n"
@@ -3644,7 +3644,7 @@ msgstr ""
 "至少有一個命名結果與已存在檔名衝突。\n"
 
 # src/ui_pathsel.c:313
-#: src/utilops.c:1809
+#: src/utilops.c:1868
 #, c-format
 msgid ""
 "Failed to rename\n"
@@ -3656,52 +3656,52 @@ msgstr ""
 "編號為 %d。"
 
 # src/main.c:129
-#: src/utilops.c:2031 src/utilops.c:2249
+#: src/utilops.c:2092 src/utilops.c:2314
 #, fuzzy
 msgid "Rename - GQview"
 msgstr "求助 - GQview"
 
 # 
 # src/utilops.c:942
-#: src/utilops.c:2034
+#: src/utilops.c:2095
 #, fuzzy
 msgid "Rename multiple files"
 msgstr "更改多個檔案的名稱："
 
-#: src/utilops.c:2066
+#: src/utilops.c:2127
 msgid "Original Name"
 msgstr "原檔名"
 
-#: src/utilops.c:2110 src/utilops.c:2262
+#: src/utilops.c:2171 src/utilops.c:2327
 #, fuzzy
 msgid "Original name:"
 msgstr "原檔名"
 
 # 
 # src/utilops.c:980
-#: src/utilops.c:2113 src/utilops.c:2265
+#: src/utilops.c:2174 src/utilops.c:2330
 #, fuzzy
 msgid "New name:"
 msgstr "更改名稱："
 
-#: src/utilops.c:2128
+#: src/utilops.c:2192
 msgid "Begin text"
 msgstr "文字開頭"
 
-#: src/utilops.c:2136
+#: src/utilops.c:2200
 msgid "Start #"
 msgstr "開始 #"
 
-#: src/utilops.c:2142
+#: src/utilops.c:2206
 msgid "End text"
 msgstr "文字結尾"
 
-#: src/utilops.c:2150
+#: src/utilops.c:2214
 msgid "Padding:"
 msgstr ""
 
 # src/filelist.c:820 src/utilops.c:1047
-#: src/utilops.c:2207 src/view_file_list.c:459
+#: src/utilops.c:2271 src/view_file_list.c:459
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -3715,14 +3715,14 @@ msgstr ""
 "%s"
 
 # src/utilops.c:1090
-#: src/utilops.c:2252
+#: src/utilops.c:2317
 #, fuzzy
 msgid "Rename file"
 msgstr "更改檔案名稱："
 
 # 
 # src/utilops.c:1144
-#: src/utilops.c:2311
+#: src/utilops.c:2378
 #, fuzzy, c-format
 msgid ""
 "The folder:\n"
@@ -3734,14 +3734,14 @@ msgstr ""
 "已經存在。"
 
 # src/preferences.c:368
-#: src/utilops.c:2312
+#: src/utilops.c:2379
 #, fuzzy
 msgid "Folder exists"
 msgstr "資料夾"
 
 # 
 # src/utilops.c:1150
-#: src/utilops.c:2317
+#: src/utilops.c:2384
 #, c-format
 msgid ""
 "The path:\n"
@@ -3753,14 +3753,14 @@ msgstr ""
 "已經是一個檔案。"
 
 # src/main.c:129
-#: src/utilops.c:2369
+#: src/utilops.c:2436
 #, fuzzy
 msgid "New folder - GQview"
 msgstr "求助 - GQview"
 
 # 
 # src/utilops.c:1211
-#: src/utilops.c:2372
+#: src/utilops.c:2439
 #, fuzzy, c-format
 msgid ""
 "Create folder in:\n"
