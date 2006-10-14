@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gqview 1.5.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-26 14:33-0500\n"
+"POT-Creation-Date: 2006-10-14 05:14-0400\n"
 "PO-Revision-Date: 2005-02-01 23:26+0100\n"
 "Last-Translator: Hans Ofverbeck <hans.ofverbeck@home.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -94,7 +94,7 @@ msgid "Tag"
 msgstr "Tagg"
 
 #: src/bar_exif.c:424 src/dupe.c:2589 src/dupe.c:3116 src/print.c:3190
-#: src/search.c:2753 src/view_file_list.c:1555
+#: src/search.c:2753 src/view_file_list.c:1556
 msgid "Name"
 msgstr "Namn"
 
@@ -174,7 +174,7 @@ msgstr "Namn:"
 msgid "Sort Manager"
 msgstr "Sorteringshanterare"
 
-#: src/bar_sort.c:578 src/ui_pathsel.c:1095
+#: src/bar_sort.c:578 src/ui_pathsel.c:1094
 msgid "Folders"
 msgstr "Mappar"
 
@@ -206,77 +206,77 @@ msgstr "Lägg till markering"
 msgid "Undo last image"
 msgstr "Ångra senaste bild"
 
-#: src/cache_maint.c:127 src/cache_maint.c:681 src/cache_maint.c:894
+#: src/cache_maint.c:126 src/cache_maint.c:680 src/cache_maint.c:893
 #: src/editors.c:410
 msgid "done"
 msgstr "färdig"
 
-#: src/cache_maint.c:304
+#: src/cache_maint.c:303
 msgid "Removing old metadata..."
 msgstr "Tar bort gammal metadata..."
 
-#: src/cache_maint.c:308
+#: src/cache_maint.c:307
 msgid "Clearing cached thumbnails..."
 msgstr "Tömmer cachade miniatyrbilder..."
 
-#: src/cache_maint.c:312 src/cache_maint.c:1048
+#: src/cache_maint.c:311 src/cache_maint.c:1047
 msgid "Removing old thumbnails..."
 msgstr "Tar bort gamla miniatyrbilder..."
 
-#: src/cache_maint.c:315 src/cache_maint.c:1051
+#: src/cache_maint.c:314 src/cache_maint.c:1050
 msgid "Maintenance"
 msgstr "Underhåll"
 
-#: src/cache_maint.c:792 src/utilops.c:904
+#: src/cache_maint.c:791 src/utilops.c:945
 msgid "Invalid folder"
 msgstr "Ogiltig mapp"
 
-#: src/cache_maint.c:793
+#: src/cache_maint.c:792
 msgid "The specified folder can not be found."
 msgstr "Den angivna mappen kan inte hittas."
 
-#: src/cache_maint.c:821 src/cache_maint.c:835 src/cache_maint.c:1216
+#: src/cache_maint.c:820 src/cache_maint.c:834 src/cache_maint.c:1215
 msgid "Create thumbnails"
 msgstr "Skapa miniatyrbilder"
 
-#: src/cache_maint.c:829 src/cache_maint.c:1058
+#: src/cache_maint.c:828 src/cache_maint.c:1057
 msgid "S_tart"
 msgstr "_Starta"
 
-#: src/cache_maint.c:842 src/preferences.c:1165
+#: src/cache_maint.c:841 src/preferences.c:1165
 msgid "Folder:"
 msgstr "Mapp:"
 
-#: src/cache_maint.c:845
+#: src/cache_maint.c:844
 msgid "Select folder"
 msgstr "Markera mapp"
 
-#: src/cache_maint.c:849
+#: src/cache_maint.c:848
 msgid "Include subfolders"
 msgstr "Inkludera undermappar"
 
-#: src/cache_maint.c:850
+#: src/cache_maint.c:849
 msgid "Store thumbnails local to source images"
 msgstr "Lagra miniatyrbilder i närheten av originalbilder"
 
-#: src/cache_maint.c:859 src/cache_maint.c:1067
+#: src/cache_maint.c:858 src/cache_maint.c:1066
 msgid "click start to begin"
 msgstr "tryck på starta för att börja"
 
-#: src/cache_maint.c:997 src/editors.c:549
+#: src/cache_maint.c:996 src/editors.c:558
 msgid "running..."
 msgstr "kör..."
 
-#: src/cache_maint.c:1043
+#: src/cache_maint.c:1042
 msgid "Clearing thumbnails..."
 msgstr "Tömmer miniatyrbilder..."
 
-#: src/cache_maint.c:1109 src/cache_maint.c:1112 src/cache_maint.c:1191
-#: src/cache_maint.c:1211
+#: src/cache_maint.c:1108 src/cache_maint.c:1111 src/cache_maint.c:1190
+#: src/cache_maint.c:1210
 msgid "Clear cache"
 msgstr "Töm cache"
 
-#: src/cache_maint.c:1113
+#: src/cache_maint.c:1112
 msgid ""
 "This will remove all thumbnails that have\n"
 "been saved to disk, continue?"
@@ -284,57 +284,58 @@ msgstr ""
 "Detta kommer att ta bort alla miniatyrbilder\n"
 "som sparats på hårddisken, fortsätt?"
 
-#: src/cache_maint.c:1163
+#: src/cache_maint.c:1162
 msgid "Cache Maintenance - GQview"
 msgstr "Cache-hantering - GQview"
 
-#: src/cache_maint.c:1173
+#: src/cache_maint.c:1172
 msgid "Cache and Data Maintenance"
 msgstr "Cache- och Datahantering"
 
-#: src/cache_maint.c:1177
+#: src/cache_maint.c:1176
 msgid "GQview thumbnail cache"
 msgstr "GQview miniatyrbildscache"
 
-#: src/cache_maint.c:1179 src/cache_maint.c:1199 src/cache_maint.c:1227
-#: src/preferences.c:1142 src/utilops.c:1505
+#: src/cache_maint.c:1178 src/cache_maint.c:1198 src/cache_maint.c:1226
+#: src/preferences.c:1142 src/utilops.c:1564
 msgid "Location:"
 msgstr "Plats:"
 
-#: src/cache_maint.c:1186 src/cache_maint.c:1206 src/cache_maint.c:1234
+#: src/cache_maint.c:1185 src/cache_maint.c:1205 src/cache_maint.c:1233
 msgid "Clean up"
 msgstr "Städa"
 
-#: src/cache_maint.c:1189 src/cache_maint.c:1209
+#: src/cache_maint.c:1188 src/cache_maint.c:1208
 msgid "Remove orphaned or outdated thumbnails."
 msgstr "Ta bort övergivna eller föråldrade miniatyrbilder."
 
-#: src/cache_maint.c:1194 src/cache_maint.c:1214
+#: src/cache_maint.c:1193 src/cache_maint.c:1213
 msgid "Delete all cached thumbnails."
 msgstr "Radera alla cachade miniatyrbilder."
 
-#: src/cache_maint.c:1197
+#: src/cache_maint.c:1196
 msgid "Shared thumbnail cache"
 msgstr "Delad miniatyrbildscache"
 
-#: src/cache_maint.c:1220
+#: src/cache_maint.c:1219
 msgid "Render"
 msgstr "Skapa"
 
-#: src/cache_maint.c:1223
+#: src/cache_maint.c:1222
 msgid "Render thumbnails for a specific folder."
 msgstr "Skapa miniatyrbilder för en specifik mapp."
 
-#: src/cache_maint.c:1225
+#: src/cache_maint.c:1224
 msgid "Metadata"
 msgstr "Metadata"
 
-#: src/cache_maint.c:1237
+#: src/cache_maint.c:1236
 msgid "Remove orphaned keywords and comments."
 msgstr "Ta bort övergivna nyckelord och kommentarer."
 
 #: src/collect.c:349 src/image.c:1160 src/image-overlay.c:74
 #: src/image-overlay.c:115
+#, c-format
 msgid "Untitled"
 msgstr "Namnlös"
 
@@ -387,8 +388,8 @@ msgstr "Skriv över fil"
 msgid "Overwrite existing file?"
 msgstr "Skriv över befintlig fil?"
 
-#: src/collect-dlg.c:75 src/utilops.c:479 src/utilops.c:792 src/utilops.c:1649
-#: src/utilops.c:2196
+#: src/collect-dlg.c:75 src/utilops.c:507 src/utilops.c:828 src/utilops.c:1708
+#: src/utilops.c:2260
 msgid "_Overwrite"
 msgstr "Skriv _över"
 
@@ -436,7 +437,7 @@ msgstr "%d bilder"
 
 #: src/collect-table.c:186 src/dupe.c:1296 src/search.c:303
 #: src/view_file_icon.c:1772 src/view_file_icon.c:1887
-#: src/view_file_list.c:816 src/view_file_list.c:921
+#: src/view_file_list.c:817 src/view_file_list.c:922
 msgid "Loading thumbs..."
 msgstr "Läser in miniatyrbilder..."
 
@@ -445,9 +446,9 @@ msgstr "Läser in miniatyrbilder..."
 msgid "_View"
 msgstr "_Visa"
 
-#: src/collect-table.c:775 src/dupe.c:2189 src/dupe.c:2499 src/img-view.c:1187
-#: src/layout_image.c:722 src/search.c:971 src/view_file_icon.c:283
-#: src/view_file_list.c:395
+#: src/collect-table.c:775 src/dupe.c:2189 src/dupe.c:2499 src/img-view.c:1197
+#: src/layout_image.c:727 src/search.c:971 src/view_file_icon.c:283
+#: src/view_file_list.c:396
 msgid "View in _new window"
 msgstr "Visa i _nytt fönster"
 
@@ -471,34 +472,34 @@ msgstr "Markera alla"
 msgid "Select none"
 msgstr "Markera ingen"
 
-#: src/collect-table.c:796 src/dupe.c:2203 src/img-view.c:1185
-#: src/layout_image.c:719 src/layout_util.c:784 src/search.c:981
-#: src/view_file_icon.c:280 src/view_file_list.c:393
+#: src/collect-table.c:796 src/dupe.c:2203 src/img-view.c:1195
+#: src/layout_image.c:724 src/layout_util.c:784 src/search.c:981
+#: src/view_file_icon.c:280 src/view_file_list.c:394
 msgid "_Properties"
 msgstr "_Egenskaper"
 
-#: src/collect-table.c:799 src/dupe.c:2210 src/img-view.c:1190
-#: src/layout_image.c:727 src/layout_util.c:762 src/search.c:988
-#: src/view_file_icon.c:287 src/view_file_list.c:399
+#: src/collect-table.c:799 src/dupe.c:2210 src/img-view.c:1200
+#: src/layout_image.c:732 src/layout_util.c:762 src/search.c:988
+#: src/view_file_icon.c:287 src/view_file_list.c:400
 msgid "_Copy..."
 msgstr "_Kopiera..."
 
-#: src/collect-table.c:801 src/dupe.c:2212 src/img-view.c:1191
-#: src/layout_image.c:729 src/layout_util.c:763 src/search.c:990
-#: src/view_file_icon.c:289 src/view_file_list.c:401
+#: src/collect-table.c:801 src/dupe.c:2212 src/img-view.c:1201
+#: src/layout_image.c:734 src/layout_util.c:763 src/search.c:990
+#: src/view_file_icon.c:289 src/view_file_list.c:402
 msgid "_Move..."
 msgstr "Fl_ytta..."
 
-#: src/collect-table.c:803 src/dupe.c:2214 src/img-view.c:1192
-#: src/layout_image.c:731 src/layout_util.c:764 src/search.c:992
-#: src/view_dir_list.c:415 src/view_dir_tree.c:505 src/view_file_icon.c:291
-#: src/view_file_list.c:403
+#: src/collect-table.c:803 src/dupe.c:2214 src/img-view.c:1202
+#: src/layout_image.c:736 src/layout_util.c:764 src/search.c:992
+#: src/view_dir_list.c:407 src/view_dir_tree.c:497 src/view_file_icon.c:291
+#: src/view_file_list.c:404
 msgid "_Rename..."
 msgstr "_Byt namn..."
 
-#: src/collect-table.c:805 src/dupe.c:2216 src/img-view.c:1193
-#: src/layout_image.c:733 src/layout_util.c:765 src/search.c:994
-#: src/view_file_icon.c:293 src/view_file_list.c:405
+#: src/collect-table.c:805 src/dupe.c:2216 src/img-view.c:1203
+#: src/layout_image.c:738 src/layout_util.c:765 src/search.c:994
+#: src/view_file_icon.c:293 src/view_file_list.c:406
 msgid "_Delete..."
 msgstr "_Ta bort..."
 
@@ -522,24 +523,24 @@ msgstr "_Hitta dubletter..."
 msgid "Print..."
 msgstr "Skriv ut..."
 
-#: src/collect-table.c:1978 src/dupe.c:3304 src/img-view.c:1347
+#: src/collect-table.c:1978 src/dupe.c:3304 src/img-view.c:1357
 msgid "Dropped list includes folders."
 msgstr "Släppt lista innehåller mappar."
 
-#: src/collect-table.c:1980 src/dupe.c:3306 src/img-view.c:1349
+#: src/collect-table.c:1980 src/dupe.c:3306 src/img-view.c:1359
 msgid "_Add contents"
 msgstr "_Lägg till innehåll"
 
-#: src/collect-table.c:1982 src/dupe.c:3307 src/img-view.c:1350
+#: src/collect-table.c:1982 src/dupe.c:3307 src/img-view.c:1360
 msgid "Add contents _recursive"
 msgstr "Lägg till innehåll _rekursivt"
 
-#: src/collect-table.c:1984 src/dupe.c:3308 src/img-view.c:1351
+#: src/collect-table.c:1984 src/dupe.c:3308 src/img-view.c:1361
 msgid "_Skip folders"
 msgstr "Hoppa _över mappar"
 
-#: src/collect-table.c:1987 src/dupe.c:3310 src/img-view.c:1353
-#: src/view_dir_list.c:222 src/view_dir_tree.c:314
+#: src/collect-table.c:1987 src/dupe.c:3310 src/img-view.c:1363
+#: src/view_dir_list.c:214 src/view_dir_tree.c:306
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -607,12 +608,12 @@ msgid "%d files (set 2)"
 msgstr "%d filer (grupp 2)"
 
 #: src/dupe.c:2590 src/dupe.c:3117 src/preferences.c:947 src/print.c:3194
-#: src/search.c:2754 src/view_file_list.c:1556
+#: src/search.c:2754 src/view_file_list.c:1557
 msgid "Size"
 msgstr "Storlek"
 
 #: src/dupe.c:2591 src/dupe.c:3118 src/exif.c:297 src/exif.c:419
-#: src/print.c:3192 src/search.c:2755 src/view_file_list.c:1557
+#: src/print.c:3192 src/search.c:2755 src/view_file_list.c:1558
 msgid "Date"
 msgstr "Datum"
 
@@ -624,7 +625,7 @@ msgstr "Dimensioner"
 msgid "Checksum"
 msgstr "Kontrollsumma"
 
-#: src/dupe.c:2594 src/dupe.c:3120 src/search.c:2757 src/ui_pathsel.c:1107
+#: src/dupe.c:2594 src/dupe.c:3120 src/search.c:2757 src/ui_pathsel.c:1106
 msgid "Path"
 msgstr "Sökväg"
 
@@ -710,8 +711,8 @@ msgstr ""
 msgid "stopped by user"
 msgstr "stoppad av användaren"
 
-#: src/exif.c:112 src/exif.c:125 src/exif.c:139 src/exif.c:164 src/exif.c:606
-#: src/exif.c:1452 src/exif.c:1455 src/exif.c:1520
+#: src/exif.c:112 src/exif.c:125 src/exif.c:139 src/exif.c:164 src/exif.c:610
+#: src/exif.c:1460 src/exif.c:1463 src/exif.c:1528
 msgid "unknown"
 msgstr "okänd"
 
@@ -835,12 +836,12 @@ msgstr "volfram (glödande)"
 msgid "flash"
 msgstr "blixt"
 
-#: src/exif.c:189 src/exif.c:1475 src/info.c:226
+#: src/exif.c:189 src/exif.c:1483 src/info.c:226
 msgid "no"
 msgstr "nej"
 
 #. flash fired (bit 0)
-#: src/exif.c:190 src/exif.c:1475 src/info.c:226
+#: src/exif.c:190 src/exif.c:1483 src/info.c:226
 msgid "yes"
 msgstr "ja"
 
@@ -929,41 +930,41 @@ msgstr "Kamera"
 msgid "Resolution"
 msgstr "Upplösning"
 
-#: src/exif.c:1451
+#: src/exif.c:1459
 msgid "infinity"
 msgstr "oändligt"
 
-#: src/exif.c:1479
+#: src/exif.c:1487
 msgid "mode:"
 msgstr "läge:"
 
-#: src/exif.c:1483 src/utilops.c:1234
+#: src/exif.c:1491 src/utilops.c:1293
 msgid "on"
 msgstr "på"
 
-#: src/exif.c:1486 src/utilops.c:1234
+#: src/exif.c:1494 src/utilops.c:1293
 msgid "off"
 msgstr "av"
 
-#: src/exif.c:1489
+#: src/exif.c:1497
 msgid "auto"
 msgstr "auto"
 
-#: src/exif.c:1495
+#: src/exif.c:1503
 msgid "not detected by strobe"
 msgstr "inte upptäckt av sensor"
 
-#: src/exif.c:1496
+#: src/exif.c:1504
 msgid "detected by strobe"
 msgstr "upptäckt av sensor"
 
 #. we ignore flash function (bit 5)
 #. red-eye (bit 6)
-#: src/exif.c:1501
+#: src/exif.c:1509
 msgid "red-eye reduction"
 msgstr "reducering av röda ögon"
 
-#: src/exif.c:1520
+#: src/exif.c:1528
 msgid "dot"
 msgstr "punkt"
 
@@ -1019,52 +1020,52 @@ msgstr "Aktiv skärm"
 msgid "Active monitor"
 msgstr "Aktiv bildskärm"
 
-#: src/img-view.c:1173 src/layout_image.c:706 src/layout_util.c:791
+#: src/img-view.c:1183 src/layout_image.c:711 src/layout_util.c:791
 msgid "Zoom _in"
 msgstr "Zooma _in"
 
-#: src/img-view.c:1174 src/layout_image.c:707 src/layout_util.c:792
+#: src/img-view.c:1184 src/layout_image.c:712 src/layout_util.c:792
 msgid "Zoom _out"
 msgstr "Zooma _ut"
 
-#: src/img-view.c:1175 src/layout_image.c:708 src/layout_util.c:793
+#: src/img-view.c:1185 src/layout_image.c:713 src/layout_util.c:793
 msgid "Zoom _1:1"
 msgstr "Zooma _1:1"
 
-#: src/img-view.c:1176 src/layout_image.c:709
+#: src/img-view.c:1186 src/layout_image.c:714
 msgid "Fit image to _window"
 msgstr "Anpassa bild till fönster_storlek"
 
-#: src/img-view.c:1181 src/layout_image.c:715 src/layout_util.c:789
+#: src/img-view.c:1191 src/layout_image.c:720 src/layout_util.c:789
 msgid "Set as _wallpaper"
 msgstr "Ställ in som skrivbords_underlag"
 
-#: src/img-view.c:1199 src/layout_image.c:740
+#: src/img-view.c:1209 src/layout_image.c:745
 msgid "_Stop slideshow"
 msgstr "_Stoppa bildspel"
 
-#: src/img-view.c:1202 src/layout_image.c:743
+#: src/img-view.c:1212 src/layout_image.c:748
 msgid "Continue slides_how"
 msgstr "Forts_ätt bildspel"
 
-#: src/img-view.c:1207 src/img-view.c:1215 src/layout_image.c:748
-#: src/layout_image.c:755
+#: src/img-view.c:1217 src/img-view.c:1225 src/layout_image.c:753
+#: src/layout_image.c:760
 msgid "Pause slides_how"
 msgstr "_Pausa bildspel"
 
-#: src/img-view.c:1213 src/layout_image.c:754
+#: src/img-view.c:1223 src/layout_image.c:759
 msgid "_Start slideshow"
 msgstr "_Starta bildspel"
 
-#: src/img-view.c:1221 src/layout_image.c:765
+#: src/img-view.c:1231 src/layout_image.c:770
 msgid "Exit _full screen"
 msgstr "Avsluta _helskärmsläge"
 
-#: src/img-view.c:1225 src/layout_image.c:761
+#: src/img-view.c:1235 src/layout_image.c:766
 msgid "_Full screen"
 msgstr "_Helskärmsläge"
 
-#: src/img-view.c:1229 src/layout_util.c:766
+#: src/img-view.c:1239 src/layout_util.c:766
 msgid "C_lose window"
 msgstr "_Stäng fönster"
 
@@ -1113,7 +1114,7 @@ msgstr "Bild %d av %d"
 msgid "Image properties - GQview"
 msgstr "Bildegenskaper - GQview"
 
-#: src/layout.c:271 src/view_file_icon.c:301 src/view_file_list.c:413
+#: src/layout.c:271 src/view_file_icon.c:301 src/view_file_list.c:414
 msgid "Ascending"
 msgstr "Stigande"
 
@@ -1163,7 +1164,7 @@ msgstr "GQview Verktyg"
 msgid "Tools"
 msgstr "Verktyg"
 
-#: src/layout_config.c:57 src/ui_pathsel.c:1175
+#: src/layout_config.c:57 src/ui_pathsel.c:1174
 msgid "Files"
 msgstr "Filer"
 
@@ -1175,7 +1176,7 @@ msgstr "Bild"
 msgid "(drag to change order)"
 msgstr "(dra-och-släpp för att byta ordning)"
 
-#: src/layout_image.c:770
+#: src/layout_image.c:775
 msgid "Hide file _list"
 msgstr "Dölj fil_lista"
 
@@ -1550,7 +1551,7 @@ msgstr "Skapar GQview-mapp:%s\n"
 msgid "Could not create dir:%s\n"
 msgstr "Kunde inte skapa mapp:%s\n"
 
-#: src/main.c:1061 src/ui_bookmark.c:858 src/ui_pathsel.c:1043
+#: src/main.c:1061 src/ui_bookmark.c:858 src/ui_pathsel.c:1042
 msgid "Home"
 msgstr "Hem"
 
@@ -1851,6 +1852,10 @@ msgstr "Nr."
 msgid "Menu name"
 msgstr "Menynamn"
 
+#: src/preferences.c:1078
+msgid "Command Line"
+msgstr "Kommandorad"
+
 #: src/preferences.c:1125
 msgid "Advanced"
 msgstr "Avancerat"
@@ -2114,7 +2119,7 @@ msgstr "\"Tabloid\"-format"
 msgid "page %d of %d"
 msgstr "sida %d av %d"
 
-#: src/print.c:736 src/utilops.c:2067
+#: src/print.c:736 src/utilops.c:2128
 msgid "Preview"
 msgstr "Förhandsgranskning"
 
@@ -2127,8 +2132,8 @@ msgstr ""
 "Kan inte öppna rör för skrivning.\n"
 "\"%s\""
 
-#: src/print.c:1059 src/print.c:1488 src/ui_pathsel.c:424
-#: src/view_file_list.c:453
+#: src/print.c:1059 src/print.c:1488 src/ui_pathsel.c:423
+#: src/view_file_list.c:454
 #, c-format
 msgid "A file with name %s already exists."
 msgstr "En fil med namnet %s finns redan."
@@ -2455,12 +2460,12 @@ msgid ""
 "%s"
 msgstr "Kan inte läsa in:%s"
 
-#: src/ui_pathsel.c:430 src/view_dir_list.c:97 src/view_dir_tree.c:204
+#: src/ui_pathsel.c:429 src/utilops.c:2486
 #, c-format
 msgid "Failed to rename %s to %s."
 msgstr "Misslyckades att byta namn från %s till %s."
 
-#: src/ui_pathsel.c:486 src/utilops.c:1288 src/utilops.c:1461
+#: src/ui_pathsel.c:485 src/utilops.c:1347 src/utilops.c:1520
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2469,15 +2474,15 @@ msgstr ""
 "Kan inte ta bort filen:\n"
 "%s"
 
-#: src/ui_pathsel.c:487 src/utilops.c:1462
+#: src/ui_pathsel.c:486 src/utilops.c:1521
 msgid "File deletion failed"
 msgstr "Borttagning av fil misslyckades"
 
-#: src/ui_pathsel.c:529 src/ui_pathsel.c:537
+#: src/ui_pathsel.c:528 src/ui_pathsel.c:536
 msgid "Delete file"
 msgstr "Ta bort fil"
 
-#: src/ui_pathsel.c:535
+#: src/ui_pathsel.c:534
 #, c-format
 msgid ""
 "About to delete the file:\n"
@@ -2486,25 +2491,25 @@ msgstr ""
 "Kommer att ta bort filen:\n"
 "%s"
 
-#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2035
-#: src/utilops.c:2255
+#: src/ui_pathsel.c:625 src/ui_pathsel.c:633 src/utilops.c:2096
+#: src/utilops.c:2320
 msgid "_Rename"
 msgstr "_Byt namn"
 
-#: src/ui_pathsel.c:628 src/ui_pathsel.c:638
+#: src/ui_pathsel.c:627 src/ui_pathsel.c:637
 msgid "Add _Bookmark"
 msgstr "_Lägg till bokmärke"
 
-#: src/ui_pathsel.c:636
+#: src/ui_pathsel.c:635
 msgid "_Delete"
 msgstr "_Ta bort"
 
-#: src/ui_pathsel.c:740 src/ui_pathsel.c:1045
+#: src/ui_pathsel.c:739 src/ui_pathsel.c:1044
 msgid "New folder"
 msgstr "Ny mapp"
 
-#: src/ui_pathsel.c:750 src/utilops.c:2325 src/view_dir_list.c:338
-#: src/view_dir_tree.c:434
+#: src/ui_pathsel.c:749 src/utilops.c:2392 src/view_dir_list.c:330
+#: src/view_dir_tree.c:426
 #, c-format
 msgid ""
 "Unable to create folder:\n"
@@ -2513,77 +2518,77 @@ msgstr ""
 "Kan inte skapa mappen:\n"
 "%s"
 
-#: src/ui_pathsel.c:751 src/utilops.c:2326 src/view_dir_list.c:339
-#: src/view_dir_tree.c:435
+#: src/ui_pathsel.c:750 src/utilops.c:2393 src/view_dir_list.c:331
+#: src/view_dir_tree.c:427
 msgid "Error creating folder"
 msgstr "Fel vid skapande av mapp"
 
-#: src/ui_pathsel.c:972
+#: src/ui_pathsel.c:971
 msgid "All Files"
 msgstr "Alla filer"
 
-#: src/ui_pathsel.c:1048
+#: src/ui_pathsel.c:1047
 msgid "Show hidden"
 msgstr "Visa dolda"
 
-#: src/ui_pathsel.c:1132
+#: src/ui_pathsel.c:1131
 msgid "Filter:"
 msgstr "Filter:"
 
-#: src/ui_tabcomp.c:840
+#: src/ui_tabcomp.c:836
 msgid "Select path"
 msgstr "Markera sökväg"
 
-#: src/ui_tabcomp.c:856
+#: src/ui_tabcomp.c:852
 msgid "All files"
 msgstr "Alla filer"
 
-#: src/utilops.c:470 src/utilops.c:783 src/utilops.c:1640 src/utilops.c:2187
+#: src/utilops.c:498 src/utilops.c:819 src/utilops.c:1699 src/utilops.c:2251
 msgid "Overwrite file"
 msgstr "Skriv över fil"
 
-#: src/utilops.c:475 src/utilops.c:788 src/utilops.c:1645 src/utilops.c:2192
+#: src/utilops.c:503 src/utilops.c:824 src/utilops.c:1704 src/utilops.c:2256
 msgid "Overwrite file?"
 msgstr "Skriv över fil?"
 
-#: src/utilops.c:476 src/utilops.c:789
+#: src/utilops.c:504 src/utilops.c:825
 msgid "Replace existing file with new file."
 msgstr "Ersätt befintlig fil med ny fil."
 
-#: src/utilops.c:480
+#: src/utilops.c:508
 msgid "Overwrite _all"
 msgstr "Skriv över _alla"
 
-#: src/utilops.c:482
+#: src/utilops.c:510
 msgid "S_kip all"
 msgstr "H_oppa över alla"
 
-#: src/utilops.c:483
+#: src/utilops.c:511
 msgid "_Skip"
 msgstr "_Hoppa över"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 msgid "Existing file"
 msgstr "Befintlig fil"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 msgid "New file"
 msgstr "Ny fil"
 
-#: src/utilops.c:494 src/utilops.c:802 src/utilops.c:1746 src/utilops.c:1810
-#: src/utilops.c:2101
+#: src/utilops.c:522 src/utilops.c:838 src/utilops.c:1805 src/utilops.c:1869
+#: src/utilops.c:2162
 msgid "Auto rename"
 msgstr "Automatiskt namnbyte"
 
-#: src/utilops.c:502 src/utilops.c:810
+#: src/utilops.c:530 src/utilops.c:846
 msgid "Rename"
 msgstr "Byt namn"
 
-#: src/utilops.c:543
+#: src/utilops.c:571
 msgid "Source to copy matches destination"
 msgstr "Källan att kopiera är samma som målet"
 
-#: src/utilops.c:544
+#: src/utilops.c:572
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2594,11 +2599,11 @@ msgstr ""
 "%s\n"
 "till sig själv."
 
-#: src/utilops.c:548
+#: src/utilops.c:576
 msgid "Source to move matches destination"
 msgstr "Källan att flytta är samma som målet"
 
-#: src/utilops.c:549
+#: src/utilops.c:577
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2609,15 +2614,15 @@ msgstr ""
 "%s\n"
 "till sig själv."
 
-#: src/utilops.c:557 src/utilops.c:644 src/utilops.c:1280
+#: src/utilops.c:585 src/utilops.c:672 src/utilops.c:1339
 msgid "Co_ntinue"
 msgstr "_Fortsätt"
 
-#: src/utilops.c:630 src/utilops.c:850
+#: src/utilops.c:658 src/utilops.c:886
 msgid "Error copying file"
 msgstr "Fel vid kopiering av fil"
 
-#: src/utilops.c:631
+#: src/utilops.c:659
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2632,11 +2637,11 @@ msgstr ""
 "%s\n"
 "vid kopiering av flera filer."
 
-#: src/utilops.c:635 src/utilops.c:855
+#: src/utilops.c:663 src/utilops.c:891
 msgid "Error moving file"
 msgstr "Fel vid flytt av fil"
 
-#: src/utilops.c:636
+#: src/utilops.c:664
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2651,15 +2656,15 @@ msgstr ""
 "%s\n"
 "vid flytt av flera filer."
 
-#: src/utilops.c:774
+#: src/utilops.c:810
 msgid "Source matches destination"
 msgstr "Källan är samma som målet"
 
-#: src/utilops.c:775
+#: src/utilops.c:811
 msgid "Source and destination are the same, operation cancelled."
 msgstr "Källa och mål är samma, operationen avbröts."
 
-#: src/utilops.c:851
+#: src/utilops.c:887
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2672,7 +2677,7 @@ msgstr ""
 "till:\n"
 "%s"
 
-#: src/utilops.c:856
+#: src/utilops.c:892
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2685,11 +2690,11 @@ msgstr ""
 "till:\n"
 "%s"
 
-#: src/utilops.c:899
+#: src/utilops.c:940
 msgid "Invalid destination"
 msgstr "Ogiltigt mål"
 
-#: src/utilops.c:900
+#: src/utilops.c:941
 msgid ""
 "When operating with multiple files, please select\n"
 "a folder, not a file."
@@ -2697,67 +2702,67 @@ msgstr ""
 "Vid operationer med flera filer på en gång, var god\n"
 "välj en mapp, inte en fil."
 
-#: src/utilops.c:905
+#: src/utilops.c:946
 msgid "Please select an existing folder."
 msgstr "Välj en befintlig mapp"
 
-#: src/utilops.c:956
+#: src/utilops.c:1015
 msgid "Copy - GQview"
 msgstr "Kopiera - GQview"
 
-#: src/utilops.c:957 src/view_dir_list.c:217 src/view_dir_tree.c:309
+#: src/utilops.c:1016 src/view_dir_list.c:209 src/view_dir_tree.c:301
 msgid "_Copy"
 msgstr "_Kopiera"
 
-#: src/utilops.c:960
+#: src/utilops.c:1019
 msgid "Copy file"
 msgstr "Kopiera fil"
 
-#: src/utilops.c:964
+#: src/utilops.c:1023
 msgid "Copy multiple files"
 msgstr "Kopiera flera filer"
 
-#: src/utilops.c:970
+#: src/utilops.c:1029
 msgid "Move - GQview"
 msgstr "Flytta - GQview"
 
-#: src/utilops.c:971 src/view_dir_list.c:219 src/view_dir_tree.c:311
+#: src/utilops.c:1030 src/view_dir_list.c:211 src/view_dir_tree.c:303
 msgid "_Move"
 msgstr "Fl_ytta"
 
-#: src/utilops.c:974
+#: src/utilops.c:1033
 msgid "Move file"
 msgstr "Flytta fil"
 
-#: src/utilops.c:978
+#: src/utilops.c:1037
 msgid "Move multiple files"
 msgstr "Flytta flera filer"
 
-#: src/utilops.c:992 src/utilops.c:1502
+#: src/utilops.c:1051 src/utilops.c:1561
 msgid "File name:"
 msgstr "Filnamn:"
 
-#: src/utilops.c:996
+#: src/utilops.c:1055
 msgid "Choose the destination folder."
 msgstr "Välj målmapp."
 
-#: src/utilops.c:1123 src/utilops.c:1272 src/utilops.c:1289
+#: src/utilops.c:1182 src/utilops.c:1331 src/utilops.c:1348
 msgid "Delete failed"
 msgstr "Borttagning misslyckades"
 
-#: src/utilops.c:1124
+#: src/utilops.c:1183
 msgid "Unable to remove old file from trash folder"
 msgstr "Kan inte ta bort en gammal fil från papperskorgsmappen"
 
-#: src/utilops.c:1180 src/utilops.c:2318
+#: src/utilops.c:1239 src/utilops.c:2385
 msgid "Could not create folder"
 msgstr "Kunde inte skapa mapp"
 
-#: src/utilops.c:1202
+#: src/utilops.c:1261
 msgid "Permission denied"
 msgstr "Åtkomst nekas"
 
-#: src/utilops.c:1212
+#: src/utilops.c:1271
 #, c-format
 msgid ""
 "Unable to access or create the trash folder.\n"
@@ -2766,16 +2771,16 @@ msgstr ""
 "Kan inte komma åt eller skapa papperskorgsmappen:\n"
 "\"%s\""
 
-#: src/utilops.c:1216
+#: src/utilops.c:1275
 msgid "Turn off safe delete"
 msgstr "Stäng av säker borttagning"
 
-#: src/utilops.c:1234
+#: src/utilops.c:1293
 #, c-format
 msgid "Safe delete: %s"
 msgstr "Säker borttagning: %s"
 
-#: src/utilops.c:1276
+#: src/utilops.c:1335
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2786,37 +2791,37 @@ msgstr ""
 " %s\n"
 " Fortsätta ta bort flera filer?"
 
-#: src/utilops.c:1347
+#: src/utilops.c:1406
 #, c-format
 msgid "File %d of %d"
 msgstr "Fil %d av %d"
 
-#: src/utilops.c:1416
+#: src/utilops.c:1475
 msgid "Delete files - GQview"
 msgstr "Ta bort filer - GQview"
 
-#: src/utilops.c:1420
+#: src/utilops.c:1479
 msgid "Delete multiple files"
 msgstr "Ta bort flera filer"
 
-#: src/utilops.c:1438
+#: src/utilops.c:1497
 #, c-format
 msgid "Review %d files"
 msgstr "Granska %d filer"
 
-#: src/utilops.c:1494
+#: src/utilops.c:1553
 msgid "Delete file - GQview"
 msgstr "Ta bort fil - GQview"
 
-#: src/utilops.c:1498
+#: src/utilops.c:1557
 msgid "Delete file?"
 msgstr "Ta bort fil?"
 
-#: src/utilops.c:1646 src/utilops.c:2193
+#: src/utilops.c:1705 src/utilops.c:2257
 msgid "Replace existing file by renaming new file."
 msgstr "Ersätt befintlig fil genom att byta namn på ny fil."
 
-#: src/utilops.c:1661
+#: src/utilops.c:1720
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -2829,12 +2834,12 @@ msgstr ""
 " till:\n"
 "%s"
 
-#: src/utilops.c:1664 src/utilops.c:2208 src/view_file_list.c:448
-#: src/view_file_list.c:454 src/view_file_list.c:460
+#: src/utilops.c:1723 src/utilops.c:2272 src/view_file_list.c:449
+#: src/view_file_list.c:455 src/view_file_list.c:461
 msgid "Error renaming file"
 msgstr "Fel vid namnbyte av fil"
 
-#: src/utilops.c:1747
+#: src/utilops.c:1806
 msgid ""
 "Can not auto rename with the selected\n"
 "number set, one or more files exist that\n"
@@ -2844,7 +2849,7 @@ msgstr ""
 "nummermängden, en eller fler filer finns redan\n"
 "vars namn finns i den resulterande namnlistan.\n"
 
-#: src/utilops.c:1809
+#: src/utilops.c:1868
 #, c-format
 msgid ""
 "Failed to rename\n"
@@ -2855,43 +2860,43 @@ msgstr ""
 "%s\n"
 "Numret var %d."
 
-#: src/utilops.c:2031 src/utilops.c:2249
+#: src/utilops.c:2092 src/utilops.c:2314
 msgid "Rename - GQview"
 msgstr "Byt namn - GQview"
 
-#: src/utilops.c:2034
+#: src/utilops.c:2095
 msgid "Rename multiple files"
 msgstr "Byt namn på flera filer"
 
-#: src/utilops.c:2066
+#: src/utilops.c:2127
 msgid "Original Name"
 msgstr "Ursprungligt namn"
 
-#: src/utilops.c:2110 src/utilops.c:2262
+#: src/utilops.c:2171 src/utilops.c:2327
 msgid "Original name:"
 msgstr "Ursprungligt namn:"
 
-#: src/utilops.c:2113 src/utilops.c:2265
+#: src/utilops.c:2174 src/utilops.c:2330
 msgid "New name:"
 msgstr "Nytt namn:"
 
-#: src/utilops.c:2128
+#: src/utilops.c:2192
 msgid "Begin text"
 msgstr "Starttext"
 
-#: src/utilops.c:2136
+#: src/utilops.c:2200
 msgid "Start #"
 msgstr "Startnr."
 
-#: src/utilops.c:2142
+#: src/utilops.c:2206
 msgid "End text"
 msgstr "Sluttext"
 
-#: src/utilops.c:2150
+#: src/utilops.c:2214
 msgid "Padding:"
 msgstr "Utfyllnad:"
 
-#: src/utilops.c:2207 src/view_file_list.c:459
+#: src/utilops.c:2271 src/view_file_list.c:460
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -2904,11 +2909,11 @@ msgstr ""
 "till:\n"
 "%s"
 
-#: src/utilops.c:2252
+#: src/utilops.c:2317
 msgid "Rename file"
 msgstr "Byt namn på filen"
 
-#: src/utilops.c:2311
+#: src/utilops.c:2378 src/utilops.c:2468
 #, c-format
 msgid ""
 "The folder:\n"
@@ -2919,11 +2924,11 @@ msgstr ""
 "%s\n"
 "finns redan."
 
-#: src/utilops.c:2312
+#: src/utilops.c:2379 src/utilops.c:2469
 msgid "Folder exists"
 msgstr "Mappen finns"
 
-#: src/utilops.c:2317
+#: src/utilops.c:2384 src/utilops.c:2477
 #, c-format
 msgid ""
 "The path:\n"
@@ -2934,11 +2939,11 @@ msgstr ""
 "%s\n"
 "finns redan som fil."
 
-#: src/utilops.c:2369
+#: src/utilops.c:2436
 msgid "New folder - GQview"
 msgstr "Ny mapp - GQview"
 
-#: src/utilops.c:2372
+#: src/utilops.c:2439
 #, c-format
 msgid ""
 "Create folder in:\n"
@@ -2949,56 +2954,61 @@ msgstr ""
 "%s\n"
 "med namnet:"
 
-#: src/view_dir_list.c:329 src/view_dir_tree.c:425
+#: src/utilops.c:2478 src/utilops.c:2487
+#, fuzzy
+msgid "Rename failed"
+msgstr "Byt namn på filen"
+
+#: src/view_dir_list.c:321 src/view_dir_tree.c:417
 msgid "new_folder"
 msgstr "ny_mapp"
 
-#: src/view_dir_list.c:387 src/view_dir_tree.c:482
+#: src/view_dir_list.c:379 src/view_dir_tree.c:474
 msgid "_Up to parent"
 msgstr "_Upp en nivå"
 
-#: src/view_dir_list.c:392 src/view_dir_tree.c:487
+#: src/view_dir_list.c:384 src/view_dir_tree.c:479
 msgid "_Slideshow"
 msgstr "_Bildspel"
 
-#: src/view_dir_list.c:394 src/view_dir_tree.c:489
+#: src/view_dir_list.c:386 src/view_dir_tree.c:481
 msgid "Slideshow recursive"
 msgstr "Rekursivt bildspel"
 
-#: src/view_dir_list.c:398 src/view_dir_tree.c:493
+#: src/view_dir_list.c:390 src/view_dir_tree.c:485
 msgid "Find _duplicates..."
 msgstr "Hitta _dubletter..."
 
-#: src/view_dir_list.c:400 src/view_dir_tree.c:495
+#: src/view_dir_list.c:392 src/view_dir_tree.c:487
 msgid "Find duplicates recursive..."
 msgstr "Rekursiv sökning efter dubletter..."
 
-#: src/view_dir_list.c:407 src/view_dir_tree.c:502
+#: src/view_dir_list.c:399 src/view_dir_tree.c:494
 msgid "_New folder..."
 msgstr "Ny _mapp..."
 
-#: src/view_dir_list.c:419 src/view_dir_tree.c:509
+#: src/view_dir_list.c:411 src/view_dir_tree.c:501
 msgid "View as _tree"
 msgstr "Visa som t_räd"
 
-#: src/view_dir_list.c:421 src/view_dir_tree.c:511 src/view_file_icon.c:311
-#: src/view_file_list.c:423
+#: src/view_dir_list.c:413 src/view_dir_tree.c:503 src/view_file_icon.c:311
+#: src/view_file_list.c:424
 msgid "Re_fresh"
 msgstr "Upp_datera"
 
-#: src/view_file_icon.c:304 src/view_file_list.c:416
+#: src/view_file_icon.c:304 src/view_file_list.c:417
 msgid "_Sort"
 msgstr "_Sortera"
 
-#: src/view_file_icon.c:307 src/view_file_list.c:419
+#: src/view_file_icon.c:307 src/view_file_list.c:420
 msgid "View as _icons"
 msgstr "Visa som _ikoner"
 
-#: src/view_file_list.c:421
+#: src/view_file_list.c:422
 msgid "Show _thumbnails"
 msgstr "Visa _miniatyrbilder"
 
-#: src/view_file_list.c:447
+#: src/view_file_list.c:448
 #, c-format
 msgid ""
 "Invalid file name:\n"
@@ -3268,9 +3278,6 @@ msgstr ""
 
 #~ msgid "Add"
 #~ msgstr "Lägg till"
-
-#~ msgid "Command Line"
-#~ msgstr "Kommandorad"
 
 #~ msgid "Help"
 #~ msgstr "Hjälp"

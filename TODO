@@ -4,10 +4,12 @@ TODO key: d = done, w = work in progress, ? = possibly fixed
 Major (release blockers):
 ----------------------------------------------
 
- must Fix for 2.0.0:
+ must Fix for 2.0.2:
  -------------------
 
-d> update translations: bg(x) es(x) it(x) ja(x) nl(x) pl(x) ru(x)
+ > 
+
+d> update translations: ca(x) de(x) fi(x) ko(x) pl(x) pt_BR(x) sk(x) zh_TW(x)
 
  -------------
 

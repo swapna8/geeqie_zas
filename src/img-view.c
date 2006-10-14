@@ -527,7 +527,11 @@ static gint view_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpoi
 			}
 		if (n != -1)
 			{
-			view_fullscreen_toggle(vw, TRUE);
+			if (!editor_window_flag_set(n))
+				{
+				view_fullscreen_toggle(vw, TRUE);
+				}
+			imd = view_window_active_image(vw);
 			start_editor_from_file(n, image_get_path(imd));
 			}
 		}
@@ -1024,14 +1028,20 @@ static void view_new_window_cb(GtkWidget *widget, gpointer data)
 static void view_edit_cb(GtkWidget *widget, gpointer data)
 {
 	ViewWindow *vw;
+	ImageWindow *imd;
 	gint n;
 
 	vw = submenu_item_get_data(widget);
 	n = GPOINTER_TO_INT(data);
 	if (!vw) return;
 
-	view_fullscreen_toggle(vw, TRUE);
-	start_editor_from_file(n, image_get_path(vw->imd));
+	if (!editor_window_flag_set(n))
+		{
+		view_fullscreen_toggle(vw, TRUE);
+		}
+
+	imd = view_window_active_image(vw);
+	start_editor_from_file(n, image_get_path(imd));
 }
 
 static void view_alter_cb(GtkWidget *widget, gpointer data)
@@ -1383,7 +1393,7 @@ static void view_window_get_dnd_data(GtkWidget *widget, GdkDragContext *context,
 			{
 			GList *work;
 
-			list = uri_list_from_text(selection_data->data, TRUE);
+			list = uri_list_from_text((gchar *)selection_data->data, TRUE);
 
 			work = list;
 			while (work)
@@ -1472,7 +1482,7 @@ static void view_window_set_dnd_data(GtkWidget *widget, GdkDragContext *context,
 		if (text)
 			{
 			gtk_selection_data_set (selection_data, selection_data->target,
-						8, text, len);
+						8, (guchar *)text, len);
 			g_free(text);
 			}
 		}

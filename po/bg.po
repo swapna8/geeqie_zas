@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gqview 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-26 14:33-0500\n"
+"POT-Creation-Date: 2006-10-14 05:14-0400\n"
 "PO-Revision-Date: 2005-02-26 16:13+0200\n"
 "Last-Translator: Владимир Петров <vladux@users.sourceforge.net>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -95,7 +95,7 @@ msgid "Tag"
 msgstr "Етикет"
 
 #: src/bar_exif.c:424 src/dupe.c:2589 src/dupe.c:3116 src/print.c:3190
-#: src/search.c:2753 src/view_file_list.c:1555
+#: src/search.c:2753 src/view_file_list.c:1556
 msgid "Name"
 msgstr "Име"
 
@@ -175,7 +175,7 @@ msgstr "Име:"
 msgid "Sort Manager"
 msgstr "Манипулатор за подреждане"
 
-#: src/bar_sort.c:578 src/ui_pathsel.c:1095
+#: src/bar_sort.c:578 src/ui_pathsel.c:1094
 msgid "Folders"
 msgstr "Папки"
 
@@ -207,77 +207,77 @@ msgstr "Добавяне на избрани"
 msgid "Undo last image"
 msgstr "Отмяна за последното изображение"
 
-#: src/cache_maint.c:127 src/cache_maint.c:681 src/cache_maint.c:894
+#: src/cache_maint.c:126 src/cache_maint.c:680 src/cache_maint.c:893
 #: src/editors.c:410
 msgid "done"
 msgstr "извършено"
 
-#: src/cache_maint.c:304
+#: src/cache_maint.c:303
 msgid "Removing old metadata..."
 msgstr "Премахване на стари мета-данни..."
 
-#: src/cache_maint.c:308
+#: src/cache_maint.c:307
 msgid "Clearing cached thumbnails..."
 msgstr "Премахване на кеширани смалени изображения..."
 
-#: src/cache_maint.c:312 src/cache_maint.c:1048
+#: src/cache_maint.c:311 src/cache_maint.c:1047
 msgid "Removing old thumbnails..."
 msgstr "Премахване на стари смалени изображения..."
 
-#: src/cache_maint.c:315 src/cache_maint.c:1051
+#: src/cache_maint.c:314 src/cache_maint.c:1050
 msgid "Maintenance"
 msgstr "Поддръжка"
 
-#: src/cache_maint.c:792 src/utilops.c:904
+#: src/cache_maint.c:791 src/utilops.c:945
 msgid "Invalid folder"
 msgstr "Невалидна папка"
 
-#: src/cache_maint.c:793
+#: src/cache_maint.c:792
 msgid "The specified folder can not be found."
 msgstr "Указаната папка не може да бъде открита."
 
-#: src/cache_maint.c:821 src/cache_maint.c:835 src/cache_maint.c:1216
+#: src/cache_maint.c:820 src/cache_maint.c:834 src/cache_maint.c:1215
 msgid "Create thumbnails"
 msgstr "Създаване на смалени изображения"
 
-#: src/cache_maint.c:829 src/cache_maint.c:1058
+#: src/cache_maint.c:828 src/cache_maint.c:1057
 msgid "S_tart"
 msgstr "_Стартиране"
 
-#: src/cache_maint.c:842 src/preferences.c:1165
+#: src/cache_maint.c:841 src/preferences.c:1165
 msgid "Folder:"
 msgstr "Папка:"
 
-#: src/cache_maint.c:845
+#: src/cache_maint.c:844
 msgid "Select folder"
 msgstr "Избор на папка"
 
-#: src/cache_maint.c:849
+#: src/cache_maint.c:848
 msgid "Include subfolders"
 msgstr "Включване на под-папки"
 
-#: src/cache_maint.c:850
+#: src/cache_maint.c:849
 msgid "Store thumbnails local to source images"
 msgstr "Запазване на смалени изображения при оригиналните изображения"
 
-#: src/cache_maint.c:859 src/cache_maint.c:1067
+#: src/cache_maint.c:858 src/cache_maint.c:1066
 msgid "click start to begin"
 msgstr "щракни \"Стартиране\" за започване"
 
-#: src/cache_maint.c:997 src/editors.c:549
+#: src/cache_maint.c:996 src/editors.c:558
 msgid "running..."
 msgstr "действа..."
 
-#: src/cache_maint.c:1043
+#: src/cache_maint.c:1042
 msgid "Clearing thumbnails..."
 msgstr "Изчистване на смалени изображения..."
 
-#: src/cache_maint.c:1109 src/cache_maint.c:1112 src/cache_maint.c:1191
-#: src/cache_maint.c:1211
+#: src/cache_maint.c:1108 src/cache_maint.c:1111 src/cache_maint.c:1190
+#: src/cache_maint.c:1210
 msgid "Clear cache"
 msgstr "Изчистване на кеш"
 
-#: src/cache_maint.c:1113
+#: src/cache_maint.c:1112
 msgid ""
 "This will remove all thumbnails that have\n"
 "been saved to disk, continue?"
@@ -285,59 +285,60 @@ msgstr ""
 "Това ще премахне всички смалени изображения които\n"
 "са събрани на диска, продължаване?"
 
-#: src/cache_maint.c:1163
+#: src/cache_maint.c:1162
 msgid "Cache Maintenance - GQview"
 msgstr "Поддръжка на кеш - GQview"
 
-#: src/cache_maint.c:1173
+#: src/cache_maint.c:1172
 msgid "Cache and Data Maintenance"
 msgstr "Поддръжка на кеш и данни"
 
-#: src/cache_maint.c:1177
+#: src/cache_maint.c:1176
 msgid "GQview thumbnail cache"
 msgstr "Кеш със смалени изображения на GQview"
 
-#: src/cache_maint.c:1179 src/cache_maint.c:1199 src/cache_maint.c:1227
-#: src/preferences.c:1142 src/utilops.c:1505
+#: src/cache_maint.c:1178 src/cache_maint.c:1198 src/cache_maint.c:1226
+#: src/preferences.c:1142 src/utilops.c:1564
 msgid "Location:"
 msgstr "Местоположение:"
 
-#: src/cache_maint.c:1186 src/cache_maint.c:1206 src/cache_maint.c:1234
+#: src/cache_maint.c:1185 src/cache_maint.c:1205 src/cache_maint.c:1233
 msgid "Clean up"
 msgstr "Изчистване"
 
-#: src/cache_maint.c:1189 src/cache_maint.c:1209
+#: src/cache_maint.c:1188 src/cache_maint.c:1208
 msgid "Remove orphaned or outdated thumbnails."
 msgstr ""
 "Премахване на остарели или такива без налични\n"
 "оригинали смалени изображения."
 
-#: src/cache_maint.c:1194 src/cache_maint.c:1214
+#: src/cache_maint.c:1193 src/cache_maint.c:1213
 msgid "Delete all cached thumbnails."
 msgstr "Изтриване на всички кеширани смалени изображения."
 
-#: src/cache_maint.c:1197
+#: src/cache_maint.c:1196
 msgid "Shared thumbnail cache"
 msgstr "Споделен кеш със смалени изображения"
 
-#: src/cache_maint.c:1220
+#: src/cache_maint.c:1219
 msgid "Render"
 msgstr "Рендване"
 
-#: src/cache_maint.c:1223
+#: src/cache_maint.c:1222
 msgid "Render thumbnails for a specific folder."
 msgstr "Рендване на смалени изображения за определена папка."
 
-#: src/cache_maint.c:1225
+#: src/cache_maint.c:1224
 msgid "Metadata"
 msgstr "Мета-данни"
 
-#: src/cache_maint.c:1237
+#: src/cache_maint.c:1236
 msgid "Remove orphaned keywords and comments."
 msgstr "Премахване на ключови думи и коментари, които не дават резултат."
 
 #: src/collect.c:349 src/image.c:1160 src/image-overlay.c:74
 #: src/image-overlay.c:115
+#, c-format
 msgid "Untitled"
 msgstr "Без заглавие"
 
@@ -390,8 +391,8 @@ msgstr "Презаписване на файл"
 msgid "Overwrite existing file?"
 msgstr "Презаписване на съществуващ файл?"
 
-#: src/collect-dlg.c:75 src/utilops.c:479 src/utilops.c:792 src/utilops.c:1649
-#: src/utilops.c:2196
+#: src/collect-dlg.c:75 src/utilops.c:507 src/utilops.c:828 src/utilops.c:1708
+#: src/utilops.c:2260
 msgid "_Overwrite"
 msgstr "_Презаписване"
 
@@ -439,7 +440,7 @@ msgstr "%d изображения"
 
 #: src/collect-table.c:186 src/dupe.c:1296 src/search.c:303
 #: src/view_file_icon.c:1772 src/view_file_icon.c:1887
-#: src/view_file_list.c:816 src/view_file_list.c:921
+#: src/view_file_list.c:817 src/view_file_list.c:922
 msgid "Loading thumbs..."
 msgstr "Зареждане на смалени..."
 
@@ -448,9 +449,9 @@ msgstr "Зареждане на смалени..."
 msgid "_View"
 msgstr "Пре_глед"
 
-#: src/collect-table.c:775 src/dupe.c:2189 src/dupe.c:2499 src/img-view.c:1187
-#: src/layout_image.c:722 src/search.c:971 src/view_file_icon.c:283
-#: src/view_file_list.c:395
+#: src/collect-table.c:775 src/dupe.c:2189 src/dupe.c:2499 src/img-view.c:1197
+#: src/layout_image.c:727 src/search.c:971 src/view_file_icon.c:283
+#: src/view_file_list.c:396
 msgid "View in _new window"
 msgstr "Преглед в _нов прозорец"
 
@@ -474,34 +475,34 @@ msgstr "Маркиране на всички"
 msgid "Select none"
 msgstr "Размаркиране на всички"
 
-#: src/collect-table.c:796 src/dupe.c:2203 src/img-view.c:1185
-#: src/layout_image.c:719 src/layout_util.c:784 src/search.c:981
-#: src/view_file_icon.c:280 src/view_file_list.c:393
+#: src/collect-table.c:796 src/dupe.c:2203 src/img-view.c:1195
+#: src/layout_image.c:724 src/layout_util.c:784 src/search.c:981
+#: src/view_file_icon.c:280 src/view_file_list.c:394
 msgid "_Properties"
 msgstr "_Свойства"
 
-#: src/collect-table.c:799 src/dupe.c:2210 src/img-view.c:1190
-#: src/layout_image.c:727 src/layout_util.c:762 src/search.c:988
-#: src/view_file_icon.c:287 src/view_file_list.c:399
+#: src/collect-table.c:799 src/dupe.c:2210 src/img-view.c:1200
+#: src/layout_image.c:732 src/layout_util.c:762 src/search.c:988
+#: src/view_file_icon.c:287 src/view_file_list.c:400
 msgid "_Copy..."
 msgstr "_Копиране..."
 
-#: src/collect-table.c:801 src/dupe.c:2212 src/img-view.c:1191
-#: src/layout_image.c:729 src/layout_util.c:763 src/search.c:990
-#: src/view_file_icon.c:289 src/view_file_list.c:401
+#: src/collect-table.c:801 src/dupe.c:2212 src/img-view.c:1201
+#: src/layout_image.c:734 src/layout_util.c:763 src/search.c:990
+#: src/view_file_icon.c:289 src/view_file_list.c:402
 msgid "_Move..."
 msgstr "Пре_местване..."
 
-#: src/collect-table.c:803 src/dupe.c:2214 src/img-view.c:1192
-#: src/layout_image.c:731 src/layout_util.c:764 src/search.c:992
-#: src/view_dir_list.c:415 src/view_dir_tree.c:505 src/view_file_icon.c:291
-#: src/view_file_list.c:403
+#: src/collect-table.c:803 src/dupe.c:2214 src/img-view.c:1202
+#: src/layout_image.c:736 src/layout_util.c:764 src/search.c:992
+#: src/view_dir_list.c:407 src/view_dir_tree.c:497 src/view_file_icon.c:291
+#: src/view_file_list.c:404
 msgid "_Rename..."
 msgstr "П_реименуване..."
 
-#: src/collect-table.c:805 src/dupe.c:2216 src/img-view.c:1193
-#: src/layout_image.c:733 src/layout_util.c:765 src/search.c:994
-#: src/view_file_icon.c:293 src/view_file_list.c:405
+#: src/collect-table.c:805 src/dupe.c:2216 src/img-view.c:1203
+#: src/layout_image.c:738 src/layout_util.c:765 src/search.c:994
+#: src/view_file_icon.c:293 src/view_file_list.c:406
 msgid "_Delete..."
 msgstr "Изтриван_е..."
 
@@ -525,24 +526,24 @@ msgstr "Откриване на _дубликати..."
 msgid "Print..."
 msgstr "Печат..."
 
-#: src/collect-table.c:1978 src/dupe.c:3304 src/img-view.c:1347
+#: src/collect-table.c:1978 src/dupe.c:3304 src/img-view.c:1357
 msgid "Dropped list includes folders."
 msgstr "Пуснатият списък съдържа папки."
 
-#: src/collect-table.c:1980 src/dupe.c:3306 src/img-view.c:1349
+#: src/collect-table.c:1980 src/dupe.c:3306 src/img-view.c:1359
 msgid "_Add contents"
 msgstr "_Добавяне на съдържанията им"
 
-#: src/collect-table.c:1982 src/dupe.c:3307 src/img-view.c:1350
+#: src/collect-table.c:1982 src/dupe.c:3307 src/img-view.c:1360
 msgid "Add contents _recursive"
 msgstr "_Рекурсивно добавяне на съдържанията им"
 
-#: src/collect-table.c:1984 src/dupe.c:3308 src/img-view.c:1351
+#: src/collect-table.c:1984 src/dupe.c:3308 src/img-view.c:1361
 msgid "_Skip folders"
 msgstr "_Пропускане на папки"
 
-#: src/collect-table.c:1987 src/dupe.c:3310 src/img-view.c:1353
-#: src/view_dir_list.c:222 src/view_dir_tree.c:314
+#: src/collect-table.c:1987 src/dupe.c:3310 src/img-view.c:1363
+#: src/view_dir_list.c:214 src/view_dir_tree.c:306
 msgid "Cancel"
 msgstr "Отказ"
 
@@ -610,12 +611,12 @@ msgid "%d files (set 2)"
 msgstr "%d файла (набор 2)"
 
 #: src/dupe.c:2590 src/dupe.c:3117 src/preferences.c:947 src/print.c:3194
-#: src/search.c:2754 src/view_file_list.c:1556
+#: src/search.c:2754 src/view_file_list.c:1557
 msgid "Size"
 msgstr "Големина"
 
 #: src/dupe.c:2591 src/dupe.c:3118 src/exif.c:297 src/exif.c:419
-#: src/print.c:3192 src/search.c:2755 src/view_file_list.c:1557
+#: src/print.c:3192 src/search.c:2755 src/view_file_list.c:1558
 msgid "Date"
 msgstr "Дата"
 
@@ -627,7 +628,7 @@ msgstr "Размери"
 msgid "Checksum"
 msgstr "Контролна сума"
 
-#: src/dupe.c:2594 src/dupe.c:3120 src/search.c:2757 src/ui_pathsel.c:1107
+#: src/dupe.c:2594 src/dupe.c:3120 src/search.c:2757 src/ui_pathsel.c:1106
 msgid "Path"
 msgstr "Път"
 
@@ -713,8 +714,8 @@ msgstr ""
 msgid "stopped by user"
 msgstr "спряно от потребител"
 
-#: src/exif.c:112 src/exif.c:125 src/exif.c:139 src/exif.c:164 src/exif.c:606
-#: src/exif.c:1452 src/exif.c:1455 src/exif.c:1520
+#: src/exif.c:112 src/exif.c:125 src/exif.c:139 src/exif.c:164 src/exif.c:610
+#: src/exif.c:1460 src/exif.c:1463 src/exif.c:1528
 msgid "unknown"
 msgstr "непознато"
 
@@ -838,12 +839,12 @@ msgstr "волфрам (нажежаема жичка)"
 msgid "flash"
 msgstr "светкавица"
 
-#: src/exif.c:189 src/exif.c:1475 src/info.c:226
+#: src/exif.c:189 src/exif.c:1483 src/info.c:226
 msgid "no"
 msgstr "не"
 
 #. flash fired (bit 0)
-#: src/exif.c:190 src/exif.c:1475 src/info.c:226
+#: src/exif.c:190 src/exif.c:1483 src/info.c:226
 msgid "yes"
 msgstr "да"
 
@@ -932,41 +933,41 @@ msgstr "Камера"
 msgid "Resolution"
 msgstr "Разделителна способност"
 
-#: src/exif.c:1451
+#: src/exif.c:1459
 msgid "infinity"
 msgstr "∞"
 
-#: src/exif.c:1479
+#: src/exif.c:1487
 msgid "mode:"
 msgstr "метод:"
 
-#: src/exif.c:1483 src/utilops.c:1234
+#: src/exif.c:1491 src/utilops.c:1293
 msgid "on"
 msgstr "включено"
 
-#: src/exif.c:1486 src/utilops.c:1234
+#: src/exif.c:1494 src/utilops.c:1293
 msgid "off"
 msgstr "изключено"
 
-#: src/exif.c:1489
+#: src/exif.c:1497
 msgid "auto"
 msgstr "автоматично"
 
-#: src/exif.c:1495
+#: src/exif.c:1503
 msgid "not detected by strobe"
 msgstr "не е доловено чрез стробиране"
 
-#: src/exif.c:1496
+#: src/exif.c:1504
 msgid "detected by strobe"
 msgstr "доловено е чрез стробиране"
 
 #. we ignore flash function (bit 5)
 #. red-eye (bit 6)
-#: src/exif.c:1501
+#: src/exif.c:1509
 msgid "red-eye reduction"
 msgstr "намаляване на \"червени очи\""
 
-#: src/exif.c:1520
+#: src/exif.c:1528
 msgid "dot"
 msgstr "точки"
 
@@ -1022,52 +1023,52 @@ msgstr "Активен екран"
 msgid "Active monitor"
 msgstr "Активен монитор"
 
-#: src/img-view.c:1173 src/layout_image.c:706 src/layout_util.c:791
+#: src/img-view.c:1183 src/layout_image.c:711 src/layout_util.c:791
 msgid "Zoom _in"
 msgstr "_Увеличаване на мащаба"
 
-#: src/img-view.c:1174 src/layout_image.c:707 src/layout_util.c:792
+#: src/img-view.c:1184 src/layout_image.c:712 src/layout_util.c:792
 msgid "Zoom _out"
 msgstr "_Намаляване на мащаба"
 
-#: src/img-view.c:1175 src/layout_image.c:708 src/layout_util.c:793
+#: src/img-view.c:1185 src/layout_image.c:713 src/layout_util.c:793
 msgid "Zoom _1:1"
 msgstr "Мащаб _1:1"
 
-#: src/img-view.c:1176 src/layout_image.c:709
+#: src/img-view.c:1186 src/layout_image.c:714
 msgid "Fit image to _window"
 msgstr "Вместване на изображението в прозоре_ца"
 
-#: src/img-view.c:1181 src/layout_image.c:715 src/layout_util.c:789
+#: src/img-view.c:1191 src/layout_image.c:720 src/layout_util.c:789
 msgid "Set as _wallpaper"
 msgstr "Поставяне _като тапет"
 
-#: src/img-view.c:1199 src/layout_image.c:740
+#: src/img-view.c:1209 src/layout_image.c:745
 msgid "_Stop slideshow"
 msgstr "_Спиране на прожекция"
 
-#: src/img-view.c:1202 src/layout_image.c:743
+#: src/img-view.c:1212 src/layout_image.c:748
 msgid "Continue slides_how"
 msgstr "Продължаване на про_жекция"
 
-#: src/img-view.c:1207 src/img-view.c:1215 src/layout_image.c:748
-#: src/layout_image.c:755
+#: src/img-view.c:1217 src/img-view.c:1225 src/layout_image.c:753
+#: src/layout_image.c:760
 msgid "Pause slides_how"
 msgstr "_Пауза на прожекция"
 
-#: src/img-view.c:1213 src/layout_image.c:754
+#: src/img-view.c:1223 src/layout_image.c:759
 msgid "_Start slideshow"
 msgstr "Започване на про_жекция"
 
-#: src/img-view.c:1221 src/layout_image.c:765
+#: src/img-view.c:1231 src/layout_image.c:770
 msgid "Exit _full screen"
 msgstr "Излизане от _цял екран"
 
-#: src/img-view.c:1225 src/layout_image.c:761
+#: src/img-view.c:1235 src/layout_image.c:766
 msgid "_Full screen"
 msgstr "_Цял екран"
 
-#: src/img-view.c:1229 src/layout_util.c:766
+#: src/img-view.c:1239 src/layout_util.c:766
 msgid "C_lose window"
 msgstr "_Затваряне на прозореца"
 
@@ -1116,7 +1117,7 @@ msgstr "Изображение %d от %d"
 msgid "Image properties - GQview"
 msgstr "Свойства на изображението - GQview"
 
-#: src/layout.c:271 src/view_file_icon.c:301 src/view_file_list.c:413
+#: src/layout.c:271 src/view_file_icon.c:301 src/view_file_list.c:414
 msgid "Ascending"
 msgstr "Възходящо"
 
@@ -1166,7 +1167,7 @@ msgstr "Инструменти на GQview"
 msgid "Tools"
 msgstr "Инструменти"
 
-#: src/layout_config.c:57 src/ui_pathsel.c:1175
+#: src/layout_config.c:57 src/ui_pathsel.c:1174
 msgid "Files"
 msgstr "Файлове"
 
@@ -1178,7 +1179,7 @@ msgstr "Изображение"
 msgid "(drag to change order)"
 msgstr "(пренареждането се извършва чрез влачене)"
 
-#: src/layout_image.c:770
+#: src/layout_image.c:775
 msgid "Hide file _list"
 msgstr "Скриване на _файловия списък"
 
@@ -1557,7 +1558,7 @@ msgstr "Създаване на директория на GQview:%s\n"
 msgid "Could not create dir:%s\n"
 msgstr "Не можа да бъде създадена директория:%s\n"
 
-#: src/main.c:1061 src/ui_bookmark.c:858 src/ui_pathsel.c:1043
+#: src/main.c:1061 src/ui_bookmark.c:858 src/ui_pathsel.c:1042
 msgid "Home"
 msgstr "Домашна"
 
@@ -1860,6 +1861,11 @@ msgstr "номер"
 msgid "Menu name"
 msgstr "Име на меню"
 
+#: src/preferences.c:1078
+#, fuzzy
+msgid "Command Line"
+msgstr "Команден ред"
+
 #: src/preferences.c:1125
 msgid "Advanced"
 msgstr "Допълнителни"
@@ -2122,7 +2128,7 @@ msgstr "Таблоид"
 msgid "page %d of %d"
 msgstr "страница %d от %d"
 
-#: src/print.c:736 src/utilops.c:2067
+#: src/print.c:736 src/utilops.c:2128
 msgid "Preview"
 msgstr "Преглед"
 
@@ -2135,8 +2141,8 @@ msgstr ""
 "Не може да се отвори програмен канал за запис.\n"
 "\"%s\""
 
-#: src/print.c:1059 src/print.c:1488 src/ui_pathsel.c:424
-#: src/view_file_list.c:453
+#: src/print.c:1059 src/print.c:1488 src/ui_pathsel.c:423
+#: src/view_file_list.c:454
 #, c-format
 msgid "A file with name %s already exists."
 msgstr "Вече съществува файл с име %s."
@@ -2465,12 +2471,12 @@ msgstr ""
 "Невъзможно е да се зареди:\n"
 "%s"
 
-#: src/ui_pathsel.c:430 src/view_dir_list.c:97 src/view_dir_tree.c:204
+#: src/ui_pathsel.c:429 src/utilops.c:2486
 #, c-format
 msgid "Failed to rename %s to %s."
 msgstr "Неуспешно преименуване на %s в %s."
 
-#: src/ui_pathsel.c:486 src/utilops.c:1288 src/utilops.c:1461
+#: src/ui_pathsel.c:485 src/utilops.c:1347 src/utilops.c:1520
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2479,15 +2485,15 @@ msgstr ""
 "Невъзможно е да бъде изтрит файлът:\n"
 "%s"
 
-#: src/ui_pathsel.c:487 src/utilops.c:1462
+#: src/ui_pathsel.c:486 src/utilops.c:1521
 msgid "File deletion failed"
 msgstr "Неуспешно изтриване на файл"
 
-#: src/ui_pathsel.c:529 src/ui_pathsel.c:537
+#: src/ui_pathsel.c:528 src/ui_pathsel.c:536
 msgid "Delete file"
 msgstr "Изтриване на файл"
 
-#: src/ui_pathsel.c:535
+#: src/ui_pathsel.c:534
 #, c-format
 msgid ""
 "About to delete the file:\n"
@@ -2496,25 +2502,25 @@ msgstr ""
 "Относно изтриването на файла:\n"
 " %s"
 
-#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2035
-#: src/utilops.c:2255
+#: src/ui_pathsel.c:625 src/ui_pathsel.c:633 src/utilops.c:2096
+#: src/utilops.c:2320
 msgid "_Rename"
 msgstr "П_реименуване"
 
-#: src/ui_pathsel.c:628 src/ui_pathsel.c:638
+#: src/ui_pathsel.c:627 src/ui_pathsel.c:637
 msgid "Add _Bookmark"
 msgstr "Добавяне на _отметка"
 
-#: src/ui_pathsel.c:636
+#: src/ui_pathsel.c:635
 msgid "_Delete"
 msgstr "_Изтриване"
 
-#: src/ui_pathsel.c:740 src/ui_pathsel.c:1045
+#: src/ui_pathsel.c:739 src/ui_pathsel.c:1044
 msgid "New folder"
 msgstr "Нова папка"
 
-#: src/ui_pathsel.c:750 src/utilops.c:2325 src/view_dir_list.c:338
-#: src/view_dir_tree.c:434
+#: src/ui_pathsel.c:749 src/utilops.c:2392 src/view_dir_list.c:330
+#: src/view_dir_tree.c:426
 #, c-format
 msgid ""
 "Unable to create folder:\n"
@@ -2523,77 +2529,77 @@ msgstr ""
 "Невъзможно е да бъде създадена папката:\n"
 "%s"
 
-#: src/ui_pathsel.c:751 src/utilops.c:2326 src/view_dir_list.c:339
-#: src/view_dir_tree.c:435
+#: src/ui_pathsel.c:750 src/utilops.c:2393 src/view_dir_list.c:331
+#: src/view_dir_tree.c:427
 msgid "Error creating folder"
 msgstr "Грешка при създаването на папка"
 
-#: src/ui_pathsel.c:972
+#: src/ui_pathsel.c:971
 msgid "All Files"
 msgstr "Всички файлове"
 
-#: src/ui_pathsel.c:1048
+#: src/ui_pathsel.c:1047
 msgid "Show hidden"
 msgstr "Показване на скрити"
 
-#: src/ui_pathsel.c:1132
+#: src/ui_pathsel.c:1131
 msgid "Filter:"
 msgstr "Филтър:"
 
-#: src/ui_tabcomp.c:840
+#: src/ui_tabcomp.c:836
 msgid "Select path"
 msgstr "Избор на път"
 
-#: src/ui_tabcomp.c:856
+#: src/ui_tabcomp.c:852
 msgid "All files"
 msgstr "Всички файлове"
 
-#: src/utilops.c:470 src/utilops.c:783 src/utilops.c:1640 src/utilops.c:2187
+#: src/utilops.c:498 src/utilops.c:819 src/utilops.c:1699 src/utilops.c:2251
 msgid "Overwrite file"
 msgstr "Презаписване на файла"
 
-#: src/utilops.c:475 src/utilops.c:788 src/utilops.c:1645 src/utilops.c:2192
+#: src/utilops.c:503 src/utilops.c:824 src/utilops.c:1704 src/utilops.c:2256
 msgid "Overwrite file?"
 msgstr "Презаписване на файла?"
 
-#: src/utilops.c:476 src/utilops.c:789
+#: src/utilops.c:504 src/utilops.c:825
 msgid "Replace existing file with new file."
 msgstr "Заменяне на съществуващия файл с новия файл."
 
-#: src/utilops.c:480
+#: src/utilops.c:508
 msgid "Overwrite _all"
 msgstr "Презаписване на _всички"
 
-#: src/utilops.c:482
+#: src/utilops.c:510
 msgid "S_kip all"
 msgstr "Пропускане на _всички"
 
-#: src/utilops.c:483
+#: src/utilops.c:511
 msgid "_Skip"
 msgstr "_Пропускане"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 msgid "Existing file"
 msgstr "Съществуващ файл"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 msgid "New file"
 msgstr "Нов файл"
 
-#: src/utilops.c:494 src/utilops.c:802 src/utilops.c:1746 src/utilops.c:1810
-#: src/utilops.c:2101
+#: src/utilops.c:522 src/utilops.c:838 src/utilops.c:1805 src/utilops.c:1869
+#: src/utilops.c:2162
 msgid "Auto rename"
 msgstr "Автоматично преименуване"
 
-#: src/utilops.c:502 src/utilops.c:810
+#: src/utilops.c:530 src/utilops.c:846
 msgid "Rename"
 msgstr "Преименуване"
 
-#: src/utilops.c:543
+#: src/utilops.c:571
 msgid "Source to copy matches destination"
 msgstr "Източникът за копиране съвпада с целта"
 
-#: src/utilops.c:544
+#: src/utilops.c:572
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2604,11 +2610,11 @@ msgstr ""
 "%s\n"
 "върху себе си."
 
-#: src/utilops.c:548
+#: src/utilops.c:576
 msgid "Source to move matches destination"
 msgstr "Източникът за местене съвпада с целта"
 
-#: src/utilops.c:549
+#: src/utilops.c:577
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2619,15 +2625,15 @@ msgstr ""
 "%s\n"
 "върху себе си."
 
-#: src/utilops.c:557 src/utilops.c:644 src/utilops.c:1280
+#: src/utilops.c:585 src/utilops.c:672 src/utilops.c:1339
 msgid "Co_ntinue"
 msgstr "Продъл_жаване"
 
-#: src/utilops.c:630 src/utilops.c:850
+#: src/utilops.c:658 src/utilops.c:886
 msgid "Error copying file"
 msgstr "Грешка при копирането на файл"
 
-#: src/utilops.c:631
+#: src/utilops.c:659
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2642,11 +2648,11 @@ msgstr ""
 "%s\n"
 "по време на копиране на множество файлове."
 
-#: src/utilops.c:635 src/utilops.c:855
+#: src/utilops.c:663 src/utilops.c:891
 msgid "Error moving file"
 msgstr "Грешка при местене на файл"
 
-#: src/utilops.c:636
+#: src/utilops.c:664
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2661,15 +2667,15 @@ msgstr ""
 "%s\n"
 "по време на преместване на множество файлове."
 
-#: src/utilops.c:774
+#: src/utilops.c:810
 msgid "Source matches destination"
 msgstr "Източникът съвпада с целта"
 
-#: src/utilops.c:775
+#: src/utilops.c:811
 msgid "Source and destination are the same, operation cancelled."
 msgstr "Източникът и целта са еднакви, операцията е прекъсната."
 
-#: src/utilops.c:851
+#: src/utilops.c:887
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2682,7 +2688,7 @@ msgstr ""
 "в:\n"
 "%s"
 
-#: src/utilops.c:856
+#: src/utilops.c:892
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2695,11 +2701,11 @@ msgstr ""
 "в:\n"
 "%s"
 
-#: src/utilops.c:899
+#: src/utilops.c:940
 msgid "Invalid destination"
 msgstr "Невалидна цел"
 
-#: src/utilops.c:900
+#: src/utilops.c:941
 msgid ""
 "When operating with multiple files, please select\n"
 "a folder, not a file."
@@ -2707,67 +2713,67 @@ msgstr ""
 "При действие с множество файлове избирайте\n"
 "папка, а не файл."
 
-#: src/utilops.c:905
+#: src/utilops.c:946
 msgid "Please select an existing folder."
 msgstr "Моля изберете съществуваща папка."
 
-#: src/utilops.c:956
+#: src/utilops.c:1015
 msgid "Copy - GQview"
 msgstr "Копиране - GQview"
 
-#: src/utilops.c:957 src/view_dir_list.c:217 src/view_dir_tree.c:309
+#: src/utilops.c:1016 src/view_dir_list.c:209 src/view_dir_tree.c:301
 msgid "_Copy"
 msgstr "_Копиране"
 
-#: src/utilops.c:960
+#: src/utilops.c:1019
 msgid "Copy file"
 msgstr "Копиране на файл"
 
-#: src/utilops.c:964
+#: src/utilops.c:1023
 msgid "Copy multiple files"
 msgstr "Копиране на множество файлове"
 
-#: src/utilops.c:970
+#: src/utilops.c:1029
 msgid "Move - GQview"
 msgstr "Преместване - GQview"
 
-#: src/utilops.c:971 src/view_dir_list.c:219 src/view_dir_tree.c:311
+#: src/utilops.c:1030 src/view_dir_list.c:211 src/view_dir_tree.c:303
 msgid "_Move"
 msgstr "_Преместване"
 
-#: src/utilops.c:974
+#: src/utilops.c:1033
 msgid "Move file"
 msgstr "Преместване на файл"
 
-#: src/utilops.c:978
+#: src/utilops.c:1037
 msgid "Move multiple files"
 msgstr "Преместване на множество файлове"
 
-#: src/utilops.c:992 src/utilops.c:1502
+#: src/utilops.c:1051 src/utilops.c:1561
 msgid "File name:"
 msgstr "Име на файл:"
 
-#: src/utilops.c:996
+#: src/utilops.c:1055
 msgid "Choose the destination folder."
 msgstr "Избор на папка-цел."
 
-#: src/utilops.c:1123 src/utilops.c:1272 src/utilops.c:1289
+#: src/utilops.c:1182 src/utilops.c:1331 src/utilops.c:1348
 msgid "Delete failed"
 msgstr "Неуспешно изтриване"
 
-#: src/utilops.c:1124
+#: src/utilops.c:1183
 msgid "Unable to remove old file from trash folder"
 msgstr "Невъзможно е да бъде премахнат стар файл от папката за боклук"
 
-#: src/utilops.c:1180 src/utilops.c:2318
+#: src/utilops.c:1239 src/utilops.c:2385
 msgid "Could not create folder"
 msgstr "Не може да бъде създадена папка"
 
-#: src/utilops.c:1202
+#: src/utilops.c:1261
 msgid "Permission denied"
 msgstr "Достъпът е отказан"
 
-#: src/utilops.c:1212
+#: src/utilops.c:1271
 #, c-format
 msgid ""
 "Unable to access or create the trash folder.\n"
@@ -2776,16 +2782,16 @@ msgstr ""
 "Невъзможен е достъпът или създаването на папка за боклук.\n"
 "\"%s\""
 
-#: src/utilops.c:1216
+#: src/utilops.c:1275
 msgid "Turn off safe delete"
 msgstr "Изключване на безопасно изтриване"
 
-#: src/utilops.c:1234
+#: src/utilops.c:1293
 #, c-format
 msgid "Safe delete: %s"
 msgstr "Безопасно изтриване: %s"
 
-#: src/utilops.c:1276
+#: src/utilops.c:1335
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2796,37 +2802,37 @@ msgstr ""
 " %s\n"
 " Продължаване на изтриването на множеството файлове?"
 
-#: src/utilops.c:1347
+#: src/utilops.c:1406
 #, c-format
 msgid "File %d of %d"
 msgstr "Файл %d от %d"
 
-#: src/utilops.c:1416
+#: src/utilops.c:1475
 msgid "Delete files - GQview"
 msgstr "Изтриване на файлове - GQview"
 
-#: src/utilops.c:1420
+#: src/utilops.c:1479
 msgid "Delete multiple files"
 msgstr "Изтриване на множество файлове"
 
-#: src/utilops.c:1438
+#: src/utilops.c:1497
 #, c-format
 msgid "Review %d files"
 msgstr "Преглед на %d файла"
 
-#: src/utilops.c:1494
+#: src/utilops.c:1553
 msgid "Delete file - GQview"
 msgstr "Изтриване на файл - GQview"
 
-#: src/utilops.c:1498
+#: src/utilops.c:1557
 msgid "Delete file?"
 msgstr "Изтриване?"
 
-#: src/utilops.c:1646 src/utilops.c:2193
+#: src/utilops.c:1705 src/utilops.c:2257
 msgid "Replace existing file by renaming new file."
 msgstr "Замяна на съществуващ файл с ново-именуван файл."
 
-#: src/utilops.c:1661
+#: src/utilops.c:1720
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -2839,12 +2845,12 @@ msgstr ""
 " на:\n"
 "%s"
 
-#: src/utilops.c:1664 src/utilops.c:2208 src/view_file_list.c:448
-#: src/view_file_list.c:454 src/view_file_list.c:460
+#: src/utilops.c:1723 src/utilops.c:2272 src/view_file_list.c:449
+#: src/view_file_list.c:455 src/view_file_list.c:461
 msgid "Error renaming file"
 msgstr "Грешка при преименуване на файл"
 
-#: src/utilops.c:1747
+#: src/utilops.c:1806
 msgid ""
 "Can not auto rename with the selected\n"
 "number set, one or more files exist that\n"
@@ -2854,7 +2860,7 @@ msgstr ""
 "набор числа, имената на един или повече файла съществуват \n"
 "така, че съвпадат с ново-получения списък.\n"
 
-#: src/utilops.c:1809
+#: src/utilops.c:1868
 #, c-format
 msgid ""
 "Failed to rename\n"
@@ -2865,43 +2871,43 @@ msgstr ""
 "%s\n"
 "Номерът беше %d."
 
-#: src/utilops.c:2031 src/utilops.c:2249
+#: src/utilops.c:2092 src/utilops.c:2314
 msgid "Rename - GQview"
 msgstr "Преименуване - GQview"
 
-#: src/utilops.c:2034
+#: src/utilops.c:2095
 msgid "Rename multiple files"
 msgstr "Преименуване на множество файлове"
 
-#: src/utilops.c:2066
+#: src/utilops.c:2127
 msgid "Original Name"
 msgstr "Първоначално име"
 
-#: src/utilops.c:2110 src/utilops.c:2262
+#: src/utilops.c:2171 src/utilops.c:2327
 msgid "Original name:"
 msgstr "Първоначално име:"
 
-#: src/utilops.c:2113 src/utilops.c:2265
+#: src/utilops.c:2174 src/utilops.c:2330
 msgid "New name:"
 msgstr "Ново име:"
 
-#: src/utilops.c:2128
+#: src/utilops.c:2192
 msgid "Begin text"
 msgstr "Начало на текста"
 
-#: src/utilops.c:2136
+#: src/utilops.c:2200
 msgid "Start #"
 msgstr "Начален номер"
 
-#: src/utilops.c:2142
+#: src/utilops.c:2206
 msgid "End text"
 msgstr "Край на текста"
 
-#: src/utilops.c:2150
+#: src/utilops.c:2214
 msgid "Padding:"
 msgstr "Допълване:"
 
-#: src/utilops.c:2207 src/view_file_list.c:459
+#: src/utilops.c:2271 src/view_file_list.c:460
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -2914,11 +2920,11 @@ msgstr ""
 "на:\n"
 "%s"
 
-#: src/utilops.c:2252
+#: src/utilops.c:2317
 msgid "Rename file"
 msgstr "Преименуване на файл"
 
-#: src/utilops.c:2311
+#: src/utilops.c:2378 src/utilops.c:2468
 #, c-format
 msgid ""
 "The folder:\n"
@@ -2929,11 +2935,11 @@ msgstr ""
 "%s\n"
 "вече съществува."
 
-#: src/utilops.c:2312
+#: src/utilops.c:2379 src/utilops.c:2469
 msgid "Folder exists"
 msgstr "Папката съществува"
 
-#: src/utilops.c:2317
+#: src/utilops.c:2384 src/utilops.c:2477
 #, c-format
 msgid ""
 "The path:\n"
@@ -2944,11 +2950,11 @@ msgstr ""
 "%s\n"
 "вече съществува като файл."
 
-#: src/utilops.c:2369
+#: src/utilops.c:2436
 msgid "New folder - GQview"
 msgstr "Нова папка - GQview"
 
-#: src/utilops.c:2372
+#: src/utilops.c:2439
 #, c-format
 msgid ""
 "Create folder in:\n"
@@ -2959,56 +2965,61 @@ msgstr ""
 "%s\n"
 "с име:"
 
-#: src/view_dir_list.c:329 src/view_dir_tree.c:425
+#: src/utilops.c:2478 src/utilops.c:2487
+#, fuzzy
+msgid "Rename failed"
+msgstr "Преименуване на файл"
+
+#: src/view_dir_list.c:321 src/view_dir_tree.c:417
 msgid "new_folder"
 msgstr "нова_папка"
 
-#: src/view_dir_list.c:387 src/view_dir_tree.c:482
+#: src/view_dir_list.c:379 src/view_dir_tree.c:474
 msgid "_Up to parent"
 msgstr "_Обратно към родителската"
 
-#: src/view_dir_list.c:392 src/view_dir_tree.c:487
+#: src/view_dir_list.c:384 src/view_dir_tree.c:479
 msgid "_Slideshow"
 msgstr "_Прожекция"
 
-#: src/view_dir_list.c:394 src/view_dir_tree.c:489
+#: src/view_dir_list.c:386 src/view_dir_tree.c:481
 msgid "Slideshow recursive"
 msgstr "Рекурсивна прожекция"
 
-#: src/view_dir_list.c:398 src/view_dir_tree.c:493
+#: src/view_dir_list.c:390 src/view_dir_tree.c:485
 msgid "Find _duplicates..."
 msgstr "Откриване на _дубликати..."
 
-#: src/view_dir_list.c:400 src/view_dir_tree.c:495
+#: src/view_dir_list.c:392 src/view_dir_tree.c:487
 msgid "Find duplicates recursive..."
 msgstr "Рекурсивно откриване на дубликати..."
 
-#: src/view_dir_list.c:407 src/view_dir_tree.c:502
+#: src/view_dir_list.c:399 src/view_dir_tree.c:494
 msgid "_New folder..."
 msgstr "_Нова папка..."
 
-#: src/view_dir_list.c:419 src/view_dir_tree.c:509
+#: src/view_dir_list.c:411 src/view_dir_tree.c:501
 msgid "View as _tree"
 msgstr "_Дървовиден преглед"
 
-#: src/view_dir_list.c:421 src/view_dir_tree.c:511 src/view_file_icon.c:311
-#: src/view_file_list.c:423
+#: src/view_dir_list.c:413 src/view_dir_tree.c:503 src/view_file_icon.c:311
+#: src/view_file_list.c:424
 msgid "Re_fresh"
 msgstr "Презаре_ждане"
 
-#: src/view_file_icon.c:304 src/view_file_list.c:416
+#: src/view_file_icon.c:304 src/view_file_list.c:417
 msgid "_Sort"
 msgstr "_Подреждане"
 
-#: src/view_file_icon.c:307 src/view_file_list.c:419
+#: src/view_file_icon.c:307 src/view_file_list.c:420
 msgid "View as _icons"
 msgstr "Преглед като _икони"
 
-#: src/view_file_list.c:421
+#: src/view_file_list.c:422
 msgid "Show _thumbnails"
 msgstr "Пока_зване на смалени изображения"
 
-#: src/view_file_list.c:447
+#: src/view_file_list.c:448
 #, c-format
 msgid ""
 "Invalid file name:\n"

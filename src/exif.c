@@ -456,9 +456,13 @@ typedef struct {
 } IFDEntry;
 
 
+#define EXIF_TIFF_MAX_LEVELS 4
+
+
 static ExifMarker *exif_marker_from_tag(uint16_t tag);
 static int parse_IFD_table(ExifData *exif, unsigned char *tiff, int offset,
-			   int size, int byte_order);
+			   int size, int byte_order,
+			   gint level);
 
 /*
  *-----------------------------------------------------------------------------
@@ -814,7 +818,8 @@ static void exif_item_copy_data(ExifItem *item, void *src, int len, ExifFormatTy
 }
 
 static int parse_IFD_entry(ExifData *exif, unsigned char *tiff, int offset,
-			   int size, int byte_order)
+			   int size, int byte_order,
+			   gint level)
 {
 	IFDEntry *ent = (IFDEntry*)(tiff+offset);
 	uint32_t swabed_data;
@@ -898,16 +903,19 @@ static int parse_IFD_entry(ExifData *exif, unsigned char *tiff, int offset,
 
 	if (item->tag == TAG_EXIFOFFSET)
 		{
-		parse_IFD_table(exif, tiff, swabed_data, size, byte_order);
+		parse_IFD_table(exif, tiff, swabed_data, size, byte_order, level + 1);
 		}
 
 	return 0;
 }
 
 static int parse_IFD_table(ExifData *exif, unsigned char *tiff, int offset,
-			   int size, int byte_order)
+			   int size, int byte_order,
+			   gint level)
 {
 	int i, nb_entries;
+
+	if (level > EXIF_TIFF_MAX_LEVELS) return -1;
 
 	/* We should be able to read number of entries in IFD0) */
 	if (size < offset+2) return -1;
@@ -919,7 +927,7 @@ static int parse_IFD_table(ExifData *exif, unsigned char *tiff, int offset,
 
 	for (i=0; i<nb_entries; ++i)
 		{
-		parse_IFD_entry(exif, tiff, offset+2+i*sizeof(IFDEntry), size, byte_order);
+		parse_IFD_entry(exif, tiff, offset+2+i*sizeof(IFDEntry), size, byte_order, level);
 		}
 
 	return 0;
@@ -960,14 +968,14 @@ static int parse_TIFF(ExifData *exif, unsigned char *tiff, int size)
 
 	offset = swab_int32(((TIFFHeader*)tiff)->IFD_offset, byte_order);
 
-	return parse_IFD_table(exif, tiff, offset, size, byte_order);
+	return parse_IFD_table(exif, tiff, offset, size, byte_order, 0);
 }
 
 static int parse_JPEG(ExifData *exif, unsigned char *f, int size)
 {
 	int marker, marker_size;
 
-	if (size<2 || *f!=0xFF || *(f+1)!=MARKER_SOI)
+	if (size < 4 || *f != 0xFF || *(f+1) != MARKER_SOI)
 		{
 		return -2;
 		}
@@ -986,7 +994,7 @@ static int parse_JPEG(ExifData *exif, unsigned char *f, int size)
 
 	marker_size = get_marker_size(f)-2;
 		
-	if (marker_size<6 || strncmp((char*)f+4, "Exif\0\0", 6)!=0)
+	if (marker_size < 6 || memcmp(f + 4, "Exif\x00\x00", 6) != 0)
 		{
 		return -2;
 		}
@@ -1466,7 +1474,7 @@ static gchar *exif_get_formatted_by_key(ExifData *exif, const gchar *key, gint *
 		if (!exif_get_integer(exif, "Flash", &n)) return NULL;
 
 		/* Exif 2.1 only defines first 3 bits */
-		if (n <= 0x07) return g_strdup(text_list_find_value(ExifFlashList, n));
+		if (n <= 0x07) return text_list_find_value(ExifFlashList, n);
 
 		/* must be Exif 2.2 */
 		string = g_string_new("");

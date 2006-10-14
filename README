@@ -1,7 +1,7 @@
 ###################################################################
-##                          GQview 2.0.0     (February 26, 2005) ##
+##                          GQview 2.0.2      (October 14, 2006) ##
 ##                                                               ##
-##              Copyright (C) 1999 - 2005 John Ellis.            ##
+##              Copyright (C) 1999 - 2006 John Ellis.            ##
 ##                                                               ##
 ##                      Use at your own risk!                    ##
 ##                                                               ##
@@ -28,9 +28,20 @@ homepage: http://gqview.sourceforge.net
 
 ======== Requirements
 
-  GTK+ 2.4.x: ftp://ftp.gtk.org/pub/gtk
+  GTK+ >= 2.4.x: ftp://ftp.gtk.org/pub/gtk
 
 ======== Notes and changes for this release            [section:release_notes]
+
+  Changes in 2.0.2:
+
+    - Update translations de, fi, pl, pt_BR, ru, sk, vi, zh_TW.
+    - Add translations be, ca, ko.
+    - Add %w macro to editor commands.
+    * Thumbnail check order fix.
+    * Allow data cache reader to tolerate (ignore) future features of GQview.
+    * Do not allow to rename a folder when folder with new name exists.
+    * Avoid possible hang in corrupt exif data.
+    * Fix compile time warnings on newer gcc and gtk+.
 
   New features in 2.0:
 
@@ -57,11 +68,6 @@ homepage: http://gqview.sourceforge.net
     - Maintenance utility for caches and data used by GQview.
     - Utility to create thumbnails ahead of time in one step.
     - Now requires GTK+ >= 2.4
-
-  Changes since 1.5.9:
-
-    - Update translations bg, es, it, ja, nl, pl, ru.
-
 
   Notes:
 
@@ -357,9 +363,14 @@ homepage: http://gqview.sourceforge.net
  Use of the following to display output window for the command:
 
     %v  Display result of command in output window, must occur as first two
-        characters in the command.
+        characters in the command, or immediately after the "%w" macro.
     %V  Like v above, but when used with %p, only displays output window for
         multiple files. The output of a single file is suppressed.
+
+ Additional macros:
+
+    %w  Prevent full screen from deactivating when command is executed,
+        must occur as the first two characters.
 
 ======== Additional comments:
 
@@ -380,42 +391,48 @@ homepage: http://gqview.sourceforge.net
 
 ======== Translation status:
 
- (as of 1.5.8)
+ (as of 2.0.2)
 
    Please send po files/patches in gzipped form to ensure data integrity.
 
+   Note: completion % in the chart below may not be quite correct when fuzzy
+         translations exist but do not appear in the source.
+         comp % = trans / (trans + fuzzy + untrans)
+
 Language     Comp (%)  Trans   Fuzzy Untrans  Warn
 --------------------------------------------------
-ar                67     448     149      70
-bg               100     667       0       0
-cs                58     387     186      94
-da                20     137     286     244
-de                56     375     185     107
-es               100     667       0       0
-et                30     203     283     181
-fi                58     387     189      91
-fr                91     609      50       8
-hu                55     373     186     108
-id                31     207     284     176
-it               100     667       0       0
-ja               100     667       0       0
-nl               100     667       0       0
-no                25     168     296     203
-pl                80     538      51      78
-pt_BR             25     168     296     203
-ro                58     387     188      92
-ru               100     667       0       0
-sk                58     387     189      91
-sl                23     154     302     211
-sv                99     664       2       1
-th                24     161     295     211
-tr                10      70     286     311
-uk                26     179     292     196
-vi                56     380     189      98
-zh_CN.GB2312      25     168     296     203
-zh_TW             55     368     186     113
+ar                67     449     150      70
+be                99     668       1       0
+bg                99     667       2       0
+ca                99     667       2       0
+cs                99     667       2       0
+da                20     138     287     244
+de                99     667       2       0
+es                99     667       2       0
+et                30     204     284     181
+fi                99     668       1       0
+fr                99     667       2       0
+hu                55     374     187     108
+id                31     208     285     176
+it                99     667       2       0
+ja                99     667       2       0
+ko                17     114       1     554
+nl                99     668       1       0
+no                25     169     297     203
+pl                90     606       1      62
+pt_BR             99     668       1       0
+ro                57     388     189      92
+ru                99     667       2       0
+sk                97     655       1      13
+sl                23     155     303     211
+sv                99     665       3       1
+th                24     161     296     212
+tr                10      71     287     311
+uk                26     180     293     196
+vi                99     668       1       0
+zh_CN.GB2312      25     169     297     203
+zh_TW             99     668       1       0
 --------------------------------------------------
-
 
 
 ======== Credits                                             [section:credits]
@@ -436,6 +453,7 @@ zh_TW             55     368     186     113
 
      Sandokan <cortex@nextra.sk>
      Ivan Priesol <priesol@iris-sk.sk>
+     Mgr. Peter Tuharsky <tuharsky@misbb.sk>
          for Slovak translation
 
      Rodrigo Sancho Senosiain <ruy_ikari@bigfoot.com>
@@ -455,6 +473,7 @@ zh_TW             55     368     186     113
      Kam Tik <kamtik@hongkong.com>
      Abel Cheung <deaddog@deaddog.ws>
      S.J. Luo <crystal@mickey.ee.nctu.edu.tw>
+     Tetralet <tetralet@luna.com.tw>
          for Traditional Chinese (Big5) translation
 
      Junichi Uekawa <dancer@debian.org>
@@ -465,6 +484,7 @@ zh_TW             55     368     186     113
 
      Guilherme M. Schroeder <slump@ieg.com.br>
      Vitor Fernandes <vitor_fernandes@SoftHome.net>
+     Herval Ribeiro de Azevêdo <heraze@gmail.com>
          for Brazilian Portuguese translation
 
      Shingo Akagaki <akagaki@ece.numazu-ct.ac.jp>
@@ -476,6 +496,7 @@ zh_TW             55     368     186     113
      Matthias Warkus <mawarkus@t-online.de>
      Thomas Klausner <wiz@danbala.ifoer.tuwien.ac.at>
      Danny Milosavljevic <danny_milo@yahoo.com>
+     Ronny Steiner <Post@SIRSteiner.de>
          for German translation
 
      Matej Erman <matej.erman@guest.arnes.si>
@@ -509,7 +530,7 @@ zh_TW             55     368     186     113
      Torgeir Ness Sundli <torgeir@mp3bil.no>
          for Norwegian translation
 
-     Jan Raska <jan_raska@hotmail.com>
+     Jan Raska <jan.raska@tiscali.cz>
      Michal Bukovjan <bukm@centrum.cz>
          for Czech translation
 
@@ -533,6 +554,15 @@ zh_TW             55     368     186     113
 
      Youssef Assad <youssef@devcabal.org>
          for Arabic translation
+
+     catux.org <mecatxis@ya.com
+         for Catalan translation
+
+     Hyun-Jin Moon <moonhyunjin@gmail.com
+         for Korean translation
+
+     Pavel Piatruk <berserker@neolocation.com>
+         for Belarusion translation
 
  Fixes, additions, and patches:
 

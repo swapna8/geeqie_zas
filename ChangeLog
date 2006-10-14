@@ -1,3 +1,170 @@
+Sat Oct 14 09:25:15 2006  John Ellis  <johne@verizon.net>
+
+	* po/*.po: Make distcheck touches these.
+	* gqview.spec.in: Fix to use License: instead of obselete Copyright:.
+	* configure.in: Release 2.0.2
+
+Sat Oct 14 08:20:35 2006  John Ellis  <johne@verizon.net>
+
+	* vi.po: Update Vietnamese translation,
+	submitted by pclouds <pclouds@vnlinux.org>.
+	* README: Updates.
+
+Sat Oct 14 05:06:28 2006  John Ellis  <johne@verizon.net>
+
+	* utilops.c: Mark string for translation.
+	* fi.po: Update Finnish translation,
+	submitted by Lauri Nurmi <lanurmi@iki.fi>.
+	* README: Updates.
+
+Fri Oct 13 12:13:58 2006  John Ellis  <johne@verizon.net>
+
+	* ru.po: Update Russian translation,
+	submitted by Vitaly Lipatov <lav@altlinux.ru>.
+
+Fri Oct 13 10:31:53 2006  John Ellis  <johne@verizon.net>
+
+	* cache_maint.c, ui_fileops.c, ui_pathsel.c, ui_tabcomp.c: Remove use
+	of the d_ino > 0 test as all files listed by readdir should be valid.
+	dirent.d_ino is not guanteed by POSIX, and at one recent point is
+	not implemented on cygwin [merge from 2.1.2].
+
+Fri Oct 13 09:35:57 2006  John Ellis  <johne@verizon.net>
+
+	* pl.po: Update Polish translation [merge from 2.1.2],
+	submitted by Wit Wilinski <madman@linux.bydg.org>.
+	* README: Updates.
+
+Fri Oct 13 05:06:17 2006  John Ellis  <johne@verizon.net>
+
+	* preferences.c: Fix string mark (missing underscore) for translation.
+	* utilops.c: Change auto rename start number to default to 1.
+	* configure.in (ALL_LINGUAS): Add be, ca, ko translations.
+	* be.po: Add Belarusion translation,
+	submitted by Pavel Piatruk <berserker@neolocation.com>.
+	* ca.po: Add Catalan translation,
+	submitted by catux.org <mecatxis@ya.com>.
+	* de.po: Update German translation,
+	submitted by Ronny Steiner <Post@SIRSteiner.de>.
+	* ko.po: Add Korean translation (mostly menus),
+	submitted by Hyun-Jin Moon <moonhyunjin@gmail.com>.
+	* pt_BR.po: Update Brazilian Portuguese translation [merge from 2.1.2],
+	submitted by Herval Ribeiro de Azevêdo <heraze@gmail.com>.
+	* sk.po: Update Slovak translation [merge from 2.1.2],
+	submitted by Mgr. Peter Tuharsky <tuharsky@misbb.sk>.
+	* zh_TW.po: Update Traditional Chinese translation,
+	submitted by Tetralet <tetralet@luna.com.tw>.
+	* README: Update credits.
+
+Fri Sep  1 02:43:43 2006  John Ellis  <johne@verizon.net>
+
+	[merge from 2.1 devel]
+	* collect-io.c, thumb_standard.c: Do not ignore return value from
+	g_list_append as newer versions of gtk now set a warning flag.
+
+Mon Aug 15 18:27:38 2005  John Ellis  <johne@verizon.net>
+
+	[merge from 2.1 devel]
+	* cache.c: Make cache loader tolerant of unknown line values, so that
+	a cache written by newer/older versions of GQview does not result in
+	recreating data that is actually there.
+
+Mon Aug 15 17:13:57 2005  John Ellis  <johne@verizon.net>
+
+	[merge from 2.1 devel]
+	* collect-table.c, dupe.c, img-view.c info.c, layout_image.c,
+	md5-util.[ch], remote.c, search.c, thumb_standard.c,
+	ui_bookmark.c, ui_misc.c, ui_pathsel.c, view_dir_list.c,
+	view_dir_tree.c, view_file_icon.c, view_file_list.c: Fix signedness
+	warnings in gcc 4.0.
+
+Mon Aug 15 16:35:15 2005  John Ellis  <johne@verizon.net>
+
+	[merge from 2.1 devel]
+	* view_dir_tree.c (vdtree_set_path): Do not force reading folder
+	contents, to allow the check for a changed timestamp do it's job.
+	* doc/10_options.html: Fix page link in docs.
+
+Mon Jun 13 17:54:49 2005  John Ellis  <johne@verizon.net>
+
+	[merge from 2.1 devel]
+	* editors.[ch]: Add "%w" macro to disable full screen deactivation when
+	running an editor command.
+	* image-load.c (image_load_begin): Fix to not treat short reads as
+	end of file condition.
+	* img-view.c, layout_image.c: Honor %w editor flag to prevent exit of
+	full screen, and fix use of freed image when exiting full screen for
+	standalone image window.
+	* README, doc/10_5_editor_commands.html: Document %w macro for editor
+	commands.
+
+Sat Jun 11 01:14:15 2005  John Ellis  <johne@verizon.net>
+
+	* exif.c (exif_get_formatted_by_key): Fix memory leak.
+
+Thu Jun  9 23:40:27 2005  John Ellis  <johne@verizon.net>
+
+	* exif.c: Guard against possible endless loop when encountering
+	corrupt exif data, fix possible buffer overrun when searching jpegs
+	for exif, and use memcmp instead of strncmp to compare data with byte
+	values that contain 0.
+
+Wed May 18 19:36:49 2005  John Ellis  <johne@verizon.net>
+
+	[merge from 2.1 devel]
+	* thumb_standard.c (thumb_loader_std_start): Check for existing
+	thumbnail file before checking for a failure mark.
+	* utilops.[ch] (file_util_rename_dir): New utility to rename a folder,
+	does proper checking for existing folder to avoid clobbering an
+	existing folder.
+	* view_dir_list.c, view_dir_tree.c: Use new utility above when renaming
+	a folder to fix possible clobbering of an existing folder with the
+	same name as the requested name.
+
+Sat May 14 15:34:21 2005  John Ellis  <johne@verizon.net>
+
+	* README: Updates.
+	* configure.in: Release 2.0.1
+
+Sat May 14 13:04:23 2005  John Ellis  <johne@verizon.net>
+
+	* po/cs.po: Update Czech translation,
+	submitted by Jan Raska <jan.raska@tiscali.cz>
+	* de.po, fr.po: Typo and spelling fixes.
+
+Sat May 14 12:50:52 2005  John Ellis  <johne@verizon.net>
+
+	* thumb_standard.c (thumb_loader_std_finish): Merge fix from 2.1.x to
+	better handle images with a size between normal and large when using
+	large thumbnails.
+
+Sat May 14 12:29:31 2005  John Ellis  <johne@verizon.net>
+
+	* ui_pathsel.c: Guard against strcmp of NULL dd->path, fixes crash.
+	* utilops.c: Additional validation for destination of copy/move
+	dialogs, and do not include extension when conveniently selecting
+	filename text in rename dialogs.
+
+Wed Apr 27 15:37:03 2005  John Ellis  <johne@verizon.net>
+
+	* fullscreen.c, layout.c: Remove use of GDK_HINT_USER_SIZE as we never
+	actually set these dimensions.
+	* rcfile.c: Add warning that user comments and formatting will be lost.
+
+Sat Apr  2 17:57:39 2005  John Ellis  <johne@verizon.net>
+
+	* gqview.1: Fix spelling of vertical in man page.
+
+Mon Mar 28 19:40:43 2005  John Ellis  <johne@verizon.net>
+
+	* image.c: Fix rounding error in image_load_area_cb, and fix mem leak
+	of the scroller image.
+
+Sat Mar  5 15:57:59 2005  John Ellis  <johne@verizon.net>
+
+	* po/fr.po: Update French translation,
+	submitted by Eric Lassauge.
+
 Sat Feb 26 14:42:42 2005  John Ellis  <johne@verizon.net>
 
 	* README: Updates.

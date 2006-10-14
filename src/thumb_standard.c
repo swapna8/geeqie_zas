@@ -153,7 +153,7 @@ static gchar *thumb_std_cache_path(const gchar *path, const gchar *uri, gint loc
 		cache_base = g_strconcat(homedir(), "/", THUMB_FOLDER, "/", cache_subfolder, NULL);
 		}
 
-	md5_get_digest(uri, strlen(uri), digest);
+	md5_get_digest((guchar *)uri, strlen(uri), digest);
 	md5_text = md5_digest_to_text(digest);
 
 	if (cache_base && md5_text)
@@ -451,49 +451,55 @@ static GdkPixbuf *thumb_loader_std_finish(ThumbLoaderStd *tl, GdkPixbuf *pixbuf)
 	sw = gdk_pixbuf_get_width(pixbuf);
 	sh = gdk_pixbuf_get_height(pixbuf);
 
-	if (tl->cache_enable && !tl->cache_hit &&
-	    (sw >= THUMB_SIZE_NORMAL || sh >= THUMB_SIZE_NORMAL))
+	if (tl->cache_enable)
 		{
-		gint cache_w, cache_h;
-		gint thumb_w, thumb_h;
-
-		if (tl->requested_width > THUMB_SIZE_NORMAL || tl->requested_height > THUMB_SIZE_NORMAL)
+		if (!tl->cache_hit)
 			{
-			cache_w = cache_h = THUMB_SIZE_LARGE;
+			gint cache_w, cache_h;
+
+			if (tl->requested_width > THUMB_SIZE_NORMAL || tl->requested_height > THUMB_SIZE_NORMAL)
+				{
+				cache_w = cache_h = THUMB_SIZE_LARGE;
+				}
+			else
+				{
+				cache_w = cache_h = THUMB_SIZE_NORMAL;
+				}
+
+			if (sw > cache_w || sh > cache_h)
+				{
+				gint thumb_w, thumb_h;
+
+				if (thumb_loader_std_scale_aspect(cache_w, cache_h, sw, sh,
+								  &thumb_w, &thumb_h))
+					{
+					pixbuf_thumb = gdk_pixbuf_scale_simple(pixbuf, thumb_w, thumb_h,
+									       (GdkInterpType)thumbnail_quality);
+					}
+				else
+					{
+					pixbuf_thumb = pixbuf;
+					g_object_ref(G_OBJECT(pixbuf_thumb));
+					}
+
+				thumb_loader_std_save(tl, pixbuf_thumb);
+				}
 			}
-		else
+		else if (tl->cache_hit &&
+			 tl->cache_local && !tl->thumb_path_local)
 			{
-			cache_w = cache_h = THUMB_SIZE_NORMAL;
+			/* A local cache save was requested, but a valid thumb is in $HOME,
+			 * so specifically save as a local thumbnail.
+			 */
+			g_free(tl->thumb_path);
+			tl->thumb_path = NULL;
+
+			tl->cache_hit = FALSE;
+
+			if (debug) printf("thumb copied: %s\n", tl->source_path);
+
+			thumb_loader_std_save(tl, pixbuf);
 			}
-
-		if (thumb_loader_std_scale_aspect(cache_w, cache_h, sw, sh,
-						  &thumb_w, &thumb_h))
-			{
-			pixbuf_thumb = gdk_pixbuf_scale_simple(pixbuf, thumb_w, thumb_h,
-							       (GdkInterpType)thumbnail_quality);
-			}
-		else
-			{
-			pixbuf_thumb = pixbuf;
-			g_object_ref(G_OBJECT(pixbuf_thumb));
-			}
-		
-		thumb_loader_std_save(tl, pixbuf_thumb);
-		}
-	else if (tl->cache_enable && tl->cache_local &&
-		 tl->cache_hit && !tl->thumb_path_local)
-		{
-		/* A local cache save was requested, but a valid thumb is in $HOME,
-		 * so specifically save as a local thumbnail.
-		 */
-		g_free(tl->thumb_path);
-		tl->thumb_path = NULL;
-
-		tl->cache_hit = FALSE;
-
-		if (debug) printf("thumb copied: %s\n", tl->source_path);
-
-		thumb_loader_std_save(tl, pixbuf);
 		}
 
 	if (sw <= tl->requested_width && sh <= tl->requested_height)
@@ -708,13 +714,13 @@ gint thumb_loader_std_start(ThumbLoaderStd *tl, const gchar *path)
 		{
 		gint found;
 
-		if (thumb_loader_std_fail_check(tl)) return FALSE;
-
 		tl->thumb_path = thumb_loader_std_cache_path(tl, FALSE, NULL, FALSE);
 		tl->thumb_path_local = FALSE;
 
 		found = isfile(tl->thumb_path);
 		if (found && thumb_loader_std_setup(tl, tl->thumb_path)) return TRUE;
+
+		if (thumb_loader_std_fail_check(tl)) return FALSE;
 
 		return thumb_loader_std_next_source(tl, found);
 		}
@@ -1111,7 +1117,7 @@ void thumb_std_maint_moved(const gchar *source, const gchar *dest)
 
 	if (thumb_std_maint_move_tail)
 		{
-		g_list_append(thumb_std_maint_move_tail, tm);
+		thumb_std_maint_move_tail = g_list_append(thumb_std_maint_move_tail, tm);
 		thumb_std_maint_move_tail = thumb_std_maint_move_tail->next;
 		}
 	else
