@@ -4,7 +4,7 @@ Summary(es): Navegador de archivos gráficos
 Name: gqview
 Version: @VERSION@
 Release: 1
-Copyright: GPL
+License: GPL
 Group: Applications/Multimedia
 Source: http://prdownloads.sourceforge.net/gqview/gqview-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root

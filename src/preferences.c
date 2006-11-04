@@ -1,6 +1,6 @@
 /*
  * GQview
- * (C) 2004 John Ellis
+ * (C) 2006 John Ellis
  *
  * Author: John Ellis
  *
@@ -27,8 +27,6 @@
 #include "ui_misc.h"
 #include "ui_tabcomp.h"
 #include "ui_utildlg.h"
-
-#include "icons/config.xpm"
 
 #include <math.h>
 
@@ -771,7 +769,7 @@ static void config_window_create(void)
 	gtk_window_set_wmclass(GTK_WINDOW(configwindow), "config", "GQview");
 	gtk_container_set_border_width(GTK_CONTAINER(configwindow), PREF_PAD_BORDER);
 
-	window_set_icon(configwindow, (const gchar **)config_xpm, NULL);
+	window_set_icon(configwindow, PIXBUF_INLINE_ICON_CONFIG, NULL);
 
 	win_vbox = gtk_vbox_new(FALSE, PREF_PAD_SPACE);
 	gtk_container_add(GTK_CONTAINER(configwindow), win_vbox);
@@ -1075,7 +1073,7 @@ static void config_window_create(void)
 	label = pref_table_label(table, 1, 0, _("Menu name"), 0.0);
 	pref_label_bold(label, TRUE, FALSE);
 
-	label = pref_table_label(table, 2, 0, ("Command Line"), 0.0);
+	label = pref_table_label(table, 2, 0, _("Command Line"), 0.0);
 	pref_label_bold(label, TRUE, FALSE);
 
 	for (i = 0; i < GQVIEW_EDITOR_SLOTS; i++)
@@ -1303,7 +1301,7 @@ void show_about_window(void)
 
 	buf = g_strdup_printf(_("GQview %s\n\nCopyright (c) %s John Ellis\nwebsite: %s\nemail: %s\n\nReleased under the GNU General Public License"),
 			      VERSION,
-			      "2005",
+			      "2006",
 			      "gqview.sourceforge.net",
 			      "gqview@users.sourceforge.net");
 	label = gtk_label_new(buf);

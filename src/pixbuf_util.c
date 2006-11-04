@@ -95,7 +95,12 @@ static PixbufInline inline_pixbuf_data[] = {
 	{ PIXBUF_INLINE_FOLDER_UP,	folder_up },
 	{ PIXBUF_INLINE_SCROLLER,	icon_scroller },
 	{ PIXBUF_INLINE_BROKEN,		icon_broken },
+	{ PIXBUF_INLINE_ICON,		gqview_icon },
 	{ PIXBUF_INLINE_LOGO,		gqview_logo },
+	{ PIXBUF_INLINE_ICON_BOOK,	icon_book },
+	{ PIXBUF_INLINE_ICON_CONFIG,	icon_config },
+	{ PIXBUF_INLINE_ICON_TOOLS,	icon_tools },
+	{ PIXBUF_INLINE_ICON_VIEW,	icon_view },
 	{ NULL, NULL }
 };
 
@@ -580,6 +585,8 @@ void pixbuf_draw_layout(GdkPixbuf *pixbuf, PangoLayout *layout, GtkWidget *widge
 	if (!widget || !widget->window) return;
 
 	pango_layout_get_pixel_size(layout, &w, &h);
+	if (w < 1 || h < 1) return;
+
 	pixmap = gdk_pixmap_new(widget->window, w, h, -1);
 
 	gc = gdk_gc_new(widget->window);

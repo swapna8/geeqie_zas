@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GQview  0.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-26 14:33-0500\n"
+"POT-Creation-Date: 2006-11-04 10:50-0500\n"
 "PO-Revision-Date: 2000-04-07 17:09+0200\n"
 "Last-Translator: Fatih Demir <kabalak@gmx.net>\n"
 "Language-Team: Turkish Gnome Translation Team <gnotrap@gmx.net>\n"
@@ -97,7 +97,7 @@ msgid "Tag"
 msgstr ""
 
 #: src/bar_exif.c:424 src/dupe.c:2589 src/dupe.c:3116 src/print.c:3190
-#: src/search.c:2753 src/view_file_list.c:1555
+#: src/search.c:2753 src/view_file_list.c:1653
 #, fuzzy
 msgid "Name"
 msgstr "Yeniden adlandýr"
@@ -115,7 +115,7 @@ msgstr "Genel"
 msgid "Elements"
 msgstr ""
 
-#: src/bar_exif.c:428 src/preferences.c:1028
+#: src/bar_exif.c:428 src/preferences.c:1026
 msgid "Description"
 msgstr ""
 
@@ -153,14 +153,14 @@ msgstr ""
 msgid "Collection exists"
 msgstr "Üstüne yaz"
 
-#: src/bar_sort.c:450 src/collect.c:1061 src/collect-dlg.c:84
+#: src/bar_sort.c:450 src/collect.c:1057 src/collect-dlg.c:84
 #, fuzzy, c-format
 msgid ""
 "Failed to save the collection:\n"
 "%s"
 msgstr "%s'yi silemedim \n"
 
-#: src/bar_sort.c:451 src/collect.c:1062 src/collect-dlg.c:85
+#: src/bar_sort.c:451 src/collect.c:1058 src/collect-dlg.c:85
 msgid "Save Failed"
 msgstr ""
 
@@ -182,12 +182,12 @@ msgstr "Yeniden adlandýr"
 msgid "Sort Manager"
 msgstr ""
 
-#: src/bar_sort.c:578 src/ui_pathsel.c:1095
+#: src/bar_sort.c:578 src/ui_pathsel.c:1094
 #, fuzzy
 msgid "Folders"
 msgstr "Dosya"
 
-#: src/bar_sort.c:579 src/main.c:1066
+#: src/bar_sort.c:579 src/main.c:1037
 msgid "Collections"
 msgstr ""
 
@@ -217,93 +217,93 @@ msgstr "Seçenekler ..."
 msgid "Undo last image"
 msgstr ""
 
-#: src/cache_maint.c:127 src/cache_maint.c:681 src/cache_maint.c:894
+#: src/cache_maint.c:126 src/cache_maint.c:680 src/cache_maint.c:893
 #: src/editors.c:410
 msgid "done"
 msgstr ""
 
-#: src/cache_maint.c:304
+#: src/cache_maint.c:303
 msgid "Removing old metadata..."
 msgstr ""
 
-#: src/cache_maint.c:308
+#: src/cache_maint.c:307
 #, fuzzy
 msgid "Clearing cached thumbnails..."
 msgstr "Týrnaklarý yükliyorum .."
 
-#: src/cache_maint.c:312 src/cache_maint.c:1048
+#: src/cache_maint.c:311 src/cache_maint.c:1047
 #, fuzzy
 msgid "Removing old thumbnails..."
 msgstr "Týrnaklarý yükliyorum .."
 
-#: src/cache_maint.c:315 src/cache_maint.c:1051
+#: src/cache_maint.c:314 src/cache_maint.c:1050
 msgid "Maintenance"
 msgstr ""
 
-#: src/cache_maint.c:792 src/utilops.c:904
+#: src/cache_maint.c:791 src/utilops.c:945
 #, fuzzy
 msgid "Invalid folder"
 msgstr "geçerli opsiyonlar :\n"
 
-#: src/cache_maint.c:793
+#: src/cache_maint.c:792
 msgid "The specified folder can not be found."
 msgstr ""
 
-#: src/cache_maint.c:821 src/cache_maint.c:835 src/cache_maint.c:1216
+#: src/cache_maint.c:820 src/cache_maint.c:834 src/cache_maint.c:1215
 #, fuzzy
 msgid "Create thumbnails"
 msgstr "Týrnaklarý arabellekte tut"
 
-#: src/cache_maint.c:829 src/cache_maint.c:1058
+#: src/cache_maint.c:828 src/cache_maint.c:1057
 #, fuzzy
 msgid "S_tart"
 msgstr "Sil"
 
-#: src/cache_maint.c:842 src/preferences.c:1165
+#: src/cache_maint.c:841 src/preferences.c:1163
 #, fuzzy
 msgid "Folder:"
 msgstr "Dosya"
 
-#: src/cache_maint.c:845
+#: src/cache_maint.c:844
 #, fuzzy
 msgid "Select folder"
 msgstr "Sil .."
 
-#: src/cache_maint.c:849
+#: src/cache_maint.c:848
 #, fuzzy
 msgid "Include subfolders"
 msgstr "geçerli opsiyonlar :\n"
 
-#: src/cache_maint.c:850
+#: src/cache_maint.c:849
 msgid "Store thumbnails local to source images"
 msgstr ""
 
-#: src/cache_maint.c:859 src/cache_maint.c:1067
+#: src/cache_maint.c:858 src/cache_maint.c:1066
 msgid "click start to begin"
 msgstr ""
 
-#: src/cache_maint.c:997 src/editors.c:549
+#: src/cache_maint.c:996 src/editors.c:558
 #, fuzzy
 msgid "running..."
 msgstr "Kopyala ..."
 
-#: src/cache_maint.c:1043
+#: src/cache_maint.c:1042
 #, fuzzy
 msgid "Clearing thumbnails..."
 msgstr "Týrnaklarý yükliyorum .."
 
-#: src/cache_maint.c:1109 src/cache_maint.c:1112 src/cache_maint.c:1191
-#: src/cache_maint.c:1211
+#: src/cache_maint.c:1108 src/cache_maint.c:1111 src/cache_maint.c:1190
+#: src/cache_maint.c:1210
 msgid "Clear cache"
 msgstr ""
 
-#: src/cache_maint.c:1113
+#: src/cache_maint.c:1112
 msgid ""
 "This will remove all thumbnails that have\n"
 "been saved to disk, continue?"
 msgstr ""
 
-#: src/cache_maint.c:1163
+#: src/cache_maint.c:1162
 #, fuzzy
 msgid "Cache Maintenance - GQview"
 msgstr ""
@@ -311,82 +311,83 @@ msgstr ""
 "adlandýr :\n"
 " "
 
-#: src/cache_maint.c:1173
+#: src/cache_maint.c:1172
 msgid "Cache and Data Maintenance"
 msgstr ""
 
-#: src/cache_maint.c:1177
+#: src/cache_maint.c:1176
 #, fuzzy
 msgid "GQview thumbnail cache"
 msgstr "GQview tam ekran"
 
-#: src/cache_maint.c:1179 src/cache_maint.c:1199 src/cache_maint.c:1227
-#: src/preferences.c:1142 src/utilops.c:1505
+#: src/cache_maint.c:1178 src/cache_maint.c:1198 src/cache_maint.c:1226
+#: src/preferences.c:1140 src/utilops.c:1564
 msgid "Location:"
 msgstr ""
 
-#: src/cache_maint.c:1186 src/cache_maint.c:1206 src/cache_maint.c:1234
+#: src/cache_maint.c:1185 src/cache_maint.c:1205 src/cache_maint.c:1233
 msgid "Clean up"
 msgstr ""
 
-#: src/cache_maint.c:1189 src/cache_maint.c:1209
+#: src/cache_maint.c:1188 src/cache_maint.c:1208
 msgid "Remove orphaned or outdated thumbnails."
 msgstr ""
 
-#: src/cache_maint.c:1194 src/cache_maint.c:1214
+#: src/cache_maint.c:1193 src/cache_maint.c:1213
 #, fuzzy
 msgid "Delete all cached thumbnails."
 msgstr "Týrnaklarý arabellekte tut"
 
-#: src/cache_maint.c:1197
+#: src/cache_maint.c:1196
 #, fuzzy
 msgid "Shared thumbnail cache"
 msgstr "Týrnaklarý arabellekte tut"
 
-#: src/cache_maint.c:1220
+#: src/cache_maint.c:1219
 #, fuzzy
 msgid "Render"
 msgstr "Yeniden adlandýr"
 
-#: src/cache_maint.c:1223
+#: src/cache_maint.c:1222
 msgid "Render thumbnails for a specific folder."
 msgstr ""
 
-#: src/cache_maint.c:1225
+#: src/cache_maint.c:1224
 msgid "Metadata"
 msgstr ""
 
-#: src/cache_maint.c:1237
+#: src/cache_maint.c:1236
 msgid "Remove orphaned keywords and comments."
 msgstr ""
 
-#: src/collect.c:349 src/image.c:1160 src/image-overlay.c:74
+#: src/collect.c:350 src/image.c:1160 src/image-overlay.c:74
 #: src/image-overlay.c:115
+#, c-format
 msgid "Untitled"
 msgstr ""
 
-#: src/collect.c:353
+#: src/collect.c:354
 #, c-format
 msgid "Untitled (%d)"
 msgstr ""
 
-#: src/collect.c:980
+#: src/collect.c:976
 #, c-format
 msgid "%s - GQview Collection"
 msgstr ""
 
-#: src/collect.c:1098 src/collect.c:1102
+#: src/collect.c:1094 src/collect.c:1098
 #, fuzzy
 msgid "Close collection"
 msgstr "Seçenekler ..."
 
-#: src/collect.c:1103
+#: src/collect.c:1099
 msgid ""
 "Collection has been modified.\n"
 "Save first?"
 msgstr ""
 
-#: src/collect.c:1106
+#: src/collect.c:1102
 msgid "_Discard"
 msgstr ""
 
@@ -413,8 +414,8 @@ msgstr "Üstüne yaz"
 msgid "Overwrite existing file?"
 msgstr "Üstüne yaz"
 
-#: src/collect-dlg.c:75 src/utilops.c:479 src/utilops.c:792 src/utilops.c:1649
-#: src/utilops.c:2196
+#: src/collect-dlg.c:75 src/utilops.c:507 src/utilops.c:828 src/utilops.c:1708
+#: src/utilops.c:2260
 #, fuzzy
 msgid "_Overwrite"
 msgstr "Üstüne yaz"
@@ -449,7 +450,7 @@ msgstr ""
 msgid "The current collection is empty, save aborted."
 msgstr ""
 
-#: src/collect-table.c:164 src/layout_util.c:708
+#: src/collect-table.c:164 src/layout_util.c:733
 msgid "Empty"
 msgstr ""
 
@@ -465,19 +466,19 @@ msgstr "%d dosya %s"
 
 #: src/collect-table.c:186 src/dupe.c:1296 src/search.c:303
 #: src/view_file_icon.c:1772 src/view_file_icon.c:1887
-#: src/view_file_list.c:816 src/view_file_list.c:921
+#: src/view_file_list.c:914 src/view_file_list.c:1019
 msgid "Loading thumbs..."
 msgstr "Týrnaklarý yükliyorum .."
 
 #: src/collect-table.c:773 src/dupe.c:2187 src/dupe.c:2497
-#: src/layout_util.c:751 src/search.c:969
+#: src/layout_util.c:776 src/search.c:969
 #, fuzzy
 msgid "_View"
 msgstr "Göster"
 
-#: src/collect-table.c:775 src/dupe.c:2189 src/dupe.c:2499 src/img-view.c:1187
-#: src/layout_image.c:722 src/search.c:971 src/view_file_icon.c:283
-#: src/view_file_list.c:395
+#: src/collect-table.c:775 src/dupe.c:2189 src/dupe.c:2499 src/img-view.c:1225
+#: src/layout_image.c:734 src/search.c:971 src/view_file_icon.c:283
+#: src/view_file_list.c:396
 #, fuzzy
 msgid "View in _new window"
 msgstr "Yeni penerede göster"
@@ -505,38 +506,38 @@ msgstr "Silerken bir hata oluþtu"
 msgid "Select none"
 msgstr ""
 
-#: src/collect-table.c:796 src/dupe.c:2203 src/img-view.c:1185
-#: src/layout_image.c:719 src/layout_util.c:784 src/search.c:981
-#: src/view_file_icon.c:280 src/view_file_list.c:393
+#: src/collect-table.c:796 src/dupe.c:2203 src/img-view.c:1223
+#: src/layout_image.c:731 src/layout_util.c:809 src/search.c:981
+#: src/view_file_icon.c:280 src/view_file_list.c:394
 #, fuzzy
 msgid "_Properties"
 msgstr "Seçenekler ..."
 
-#: src/collect-table.c:799 src/dupe.c:2210 src/img-view.c:1190
-#: src/layout_image.c:727 src/layout_util.c:762 src/search.c:988
-#: src/view_file_icon.c:287 src/view_file_list.c:399
+#: src/collect-table.c:799 src/dupe.c:2210 src/img-view.c:1228
+#: src/layout_image.c:739 src/layout_util.c:787 src/search.c:988
+#: src/view_file_icon.c:287 src/view_file_list.c:400
 #, fuzzy
 msgid "_Copy..."
 msgstr "Kopyala ..."
 
-#: src/collect-table.c:801 src/dupe.c:2212 src/img-view.c:1191
-#: src/layout_image.c:729 src/layout_util.c:763 src/search.c:990
-#: src/view_file_icon.c:289 src/view_file_list.c:401
+#: src/collect-table.c:801 src/dupe.c:2212 src/img-view.c:1229
+#: src/layout_image.c:741 src/layout_util.c:788 src/search.c:990
+#: src/view_file_icon.c:289 src/view_file_list.c:402
 #, fuzzy
 msgid "_Move..."
 msgstr "Taþý ..."
 
-#: src/collect-table.c:803 src/dupe.c:2214 src/img-view.c:1192
-#: src/layout_image.c:731 src/layout_util.c:764 src/search.c:992
-#: src/view_dir_list.c:415 src/view_dir_tree.c:505 src/view_file_icon.c:291
-#: src/view_file_list.c:403
+#: src/collect-table.c:803 src/dupe.c:2214 src/img-view.c:1230
+#: src/layout_image.c:743 src/layout_util.c:789 src/search.c:992
+#: src/view_dir_list.c:407 src/view_dir_tree.c:497 src/view_file_icon.c:291
+#: src/view_file_list.c:404
 #, fuzzy
 msgid "_Rename..."
 msgstr "Yeniden adlandýr .."
 
-#: src/collect-table.c:805 src/dupe.c:2216 src/img-view.c:1193
-#: src/layout_image.c:733 src/layout_util.c:765 src/search.c:994
-#: src/view_file_icon.c:293 src/view_file_list.c:405
+#: src/collect-table.c:805 src/dupe.c:2216 src/img-view.c:1231
+#: src/layout_image.c:745 src/layout_util.c:790 src/search.c:994
+#: src/view_file_icon.c:293 src/view_file_list.c:406
 #, fuzzy
 msgid "_Delete..."
 msgstr "Sil .."
@@ -555,7 +556,7 @@ msgstr "Seçenekler ..."
 msgid "Save collection _as..."
 msgstr "Seçenekler ..."
 
-#: src/collect-table.c:818 src/layout_util.c:759
+#: src/collect-table.c:818 src/layout_util.c:784
 #, fuzzy
 msgid "_Find duplicates..."
 msgstr "Yeniden adlandýr .."
@@ -565,26 +566,26 @@ msgstr "Yeniden adlandýr .."
 msgid "Print..."
 msgstr "Yeniden adlandýr .."
 
-#: src/collect-table.c:1978 src/dupe.c:3304 src/img-view.c:1347
+#: src/collect-table.c:1978 src/dupe.c:3304 src/img-view.c:1385
 msgid "Dropped list includes folders."
 msgstr ""
 
-#: src/collect-table.c:1980 src/dupe.c:3306 src/img-view.c:1349
+#: src/collect-table.c:1980 src/dupe.c:3306 src/img-view.c:1387
 msgid "_Add contents"
 msgstr ""
 
-#: src/collect-table.c:1982 src/dupe.c:3307 src/img-view.c:1350
+#: src/collect-table.c:1982 src/dupe.c:3307 src/img-view.c:1388
 #, fuzzy
 msgid "Add contents _recursive"
 msgstr "Yeniden adlandýr .."
 
-#: src/collect-table.c:1984 src/dupe.c:3308 src/img-view.c:1351
+#: src/collect-table.c:1984 src/dupe.c:3308 src/img-view.c:1389
 #, fuzzy
 msgid "_Skip folders"
 msgstr "Baþlangýç dizini"
 
-#: src/collect-table.c:1987 src/dupe.c:3310 src/img-view.c:1353
-#: src/view_dir_list.c:222 src/view_dir_tree.c:314
+#: src/collect-table.c:1987 src/dupe.c:3310 src/img-view.c:1391
+#: src/view_dir_list.c:214 src/view_dir_tree.c:306
 msgid "Cancel"
 msgstr "Vazgeç"
 
@@ -656,14 +657,14 @@ msgstr "Pencereyi kapat"
 msgid "%d files (set 2)"
 msgstr "%d dosya %s"
 
-#: src/dupe.c:2590 src/dupe.c:3117 src/preferences.c:947 src/print.c:3194
-#: src/search.c:2754 src/view_file_list.c:1556
+#: src/dupe.c:2590 src/dupe.c:3117 src/preferences.c:945 src/print.c:3194
+#: src/search.c:2754 src/view_file_list.c:1654
 #, fuzzy
 msgid "Size"
 msgstr "Boy :"
 
 #: src/dupe.c:2591 src/dupe.c:3118 src/exif.c:297 src/exif.c:419
-#: src/print.c:3192 src/search.c:2755 src/view_file_list.c:1557
+#: src/print.c:3192 src/search.c:2755 src/view_file_list.c:1655
 #, fuzzy
 msgid "Date"
 msgstr "Sil"
@@ -676,7 +677,7 @@ msgstr ""
 msgid "Checksum"
 msgstr ""
 
-#: src/dupe.c:2594 src/dupe.c:3120 src/search.c:2757 src/ui_pathsel.c:1107
+#: src/dupe.c:2594 src/dupe.c:3120 src/search.c:2757 src/ui_pathsel.c:1106
 msgid "Path"
 msgstr ""
 
@@ -708,7 +709,7 @@ msgstr ""
 msgid "Compare by:"
 msgstr ""
 
-#: src/dupe.c:3173 src/preferences.c:840 src/search.c:2770
+#: src/dupe.c:3173 src/preferences.c:838 src/search.c:2770
 msgid "Thumbnails"
 msgstr "Týrnaklar"
 
@@ -763,8 +764,8 @@ msgstr ""
 msgid "stopped by user"
 msgstr ""
 
-#: src/exif.c:112 src/exif.c:125 src/exif.c:139 src/exif.c:164 src/exif.c:606
-#: src/exif.c:1452 src/exif.c:1455 src/exif.c:1520
+#: src/exif.c:112 src/exif.c:125 src/exif.c:139 src/exif.c:164 src/exif.c:610
+#: src/exif.c:1460 src/exif.c:1463 src/exif.c:1528
 #, fuzzy
 msgid "unknown"
 msgstr "(bennebileyimne)'de"
@@ -893,12 +894,12 @@ msgstr ""
 msgid "flash"
 msgstr ""
 
-#: src/exif.c:189 src/exif.c:1475 src/info.c:226
+#: src/exif.c:189 src/exif.c:1483 src/info.c:226
 msgid "no"
 msgstr ""
 
 #. flash fired (bit 0)
-#: src/exif.c:190 src/exif.c:1475 src/info.c:226
+#: src/exif.c:190 src/exif.c:1483 src/info.c:226
 #, fuzzy
 msgid "yes"
 msgstr "Evet"
@@ -990,42 +991,42 @@ msgstr ""
 msgid "Resolution"
 msgstr ""
 
-#: src/exif.c:1451
+#: src/exif.c:1459
 msgid "infinity"
 msgstr ""
 
-#: src/exif.c:1479
+#: src/exif.c:1487
 #, fuzzy
 msgid "mode:"
 msgstr "Dosya"
 
-#: src/exif.c:1483 src/utilops.c:1234
+#: src/exif.c:1491 src/utilops.c:1293
 msgid "on"
 msgstr ""
 
-#: src/exif.c:1486 src/utilops.c:1234
+#: src/exif.c:1494 src/utilops.c:1293
 msgid "off"
 msgstr ""
 
-#: src/exif.c:1489
+#: src/exif.c:1497
 msgid "auto"
 msgstr ""
 
-#: src/exif.c:1495
+#: src/exif.c:1503
 msgid "not detected by strobe"
 msgstr ""
 
-#: src/exif.c:1496
+#: src/exif.c:1504
 msgid "detected by strobe"
 msgstr ""
 
 #. we ignore flash function (bit 5)
 #. red-eye (bit 6)
-#: src/exif.c:1501
+#: src/exif.c:1509
 msgid "red-eye reduction"
 msgstr ""
 
-#: src/exif.c:1520
+#: src/exif.c:1528
 msgid "dot"
 msgstr ""
 
@@ -1083,63 +1084,63 @@ msgstr ""
 msgid "Active monitor"
 msgstr ""
 
-#: src/img-view.c:1173 src/layout_image.c:706 src/layout_util.c:791
+#: src/img-view.c:1211 src/layout_image.c:718 src/layout_util.c:816
 #, fuzzy
 msgid "Zoom _in"
 msgstr "Büyült"
 
-#: src/img-view.c:1174 src/layout_image.c:707 src/layout_util.c:792
+#: src/img-view.c:1212 src/layout_image.c:719 src/layout_util.c:817
 #, fuzzy
 msgid "Zoom _out"
 msgstr "Küçült"
 
-#: src/img-view.c:1175 src/layout_image.c:708 src/layout_util.c:793
+#: src/img-view.c:1213 src/layout_image.c:720 src/layout_util.c:818
 #, fuzzy
 msgid "Zoom _1:1"
 msgstr "1:1 göster"
 
-#: src/img-view.c:1176 src/layout_image.c:709
+#: src/img-view.c:1214 src/layout_image.c:721
 #, fuzzy
 msgid "Fit image to _window"
 msgstr "Pencerenin boyutuna ayarla"
 
-#: src/img-view.c:1181 src/layout_image.c:715 src/layout_util.c:789
+#: src/img-view.c:1219 src/layout_image.c:727 src/layout_util.c:814
 #, fuzzy
 msgid "Set as _wallpaper"
 msgstr "Ardalan yap"
 
-#: src/img-view.c:1199 src/layout_image.c:740
+#: src/img-view.c:1237 src/layout_image.c:752
 #, fuzzy
 msgid "_Stop slideshow"
 msgstr "Resim þovu"
 
-#: src/img-view.c:1202 src/layout_image.c:743
+#: src/img-view.c:1240 src/layout_image.c:755
 #, fuzzy
 msgid "Continue slides_how"
 msgstr "Resim þovunu aç/kapat"
 
-#: src/img-view.c:1207 src/img-view.c:1215 src/layout_image.c:748
-#: src/layout_image.c:755
+#: src/img-view.c:1245 src/img-view.c:1253 src/layout_image.c:760
+#: src/layout_image.c:767
 #, fuzzy
 msgid "Pause slides_how"
 msgstr "Resim þovu"
 
-#: src/img-view.c:1213 src/layout_image.c:754
+#: src/img-view.c:1251 src/layout_image.c:766
 #, fuzzy
 msgid "_Start slideshow"
 msgstr "Resim þovu"
 
-#: src/img-view.c:1221 src/layout_image.c:765
+#: src/img-view.c:1259 src/layout_image.c:777
 #, fuzzy
 msgid "Exit _full screen"
 msgstr "Tam ekrandan çýk"
 
-#: src/img-view.c:1225 src/layout_image.c:761
+#: src/img-view.c:1263 src/layout_image.c:773
 #, fuzzy
 msgid "_Full screen"
 msgstr "Tam ekran"
 
-#: src/img-view.c:1229 src/layout_util.c:766
+#: src/img-view.c:1267 src/layout_util.c:791
 #, fuzzy
 msgid "C_lose window"
 msgstr "Pencereyi kapat"
@@ -1179,7 +1180,7 @@ msgstr ""
 msgid "Group:"
 msgstr ""
 
-#: src/info.c:374 src/preferences.c:821
+#: src/info.c:374 src/preferences.c:819
 msgid "General"
 msgstr "Genel"
 
@@ -1192,49 +1193,49 @@ msgstr ""
 msgid "Image properties - GQview"
 msgstr ""
 
-#: src/layout.c:271 src/view_file_icon.c:301 src/view_file_list.c:413
+#: src/layout.c:276 src/view_file_icon.c:301 src/view_file_list.c:414
 msgid "Ascending"
 msgstr ""
 
-#: src/layout.c:337
+#: src/layout.c:342
 msgid " Slideshow"
 msgstr "Resim þovu"
 
-#: src/layout.c:341
+#: src/layout.c:346
 msgid " Paused"
 msgstr ""
 
-#: src/layout.c:358
+#: src/layout.c:363
 #, fuzzy, c-format
 msgid "%s, %d files (%s, %d)%s"
 msgstr "%d dosya (%d)%s"
 
-#: src/layout.c:365
+#: src/layout.c:370
 #, fuzzy, c-format
 msgid "%s, %d files%s"
 msgstr "%d dosya %s"
 
-#: src/layout.c:370
+#: src/layout.c:375
 #, c-format
 msgid "%d files%s"
 msgstr "%d dosya %s"
 
-#: src/layout.c:399
+#: src/layout.c:404
 #, c-format
 msgid "(no read permission) %s bytes"
 msgstr ""
 
-#: src/layout.c:403
+#: src/layout.c:408
 #, fuzzy, c-format
 msgid "( ? x ? ) %s bytes"
 msgstr "( ? x ? ) %d byte"
 
-#: src/layout.c:408
+#: src/layout.c:413
 #, fuzzy, c-format
 msgid "( %d x %d ) %s bytes"
 msgstr "( %d x %d ) %d byte"
 
-#: src/layout.c:1104
+#: src/layout.c:1109
 msgid "GQview Tools"
 msgstr "GQview Çerezleri"
 
@@ -1243,12 +1244,12 @@ msgstr "GQview Çerezleri"
 msgid "Tools"
 msgstr "Dosya"
 
-#: src/layout_config.c:57 src/ui_pathsel.c:1175
+#: src/layout_config.c:57 src/ui_pathsel.c:1174
 #, fuzzy
 msgid "Files"
 msgstr "Dosya"
 
-#: src/layout_config.c:57 src/preferences.c:881 src/print.c:110
+#: src/layout_config.c:57 src/preferences.c:879 src/print.c:110
 msgid "Image"
 msgstr "Resim"
 
@@ -1256,328 +1257,328 @@ msgstr "Resim"
 msgid "(drag to change order)"
 msgstr ""
 
-#: src/layout_image.c:770
+#: src/layout_image.c:782
 #, fuzzy
 msgid "Hide file _list"
 msgstr "Dosya listesini göster/gizle"
 
-#: src/layout_util.c:625 src/menu.c:74
+#: src/layout_util.c:650 src/menu.c:74
 #, c-format
 msgid "in %s..."
 msgstr "%s'de"
 
-#: src/layout_util.c:629 src/menu.c:76
+#: src/layout_util.c:654 src/menu.c:76
 msgid "in (unknown)..."
 msgstr "(bennebileyimne)'de"
 
-#: src/layout_util.c:637
+#: src/layout_util.c:662
 msgid "empty"
 msgstr ""
 
-#: src/layout_util.c:748
+#: src/layout_util.c:773
 #, fuzzy
 msgid "_File"
 msgstr "Dosya"
 
-#: src/layout_util.c:749 src/menu.c:91
+#: src/layout_util.c:774 src/menu.c:91
 #, fuzzy
 msgid "_Edit"
 msgstr "Düzenle"
 
-#: src/layout_util.c:750 src/menu.c:248
+#: src/layout_util.c:775 src/menu.c:248
 msgid "_Adjust"
 msgstr ""
 
-#: src/layout_util.c:752
+#: src/layout_util.c:777
 #, fuzzy
 msgid "_Help"
 msgstr "Yardým"
 
-#: src/layout_util.c:754
+#: src/layout_util.c:779
 #, fuzzy
 msgid "New _window"
 msgstr "Seçenekler ..."
 
-#: src/layout_util.c:755
+#: src/layout_util.c:780
 #, fuzzy
 msgid "_New collection"
 msgstr "Seçenekler ..."
 
-#: src/layout_util.c:756
+#: src/layout_util.c:781
 #, fuzzy
 msgid "_Open collection..."
 msgstr "Seçenekler ..."
 
-#: src/layout_util.c:757
+#: src/layout_util.c:782
 msgid "Open _recent"
 msgstr ""
 
-#: src/layout_util.c:758
+#: src/layout_util.c:783
 #, fuzzy
 msgid "_Search..."
 msgstr "Kopyala ..."
 
-#: src/layout_util.c:760
+#: src/layout_util.c:785
 #, fuzzy
 msgid "_Print..."
 msgstr "Yeniden adlandýr .."
 
-#: src/layout_util.c:761
+#: src/layout_util.c:786
 #, fuzzy
 msgid "N_ew folder..."
 msgstr "Sil .."
 
-#: src/layout_util.c:767
+#: src/layout_util.c:792
 #, fuzzy
 msgid "_Quit"
 msgstr "Yeniden adlandýr .."
 
-#: src/layout_util.c:779 src/menu.c:194
+#: src/layout_util.c:804 src/menu.c:194
 msgid "_Rotate clockwise"
 msgstr ""
 
-#: src/layout_util.c:780 src/menu.c:197
+#: src/layout_util.c:805 src/menu.c:197
 msgid "Rotate _counterclockwise"
 msgstr ""
 
-#: src/layout_util.c:781
+#: src/layout_util.c:806
 msgid "Rotate 1_80"
 msgstr ""
 
-#: src/layout_util.c:782 src/menu.c:203
+#: src/layout_util.c:807 src/menu.c:203
 msgid "_Mirror"
 msgstr ""
 
-#: src/layout_util.c:783 src/menu.c:206
+#: src/layout_util.c:808 src/menu.c:206
 msgid "_Flip"
 msgstr ""
 
-#: src/layout_util.c:785
+#: src/layout_util.c:810
 #, fuzzy
 msgid "Select _all"
 msgstr "Silerken bir hata oluþtu"
 
-#: src/layout_util.c:786
+#: src/layout_util.c:811
 #, fuzzy
 msgid "Select _none"
 msgstr "Seçenekler ..."
 
-#: src/layout_util.c:787
+#: src/layout_util.c:812
 #, fuzzy
 msgid "P_references..."
 msgstr "Seçenekler ..."
 
-#: src/layout_util.c:788
+#: src/layout_util.c:813
 msgid "_Thumbnail maintenance..."
 msgstr ""
 
-#: src/layout_util.c:794
+#: src/layout_util.c:819
 #, fuzzy
 msgid "_Zoom to fit"
 msgstr "Küçült"
 
-#: src/layout_util.c:795
+#: src/layout_util.c:820
 #, fuzzy
 msgid "F_ull screen"
 msgstr "Tam ekran"
 
-#: src/layout_util.c:796
+#: src/layout_util.c:821
 #, fuzzy
 msgid "_Hide file list"
 msgstr "Dosya listesini göster/gizle"
 
-#: src/layout_util.c:797
+#: src/layout_util.c:822
 #, fuzzy
 msgid "Toggle _slideshow"
 msgstr "Resim þovu"
 
-#: src/layout_util.c:798
+#: src/layout_util.c:823
 #, fuzzy
 msgid "_Refresh"
 msgstr "Yenile"
 
-#: src/layout_util.c:800
+#: src/layout_util.c:825
 msgid "_Contents"
 msgstr ""
 
-#: src/layout_util.c:801
+#: src/layout_util.c:826
 msgid "_Keyboard shortcuts"
 msgstr ""
 
-#: src/layout_util.c:802
+#: src/layout_util.c:827
 msgid "_Release notes"
 msgstr ""
 
-#: src/layout_util.c:803
+#: src/layout_util.c:828
 #, fuzzy
 msgid "_About"
 msgstr "Hakkýnda"
 
-#: src/layout_util.c:807
+#: src/layout_util.c:832
 #, fuzzy
 msgid "_Thumbnails"
 msgstr "Týrnaklar"
 
-#: src/layout_util.c:808
+#: src/layout_util.c:833
 #, fuzzy
 msgid "Tr_ee"
 msgstr "Tam ekran"
 
-#: src/layout_util.c:809
+#: src/layout_util.c:834
 #, fuzzy
 msgid "_Float file list"
 msgstr "Dosya listesini dinamik et/etme"
 
-#: src/layout_util.c:810
+#: src/layout_util.c:835
 #, fuzzy
 msgid "Hide tool_bar"
 msgstr "GQview Çerezleri"
 
-#: src/layout_util.c:811
+#: src/layout_util.c:836
 #, fuzzy
 msgid "_Keywords"
 msgstr "Týrnaklar"
 
-#: src/layout_util.c:812
+#: src/layout_util.c:837
 #, fuzzy
 msgid "E_xif data"
 msgstr "Listeleri yenile"
 
-#: src/layout_util.c:813
+#: src/layout_util.c:838
 #, fuzzy
 msgid "Sort _manager"
 msgstr "Büyült"
 
-#: src/layout_util.c:817
+#: src/layout_util.c:842
 #, fuzzy
 msgid "_List"
 msgstr "Listeleri yenile"
 
-#: src/layout_util.c:818
+#: src/layout_util.c:843
 #, fuzzy
 msgid "I_cons"
 msgstr "Týrnaklar"
 
-#: src/layout_util.c:1083
+#: src/layout_util.c:1108
 #, fuzzy
 msgid "Show thumbnails"
 msgstr "Týrnaklarý arabellekte tut"
 
-#: src/layout_util.c:1085
+#: src/layout_util.c:1110
 #, fuzzy
 msgid "Change to home folder"
 msgstr "Ev dizinime geç"
 
-#: src/layout_util.c:1087
+#: src/layout_util.c:1112
 msgid "Refresh file list"
 msgstr "Dosya listesini yenile"
 
-#: src/layout_util.c:1089
+#: src/layout_util.c:1114
 msgid "Zoom in"
 msgstr "Büyült"
 
-#: src/layout_util.c:1091
+#: src/layout_util.c:1116
 msgid "Zoom out"
 msgstr "Küçült"
 
-#: src/layout_util.c:1093 src/preferences.c:910
+#: src/layout_util.c:1118 src/preferences.c:908
 msgid "Fit image to window"
 msgstr "Pencerenin boyutuna ayarla"
 
-#: src/layout_util.c:1095
+#: src/layout_util.c:1120
 msgid "Set zoom 1:1"
 msgstr "1:1 göster"
 
-#: src/layout_util.c:1097
+#: src/layout_util.c:1122
 msgid "Configure options"
 msgstr "Seçenekleri ayarla"
 
-#: src/layout_util.c:1099
+#: src/layout_util.c:1124
 msgid "Float Controls"
 msgstr "Dinamik ayarlamalar"
 
-#: src/main.c:266
+#: src/main.c:237
 msgid "Help - GQview"
 msgstr ""
 
-#: src/main.c:489 src/main.c:1305
+#: src/main.c:460 src/main.c:1276
 #, fuzzy
 msgid "Command line"
 msgstr "Komuta"
 
 #. short, long                  callback,               extra, prefer,description
-#: src/main.c:527
+#: src/main.c:498
 #, fuzzy
 msgid "next image"
 msgstr "%d dosya %s"
 
-#: src/main.c:528
+#: src/main.c:499
 msgid "previous image"
 msgstr ""
 
-#: src/main.c:529
+#: src/main.c:500
 #, fuzzy
 msgid "first image"
 msgstr "%d dosya %s"
 
-#: src/main.c:530
+#: src/main.c:501
 #, fuzzy
 msgid "last image"
 msgstr "%d dosya %s"
 
-#: src/main.c:531
+#: src/main.c:502
 #, fuzzy
 msgid "toggle full screen"
 msgstr "Tam ekrandan çýk"
 
-#: src/main.c:532
+#: src/main.c:503
 #, fuzzy
 msgid "start full screen"
 msgstr "Tam ekrandan çýk"
 
-#: src/main.c:533
+#: src/main.c:504
 #, fuzzy
 msgid "stop full screen"
 msgstr "Tam ekrandan çýk"
 
-#: src/main.c:534
+#: src/main.c:505
 #, fuzzy
 msgid "toggle slide show"
 msgstr "Resim þovu"
 
-#: src/main.c:535
+#: src/main.c:506
 #, fuzzy
 msgid "start slide show"
 msgstr "Resim þovu"
 
-#: src/main.c:536
+#: src/main.c:507
 #, fuzzy
 msgid "stop slide show"
 msgstr "Resim þovu"
 
-#: src/main.c:537
+#: src/main.c:508
 #, fuzzy
 msgid "start recursive slide show"
 msgstr "Resim þovu"
 
-#: src/main.c:538
+#: src/main.c:509
 msgid "set slide show delay in seconds"
 msgstr ""
 
-#: src/main.c:539
+#: src/main.c:510
 msgid "show tools"
 msgstr ""
 
-#: src/main.c:540
+#: src/main.c:511
 #, fuzzy
 msgid "hide tools"
 msgstr "GQview Çerezleri"
 
-#: src/main.c:541
+#: src/main.c:512
 msgid "quit"
 msgstr ""
 
-#: src/main.c:542
+#: src/main.c:513
 #, fuzzy
 msgid "open file"
 msgstr ""
@@ -1585,24 +1586,24 @@ msgstr ""
 "adlandýr :\n"
 " "
 
-#: src/main.c:543
+#: src/main.c:514
 #, fuzzy
 msgid "open file in new window"
 msgstr "Yeni penerede göster"
 
-#: src/main.c:609
+#: src/main.c:580
 msgid "Remote command list:\n"
 msgstr ""
 
-#: src/main.c:667
+#: src/main.c:638
 msgid "Remote GQview not running, starting..."
 msgstr ""
 
-#: src/main.c:802
+#: src/main.c:773
 msgid "Remote not available\n"
 msgstr ""
 
-#: src/main.c:944
+#: src/main.c:915
 msgid ""
 "Usage: gqview [options] [path]\n"
 "\n"
@@ -1610,60 +1611,60 @@ msgstr ""
 "Kullaným : gqview [seçenekler] [dizin]\n"
 "\n"
 
-#: src/main.c:945
+#: src/main.c:916
 msgid "valid options are:\n"
 msgstr "geçerli opsiyonlar :\n"
 
-#: src/main.c:946
+#: src/main.c:917
 #, fuzzy
 msgid "  +t, --with-tools           force show of tools\n"
 msgstr "  +t, +tools                 çerezleri zorunlu olarak göster\n"
 
-#: src/main.c:947
+#: src/main.c:918
 #, fuzzy
 msgid "  -t, --without-tools        force hide of tools\n"
 msgstr "  -t, -tools                 çerezleri zorunlu olarak gizle\n"
 
-#: src/main.c:948
+#: src/main.c:919
 #, fuzzy
 msgid "  -f, --fullscreen           start in full screen mode\n"
 msgstr "  -t, -tools                 çerezleri zorunlu olarak gizle\n"
 
-#: src/main.c:949
+#: src/main.c:920
 #, fuzzy
 msgid "  -s, --slideshow            start in slideshow mode\n"
 msgstr "  -t, -tools                 çerezleri zorunlu olarak gizle\n"
 
-#: src/main.c:950
+#: src/main.c:921
 msgid "  -l, --list                 open collection window for command line\n"
 msgstr ""
 
-#: src/main.c:951
+#: src/main.c:922
 msgid "  -r, --remote               send following commands to open window\n"
 msgstr ""
 
-#: src/main.c:952
+#: src/main.c:923
 msgid "  -rh,--remote-help          print remote command list\n"
 msgstr ""
 
-#: src/main.c:953
+#: src/main.c:924
 #, fuzzy
 msgid "  --debug                    turn on debug output\n"
 msgstr "  -debug                     dýþa-atýmý aç\n"
 
-#: src/main.c:954
+#: src/main.c:925
 #, fuzzy
 msgid "  -v, --version              print version info\n"
 msgstr "  -t, -tools                 çerezleri zorunlu olarak gizle\n"
 
-#: src/main.c:955
+#: src/main.c:926
 #, fuzzy
 msgid ""
 "  -h, --help                 show this message\n"
 "\n"
 msgstr "  -h, --help                 bu mesajý gösterir\n"
 
-#: src/main.c:969
+#: src/main.c:940
 #, c-format
 msgid ""
 "invalid or ignored: %s\n"
@@ -1672,30 +1673,30 @@ msgstr ""
 "%s geçersiz ya da dikkate alýnmýyor\n"
 "--help ile seçenekleri öðrenebilirsin\n"
 
-#: src/main.c:1034
+#: src/main.c:1005
 #, c-format
 msgid "Creating GQview dir:%s\n"
 msgstr ""
 
-#: src/main.c:1040
+#: src/main.c:1011
 #, fuzzy, c-format
 msgid "Could not create dir:%s\n"
 msgstr "Dizini yaratamadým"
 
-#: src/main.c:1061 src/ui_bookmark.c:858 src/ui_pathsel.c:1043
+#: src/main.c:1032 src/ui_bookmark.c:858 src/ui_pathsel.c:1042
 msgid "Home"
 msgstr ""
 
-#: src/main.c:1063 src/ui_bookmark.c:865
+#: src/main.c:1034 src/ui_bookmark.c:865
 msgid "Desktop"
 msgstr ""
 
-#: src/main.c:1152
+#: src/main.c:1123
 #, fuzzy
 msgid "GQview - exit"
 msgstr "GQview - taþý"
 
-#: src/main.c:1156
+#: src/main.c:1127
 #, fuzzy
 msgid "Quit GQview"
 msgstr ""
@@ -1703,7 +1704,7 @@ msgstr ""
 "adlandýr :\n"
 " "
 
-#: src/main.c:1156
+#: src/main.c:1127
 msgid "Collections have been modified. Quit anyway?"
 msgstr ""
 
@@ -1739,367 +1740,371 @@ msgstr ""
 msgid "Rotate _180"
 msgstr ""
 
-#: src/preferences.c:384
+#: src/preferences.c:382
 msgid "Nearest (worst, but fastest)"
 msgstr ""
 
-#: src/preferences.c:386
+#: src/preferences.c:384
 #, fuzzy
 msgid "Tiles"
 msgstr "Dosya"
 
-#: src/preferences.c:388
+#: src/preferences.c:386
 msgid "Bilinear"
 msgstr ""
 
-#: src/preferences.c:390
+#: src/preferences.c:388
 msgid "Hyper (best, but slowest)"
 msgstr ""
 
-#: src/preferences.c:418
+#: src/preferences.c:416
 msgid "None"
 msgstr ""
 
-#: src/preferences.c:419
+#: src/preferences.c:417
 msgid "Normal"
 msgstr ""
 
-#: src/preferences.c:420
+#: src/preferences.c:418
 msgid "Best"
 msgstr ""
 
-#: src/preferences.c:498 src/print.c:365
+#: src/preferences.c:496 src/print.c:365
 msgid "Custom"
 msgstr ""
 
-#: src/preferences.c:662 src/preferences.c:665
+#: src/preferences.c:660 src/preferences.c:663
 #, fuzzy
 msgid "Reset filters"
 msgstr "Dosyalarý sil"
 
-#: src/preferences.c:666
+#: src/preferences.c:664
 msgid ""
 "This will reset the file filters to the defaults.\n"
 "Continue?"
 msgstr ""
 
-#: src/preferences.c:699 src/preferences.c:702
+#: src/preferences.c:697 src/preferences.c:700
 #, fuzzy
 msgid "Reset editors"
 msgstr "Dosyalarý sil"
 
-#: src/preferences.c:703
+#: src/preferences.c:701
 msgid ""
 "This will reset the edit commands to the defaults.\n"
 "Continue?"
 msgstr ""
 
-#: src/preferences.c:727 src/preferences.c:730
+#: src/preferences.c:725 src/preferences.c:728
 msgid "Clear trash"
 msgstr ""
 
-#: src/preferences.c:731
+#: src/preferences.c:729
 msgid "This will remove the trash contents."
 msgstr ""
 
-#: src/preferences.c:770
+#: src/preferences.c:768
 #, fuzzy
 msgid "GQview Preferences"
 msgstr "GQview - yeniden adlandýr"
 
-#: src/preferences.c:824
+#: src/preferences.c:822
 msgid "Startup"
 msgstr ""
 
-#: src/preferences.c:826
+#: src/preferences.c:824
 #, fuzzy
 msgid "Change to folder:"
 msgstr "Ev dizinime geç"
 
-#: src/preferences.c:837
+#: src/preferences.c:835
 msgid "Use current"
 msgstr "Þu ankini kullan"
 
-#: src/preferences.c:843 src/print.c:3201 src/print.c:3408
+#: src/preferences.c:841 src/print.c:3201 src/print.c:3408
 msgid "Size:"
 msgstr "Boy :"
 
-#: src/preferences.c:844 src/preferences.c:890
+#: src/preferences.c:842 src/preferences.c:888
 msgid "Quality:"
 msgstr ""
 
-#: src/preferences.c:846
+#: src/preferences.c:844
 msgid "Cache thumbnails"
 msgstr "Týrnaklarý arabellekte tut"
 
-#: src/preferences.c:852
+#: src/preferences.c:850
 msgid "Use shared thumbnail cache"
 msgstr ""
 
-#: src/preferences.c:858
+#: src/preferences.c:856
 #, fuzzy
 msgid "Cache thumbnails into .thumbnails"
 msgstr "Týrnaklarý arabellekte tut"
 
-#: src/preferences.c:861
+#: src/preferences.c:859
 msgid "Use xvpics thumbnails when found (read only)"
 msgstr "xvpics týrnaklarýný bulunca onlarý kullan (salt-okunur)"
 
-#: src/preferences.c:864
+#: src/preferences.c:862
 msgid "Slide show"
 msgstr "Resim þovu"
 
-#: src/preferences.c:867
+#: src/preferences.c:865
 #, fuzzy
 msgid "Delay between image change:"
 msgstr "Resim deðiþiminde kaç saniye beklensin :"
 
-#: src/preferences.c:867
+#: src/preferences.c:865
 msgid "seconds"
 msgstr ""
 
-#: src/preferences.c:873
+#: src/preferences.c:871
 msgid "Random"
 msgstr "Tesadüfen"
 
-#: src/preferences.c:874
+#: src/preferences.c:872
 msgid "Repeat"
 msgstr "Tekrarla"
 
-#: src/preferences.c:884
+#: src/preferences.c:882
 #, fuzzy
 msgid "Zoom"
 msgstr "Büyült"
 
-#: src/preferences.c:887
+#: src/preferences.c:885
 msgid "Dithering method:"
 msgstr ""
 
-#: src/preferences.c:892
+#: src/preferences.c:890
 msgid "Two pass zooming"
 msgstr ""
 
-#: src/preferences.c:895
+#: src/preferences.c:893
 msgid "Allow enlargement of image for zoom to fit."
 msgstr ""
 
-#: src/preferences.c:899
+#: src/preferences.c:897
 #, fuzzy
 msgid "Zoom increment:"
 msgstr "Büyült"
 
-#: src/preferences.c:904
+#: src/preferences.c:902
 msgid "When new image is selected:"
 msgstr "Yeni bir resim seçildiyse"
 
-#: src/preferences.c:907
+#: src/preferences.c:905
 msgid "Zoom to original size"
 msgstr "Orijinal boyuta getir"
 
-#: src/preferences.c:913
+#: src/preferences.c:911
 msgid "Leave Zoom at previous setting"
 msgstr "Önceki büyütme/küçültme ayarlarýný geçerli say"
 
-#: src/preferences.c:917
+#: src/preferences.c:915
 msgid "Appearance"
 msgstr ""
 
-#: src/preferences.c:919
+#: src/preferences.c:917
 msgid "Black background"
 msgstr ""
 
-#: src/preferences.c:922
+#: src/preferences.c:920
 #, fuzzy
 msgid "Convenience"
 msgstr "Devam et"
 
-#: src/preferences.c:924
+#: src/preferences.c:922
 #, fuzzy
 msgid "Refresh on file change"
 msgstr "Dosya listesini yenile"
 
-#: src/preferences.c:926
+#: src/preferences.c:924
 msgid "Preload next image"
 msgstr ""
 
-#: src/preferences.c:928
+#: src/preferences.c:926
 msgid "Auto rotate image using Exif information"
 msgstr ""
 
-#: src/preferences.c:937
+#: src/preferences.c:935
 msgid "Windows"
 msgstr ""
 
-#: src/preferences.c:940
+#: src/preferences.c:938
 #, fuzzy
 msgid "State"
 msgstr "Sil"
 
-#: src/preferences.c:942
+#: src/preferences.c:940
 msgid "Remember window positions"
 msgstr "Pencere yerlerini aklýnda tut"
 
-#: src/preferences.c:944
+#: src/preferences.c:942
 msgid "Remember tool state (float/hidden)"
 msgstr "Durumu unutma "
 
-#: src/preferences.c:949
+#: src/preferences.c:947
 msgid "Fit window to image when tools are hidden/floating"
 msgstr "Çerezler gizli ya da dinamik çalýþýyorsa pencereyi resme göre ayarla"
 
-#: src/preferences.c:953
+#: src/preferences.c:951
 #, fuzzy
 msgid "Limit size when auto-sizing window (%):"
 msgstr "Boyutu otomatik boyutlamada sýnýrla"
 
-#: src/preferences.c:960 src/print.c:3356 src/print.c:3363
+#: src/preferences.c:958 src/print.c:3356 src/print.c:3363
 msgid "Layout"
 msgstr ""
 
-#: src/preferences.c:973
+#: src/preferences.c:971
 msgid "Filtering"
 msgstr "Filtralama"
 
-#: src/preferences.c:978
+#: src/preferences.c:976
 msgid "Show entries that begin with a dot"
 msgstr "Bir noktayla baþlayan birimleri göster"
 
-#: src/preferences.c:980
+#: src/preferences.c:978
 msgid "Case sensitive sort"
 msgstr ""
 
-#: src/preferences.c:983
+#: src/preferences.c:981
 msgid "Disable File Filtering"
 msgstr "Dosya filtralarýný kapat"
 
-#: src/preferences.c:986
+#: src/preferences.c:984
 #, fuzzy
 msgid "File types"
 msgstr "Filtralama"
 
-#: src/preferences.c:1008
+#: src/preferences.c:1006
 #, fuzzy
 msgid "Filter"
 msgstr "Filtralama"
 
-#: src/preferences.c:1045 src/preferences.c:1109
+#: src/preferences.c:1043 src/preferences.c:1107
 msgid "Defaults"
 msgstr ""
 
-#: src/preferences.c:1066
+#: src/preferences.c:1064
 #, fuzzy
 msgid "Editors"
 msgstr "Düzenle"
 
-#: src/preferences.c:1072
+#: src/preferences.c:1070
 msgid "#"
 msgstr "#"
 
-#: src/preferences.c:1075
+#: src/preferences.c:1073
 msgid "Menu name"
 msgstr "Mönü adý"
 
-#: src/preferences.c:1125
+#: src/preferences.c:1076
+msgid "Command Line"
+msgstr "Komuta"
+
+#: src/preferences.c:1123
 msgid "Advanced"
 msgstr ""
 
-#: src/preferences.c:1138
+#: src/preferences.c:1136
 #, fuzzy
 msgid "Full screen"
 msgstr "Tam ekran"
 
-#: src/preferences.c:1146
+#: src/preferences.c:1144
 #, fuzzy
 msgid "Smooth image flip"
 msgstr "Resim"
 
-#: src/preferences.c:1148
+#: src/preferences.c:1146
 msgid "Disable screen saver"
 msgstr ""
 
-#: src/preferences.c:1151
+#: src/preferences.c:1149
 msgid "Delete"
 msgstr "Sil"
 
-#: src/preferences.c:1153
+#: src/preferences.c:1151
 msgid "Confirm file delete"
 msgstr "Silmeyi onayla"
 
-#: src/preferences.c:1155
+#: src/preferences.c:1153
 #, fuzzy
 msgid "Enable Delete key"
 msgstr ""
 "%s 'yi maalesef\n"
 "silemedim"
 
-#: src/preferences.c:1158
+#: src/preferences.c:1156
 #, fuzzy
 msgid "Safe delete"
 msgstr "Silmeyi onayla"
 
-#: src/preferences.c:1176
+#: src/preferences.c:1174
 #, fuzzy
 msgid "Maximum size:"
 msgstr "Dosya"
 
-#: src/preferences.c:1176
+#: src/preferences.c:1174
 msgid "MB"
 msgstr ""
 
-#: src/preferences.c:1179
+#: src/preferences.c:1177
 msgid "View"
 msgstr "Göster"
 
-#: src/preferences.c:1189
+#: src/preferences.c:1187
 msgid "Behavior"
 msgstr ""
 
-#: src/preferences.c:1191
+#: src/preferences.c:1189
 msgid "Rectangular selection in icon view"
 msgstr ""
 
-#: src/preferences.c:1194
+#: src/preferences.c:1192
 msgid "Descend folders in tree view"
 msgstr ""
 
-#: src/preferences.c:1197
+#: src/preferences.c:1195
 msgid "In place renaming"
 msgstr ""
 
-#: src/preferences.c:1200
+#: src/preferences.c:1198
 msgid "Navigation"
 msgstr ""
 
-#: src/preferences.c:1202
+#: src/preferences.c:1200
 msgid "Progressive keyboard scrolling"
 msgstr "Geliþebilir klavye kaydýrmasý"
 
-#: src/preferences.c:1204
+#: src/preferences.c:1202
 msgid "Mouse wheel scrolls image"
 msgstr ""
 
-#: src/preferences.c:1207
+#: src/preferences.c:1205
 msgid "Miscellaneous"
 msgstr ""
 
-#: src/preferences.c:1209
+#: src/preferences.c:1207
 msgid "Store keywords and comments local to source images"
 msgstr ""
 
-#: src/preferences.c:1212
+#: src/preferences.c:1210
 #, fuzzy
 msgid "Custom similarity threshold:"
 msgstr "Benim dosya tiplerim :"
 
-#: src/preferences.c:1215
+#: src/preferences.c:1213
 msgid "Offscreen cache size (Mb per image):"
 msgstr ""
 
-#: src/preferences.c:1291
+#: src/preferences.c:1289
 msgid "About - GQview"
 msgstr ""
 
-#: src/preferences.c:1304
+#: src/preferences.c:1302
 #, fuzzy, c-format
 msgid ""
 "GQview %s\n"
@@ -2118,7 +2123,7 @@ msgstr ""
 "\n"
 "GNU Public License'e göre açýklanmýþtýr"
 
-#: src/preferences.c:1322
+#: src/preferences.c:1320
 #, fuzzy
 msgid "Credits..."
 msgstr "Seçenekler ..."
@@ -2274,7 +2279,7 @@ msgstr ""
 msgid "page %d of %d"
 msgstr ""
 
-#: src/print.c:736 src/utilops.c:2067
+#: src/print.c:736 src/utilops.c:2128
 msgid "Preview"
 msgstr ""
 
@@ -2285,8 +2290,8 @@ msgid ""
 "\"%s\""
 msgstr ""
 
-#: src/print.c:1059 src/print.c:1488 src/ui_pathsel.c:424
-#: src/view_file_list.c:453
+#: src/print.c:1059 src/print.c:1488 src/ui_pathsel.c:423
+#: src/view_file_list.c:454
 #, fuzzy, c-format
 msgid "A file with name %s already exists."
 msgstr ""
@@ -2658,7 +2663,7 @@ msgstr ""
 "%s 'yi maalesef\n"
 "silemedim"
 
-#: src/ui_pathsel.c:430 src/view_dir_list.c:97 src/view_dir_tree.c:204
+#: src/ui_pathsel.c:429 src/utilops.c:2486
 #, fuzzy, c-format
 msgid "Failed to rename %s to %s."
 msgstr ""
@@ -2667,7 +2672,7 @@ msgstr ""
 "maalesef bir hata\n"
 "oluþtu"
 
-#: src/ui_pathsel.c:486 src/utilops.c:1288 src/utilops.c:1461
+#: src/ui_pathsel.c:485 src/utilops.c:1347 src/utilops.c:1520
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -2676,15 +2681,15 @@ msgstr ""
 "%s 'yi maalesef\n"
 "silemedim"
 
-#: src/ui_pathsel.c:487 src/utilops.c:1462
+#: src/ui_pathsel.c:486 src/utilops.c:1521
 msgid "File deletion failed"
 msgstr "Silerken bir hata oluþtu"
 
-#: src/ui_pathsel.c:529 src/ui_pathsel.c:537
+#: src/ui_pathsel.c:528 src/ui_pathsel.c:536
 msgid "Delete file"
 msgstr "Dosyayý sil"
 
-#: src/ui_pathsel.c:535
+#: src/ui_pathsel.c:534
 #, c-format
 msgid ""
 "About to delete the file:\n"
@@ -2693,29 +2698,29 @@ msgstr ""
 "%s dosyasýný\n"
 "silmek üzereyim"
 
-#: src/ui_pathsel.c:626 src/ui_pathsel.c:634 src/utilops.c:2035
-#: src/utilops.c:2255
+#: src/ui_pathsel.c:625 src/ui_pathsel.c:633 src/utilops.c:2096
+#: src/utilops.c:2320
 #, fuzzy
 msgid "_Rename"
 msgstr "Yeniden adlandýr"
 
-#: src/ui_pathsel.c:628 src/ui_pathsel.c:638
+#: src/ui_pathsel.c:627 src/ui_pathsel.c:637
 #, fuzzy
 msgid "Add _Bookmark"
 msgstr "Düzenle"
 
-#: src/ui_pathsel.c:636
+#: src/ui_pathsel.c:635
 #, fuzzy
 msgid "_Delete"
 msgstr "Sil"
 
-#: src/ui_pathsel.c:740 src/ui_pathsel.c:1045
+#: src/ui_pathsel.c:739 src/ui_pathsel.c:1044
 #, fuzzy
 msgid "New folder"
 msgstr "Sil .."
 
-#: src/ui_pathsel.c:750 src/utilops.c:2325 src/view_dir_list.c:338
-#: src/view_dir_tree.c:434
+#: src/ui_pathsel.c:749 src/utilops.c:2392 src/view_dir_list.c:330
+#: src/view_dir_tree.c:426
 #, fuzzy, c-format
 msgid ""
 "Unable to create folder:\n"
@@ -2724,88 +2729,88 @@ msgstr ""
 "%s dizinini maalesef\n"
 "yaratamadým"
 
-#: src/ui_pathsel.c:751 src/utilops.c:2326 src/view_dir_list.c:339
-#: src/view_dir_tree.c:435
+#: src/ui_pathsel.c:750 src/utilops.c:2393 src/view_dir_list.c:331
+#: src/view_dir_tree.c:427
 #, fuzzy
 msgid "Error creating folder"
 msgstr "Dizini yaratýrken bir hata oluþtu"
 
-#: src/ui_pathsel.c:972
+#: src/ui_pathsel.c:971
 msgid "All Files"
 msgstr ""
 
-#: src/ui_pathsel.c:1048
+#: src/ui_pathsel.c:1047
 msgid "Show hidden"
 msgstr ""
 
-#: src/ui_pathsel.c:1132
+#: src/ui_pathsel.c:1131
 #, fuzzy
 msgid "Filter:"
 msgstr "Filtralama"
 
-#: src/ui_tabcomp.c:840
+#: src/ui_tabcomp.c:836
 #, fuzzy
 msgid "Select path"
 msgstr "Silerken bir hata oluþtu"
 
-#: src/ui_tabcomp.c:856
+#: src/ui_tabcomp.c:852
 #, fuzzy
 msgid "All files"
 msgstr "%d dosya %s"
 
-#: src/utilops.c:470 src/utilops.c:783 src/utilops.c:1640 src/utilops.c:2187
+#: src/utilops.c:498 src/utilops.c:819 src/utilops.c:1699 src/utilops.c:2251
 msgid "Overwrite file"
 msgstr "Üstüne yaz"
 
-#: src/utilops.c:475 src/utilops.c:788 src/utilops.c:1645 src/utilops.c:2192
+#: src/utilops.c:503 src/utilops.c:824 src/utilops.c:1704 src/utilops.c:2256
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "Üstüne yaz"
 
-#: src/utilops.c:476 src/utilops.c:789
+#: src/utilops.c:504 src/utilops.c:825
 msgid "Replace existing file with new file."
 msgstr ""
 
-#: src/utilops.c:480
+#: src/utilops.c:508
 #, fuzzy
 msgid "Overwrite _all"
 msgstr "Üstüne yaz"
 
-#: src/utilops.c:482
+#: src/utilops.c:510
 #, fuzzy
 msgid "S_kip all"
 msgstr "Atla"
 
-#: src/utilops.c:483
+#: src/utilops.c:511
 #, fuzzy
 msgid "_Skip"
 msgstr "Atla"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 #, fuzzy
 msgid "Existing file"
 msgstr "Taþýrken bir hata oluþtu"
 
-#: src/utilops.c:484 src/utilops.c:793 src/utilops.c:1650 src/utilops.c:2197
+#: src/utilops.c:512 src/utilops.c:829 src/utilops.c:1709 src/utilops.c:2261
 #, fuzzy
 msgid "New file"
 msgstr "Sil .."
 
-#: src/utilops.c:494 src/utilops.c:802 src/utilops.c:1746 src/utilops.c:1810
-#: src/utilops.c:2101
+#: src/utilops.c:522 src/utilops.c:838 src/utilops.c:1805 src/utilops.c:1869
+#: src/utilops.c:2162
 #, fuzzy
 msgid "Auto rename"
 msgstr "Mönü adý"
 
-#: src/utilops.c:502 src/utilops.c:810
+#: src/utilops.c:530 src/utilops.c:846
 msgid "Rename"
 msgstr "Yeniden adlandýr"
 
-#: src/utilops.c:543
+#: src/utilops.c:571
 msgid "Source to copy matches destination"
 msgstr "Kopyalanacak kaynak hedefle eþittir"
 
-#: src/utilops.c:544
+#: src/utilops.c:572
 #, fuzzy, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2817,11 +2822,11 @@ msgstr ""
 "bir yerde \n"
 "bir hata oluþtu"
 
-#: src/utilops.c:548
+#: src/utilops.c:576
 msgid "Source to move matches destination"
 msgstr "Taþýlacak kaynak hedefle eþittir"
 
-#: src/utilops.c:549
+#: src/utilops.c:577
 #, fuzzy, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2833,16 +2838,16 @@ msgstr ""
 "( bir hata oluþtu ).\n"
 " "
 
-#: src/utilops.c:557 src/utilops.c:644 src/utilops.c:1280
+#: src/utilops.c:585 src/utilops.c:672 src/utilops.c:1339
 #, fuzzy
 msgid "Co_ntinue"
 msgstr "Devam et"
 
-#: src/utilops.c:630 src/utilops.c:850
+#: src/utilops.c:658 src/utilops.c:886
 msgid "Error copying file"
 msgstr "Kopyalarken hata oluþtu"
 
-#: src/utilops.c:631
+#: src/utilops.c:659
 #, fuzzy, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2856,11 +2861,11 @@ msgstr ""
 "oluþtu.\n"
 " "
 
-#: src/utilops.c:635 src/utilops.c:855
+#: src/utilops.c:663 src/utilops.c:891
 msgid "Error moving file"
 msgstr "Taþýrken bir hata oluþtu"
 
-#: src/utilops.c:636
+#: src/utilops.c:664
 #, fuzzy, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2874,15 +2879,15 @@ msgstr ""
 "taþýyamadým.\n"
 " "
 
-#: src/utilops.c:774
+#: src/utilops.c:810
 msgid "Source matches destination"
 msgstr "Kaynak hedefle eþittir"
 
-#: src/utilops.c:775
+#: src/utilops.c:811
 msgid "Source and destination are the same, operation cancelled."
 msgstr "Kaynak ve hedef eþittir, iþlem durduruldu ."
 
-#: src/utilops.c:851
+#: src/utilops.c:887
 #, c-format
 msgid ""
 "Unable to copy file:\n"
@@ -2895,7 +2900,7 @@ msgstr ""
 "bir yerde \n"
 "bir hata oluþtu"
 
-#: src/utilops.c:856
+#: src/utilops.c:892
 #, c-format
 msgid ""
 "Unable to move file:\n"
@@ -2908,11 +2913,11 @@ msgstr ""
 "( bir hata oluþtu ).\n"
 " "
 
-#: src/utilops.c:899
+#: src/utilops.c:940
 msgid "Invalid destination"
 msgstr "Geçersiz hedef"
 
-#: src/utilops.c:900
+#: src/utilops.c:941
 #, fuzzy
 msgid ""
 "When operating with multiple files, please select\n"
@@ -2921,21 +2926,21 @@ msgstr ""
 "Çoklu bir eylem yaparken lütfen bir dosya deðil , bir\n"
 "dizin seçin ."
 
-#: src/utilops.c:905
+#: src/utilops.c:946
 #, fuzzy
 msgid "Please select an existing folder."
 msgstr "Lütfen varolan bir dizini seç"
 
-#: src/utilops.c:956
+#: src/utilops.c:1015
 msgid "Copy - GQview"
 msgstr ""
 
-#: src/utilops.c:957 src/view_dir_list.c:217 src/view_dir_tree.c:309
+#: src/utilops.c:1016 src/view_dir_list.c:209 src/view_dir_tree.c:301
 #, fuzzy
 msgid "_Copy"
 msgstr "Kopyala"
 
-#: src/utilops.c:960
+#: src/utilops.c:1019
 #, fuzzy
 msgid "Copy file"
 msgstr ""
@@ -2943,7 +2948,7 @@ msgstr ""
 "adlandýr :\n"
 " "
 
-#: src/utilops.c:964
+#: src/utilops.c:1023
 #, fuzzy
 msgid "Copy multiple files"
 msgstr ""
@@ -2951,16 +2956,16 @@ msgstr ""
 "%s'den yola çýkýp\n"
 "buraya ulaþ :"
 
-#: src/utilops.c:970
+#: src/utilops.c:1029
 msgid "Move - GQview"
 msgstr ""
 
-#: src/utilops.c:971 src/view_dir_list.c:219 src/view_dir_tree.c:311
+#: src/utilops.c:1030 src/view_dir_list.c:211 src/view_dir_tree.c:303
 #, fuzzy
 msgid "_Move"
 msgstr "Taþý"
 
-#: src/utilops.c:974
+#: src/utilops.c:1033
 #, fuzzy
 msgid "Move file"
 msgstr ""
@@ -2968,7 +2973,7 @@ msgstr ""
 "adlandýr :\n"
 " "
 
-#: src/utilops.c:978
+#: src/utilops.c:1037
 #, fuzzy
 msgid "Move multiple files"
 msgstr ""
@@ -2976,21 +2981,21 @@ msgstr ""
 "%s'den yola çýkýp\n"
 "buraya ulaþ :"
 
-#: src/utilops.c:992 src/utilops.c:1502
+#: src/utilops.c:1051 src/utilops.c:1561
 #, fuzzy
 msgid "File name:"
 msgstr "Yeniden adlandýr :"
 
-#: src/utilops.c:996
+#: src/utilops.c:1055
 #, fuzzy
 msgid "Choose the destination folder."
 msgstr "Kaynak hedefle eþittir"
 
-#: src/utilops.c:1123 src/utilops.c:1272 src/utilops.c:1289
+#: src/utilops.c:1182 src/utilops.c:1331 src/utilops.c:1348
 msgid "Delete failed"
 msgstr "Silerken bir hata oluþtu"
 
-#: src/utilops.c:1124
+#: src/utilops.c:1183
 #, fuzzy
 msgid "Unable to remove old file from trash folder"
 msgstr ""
@@ -2999,16 +3004,16 @@ msgstr ""
 "( bir hata oluþtu ).\n"
 " "
 
-#: src/utilops.c:1180 src/utilops.c:2318
+#: src/utilops.c:1239 src/utilops.c:2385
 #, fuzzy
 msgid "Could not create folder"
 msgstr "Dizini yaratamadým"
 
-#: src/utilops.c:1202
+#: src/utilops.c:1261
 msgid "Permission denied"
 msgstr ""
 
-#: src/utilops.c:1212
+#: src/utilops.c:1271
 #, fuzzy, c-format
 msgid ""
 "Unable to access or create the trash folder.\n"
@@ -3017,17 +3022,17 @@ msgstr ""
 "%s dizinini maalesef\n"
 "yaratamadým"
 
-#: src/utilops.c:1216
+#: src/utilops.c:1275
 #, fuzzy
 msgid "Turn off safe delete"
 msgstr "Silmeyi onayla"
 
-#: src/utilops.c:1234
+#: src/utilops.c:1293
 #, fuzzy, c-format
 msgid "Safe delete: %s"
 msgstr "Silmeyi onayla"
 
-#: src/utilops.c:1276
+#: src/utilops.c:1335
 #, c-format
 msgid ""
 "Unable to delete file:\n"
@@ -3038,41 +3043,41 @@ msgstr ""
 " silemedim ,\n"
 " yine de öbür dosyalarý sileyim mi ?"
 
-#: src/utilops.c:1347
+#: src/utilops.c:1406
 #, c-format
 msgid "File %d of %d"
 msgstr ""
 
-#: src/utilops.c:1416
+#: src/utilops.c:1475
 #, fuzzy
 msgid "Delete files - GQview"
 msgstr "Dosyalarý sil"
 
-#: src/utilops.c:1420
+#: src/utilops.c:1479
 #, fuzzy
 msgid "Delete multiple files"
 msgstr "Çoklu yeniden adlandýr :"
 
-#: src/utilops.c:1438
+#: src/utilops.c:1497
 #, fuzzy, c-format
 msgid "Review %d files"
 msgstr "%d dosya %s"
 
-#: src/utilops.c:1494
+#: src/utilops.c:1553
 #, fuzzy
 msgid "Delete file - GQview"
 msgstr "Dosyayý sil"
 
-#: src/utilops.c:1498
+#: src/utilops.c:1557
 #, fuzzy
 msgid "Delete file?"
 msgstr "Dosyayý sil"
 
-#: src/utilops.c:1646 src/utilops.c:2193
+#: src/utilops.c:1705 src/utilops.c:2257
 msgid "Replace existing file by renaming new file."
 msgstr ""
 
-#: src/utilops.c:1661
+#: src/utilops.c:1720
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -3085,19 +3090,19 @@ msgstr ""
 "maalesef bir hata\n"
 "oluþtu"
 
-#: src/utilops.c:1664 src/utilops.c:2208 src/view_file_list.c:448
-#: src/view_file_list.c:454 src/view_file_list.c:460
+#: src/utilops.c:1723 src/utilops.c:2272 src/view_file_list.c:449
+#: src/view_file_list.c:455 src/view_file_list.c:461
 msgid "Error renaming file"
 msgstr "Yeniden adlandýrýrken bir hata oluþtu"
 
-#: src/utilops.c:1747
+#: src/utilops.c:1806
 msgid ""
 "Can not auto rename with the selected\n"
 "number set, one or more files exist that\n"
 "match the resulting name list.\n"
 msgstr ""
 
-#: src/utilops.c:1809
+#: src/utilops.c:1868
 #, fuzzy, c-format
 msgid ""
 "Failed to rename\n"
@@ -3109,7 +3114,7 @@ msgstr ""
 "maalesef bir hata\n"
 "oluþtu"
 
-#: src/utilops.c:2031 src/utilops.c:2249
+#: src/utilops.c:2092 src/utilops.c:2314
 #, fuzzy
 msgid "Rename - GQview"
 msgstr ""
@@ -3117,42 +3122,42 @@ msgstr ""
 "adlandýr :\n"
 " "
 
-#: src/utilops.c:2034
+#: src/utilops.c:2095
 #, fuzzy
 msgid "Rename multiple files"
 msgstr "Çoklu yeniden adlandýr :"
 
-#: src/utilops.c:2066
+#: src/utilops.c:2127
 msgid "Original Name"
 msgstr ""
 
-#: src/utilops.c:2110 src/utilops.c:2262
+#: src/utilops.c:2171 src/utilops.c:2327
 #, fuzzy
 msgid "Original name:"
 msgstr "Yeniden adlandýr :"
 
-#: src/utilops.c:2113 src/utilops.c:2265
+#: src/utilops.c:2174 src/utilops.c:2330
 #, fuzzy
 msgid "New name:"
 msgstr "Yeniden adlandýr :"
 
-#: src/utilops.c:2128
+#: src/utilops.c:2192
 msgid "Begin text"
 msgstr ""
 
-#: src/utilops.c:2136
+#: src/utilops.c:2200
 msgid "Start #"
 msgstr ""
 
-#: src/utilops.c:2142
+#: src/utilops.c:2206
 msgid "End text"
 msgstr ""
 
-#: src/utilops.c:2150
+#: src/utilops.c:2214
 msgid "Padding:"
 msgstr ""
 
-#: src/utilops.c:2207 src/view_file_list.c:459
+#: src/utilops.c:2271 src/view_file_list.c:460
 #, c-format
 msgid ""
 "Unable to rename file:\n"
@@ -3165,7 +3170,7 @@ msgstr ""
 " \n"
 " "
 
-#: src/utilops.c:2252
+#: src/utilops.c:2317
 #, fuzzy
 msgid "Rename file"
 msgstr ""
@@ -3173,7 +3178,7 @@ msgstr ""
 "adlandýr :\n"
 " "
 
-#: src/utilops.c:2311
+#: src/utilops.c:2378 src/utilops.c:2468
 #, fuzzy, c-format
 msgid ""
 "The folder:\n"
@@ -3184,12 +3189,12 @@ msgstr ""
 "zaten dosya halinde\n"
 "var ."
 
-#: src/utilops.c:2312
+#: src/utilops.c:2379 src/utilops.c:2469
 #, fuzzy
 msgid "Folder exists"
 msgstr "Dosya"
 
-#: src/utilops.c:2317
+#: src/utilops.c:2384 src/utilops.c:2477
 #, c-format
 msgid ""
 "The path:\n"
@@ -3200,11 +3205,11 @@ msgstr ""
 "zaten dosya halinde\n"
 "var ."
 
-#: src/utilops.c:2369
+#: src/utilops.c:2436
 msgid "New folder - GQview"
 msgstr ""
 
-#: src/utilops.c:2372
+#: src/utilops.c:2439
 #, fuzzy, c-format
 msgid ""
 "Create folder in:\n"
@@ -3215,64 +3220,72 @@ msgstr ""
 "dizin yarat ve\n"
 "böyle adlandýr :"
 
-#: src/view_dir_list.c:329 src/view_dir_tree.c:425
+#: src/utilops.c:2478 src/utilops.c:2487
+#, fuzzy
+msgid "Rename failed"
+msgstr ""
+"%s'yi yeniden\n"
+"adlandýr :\n"
+" "
+
+#: src/view_dir_list.c:321 src/view_dir_tree.c:417
 msgid "new_folder"
 msgstr ""
 
-#: src/view_dir_list.c:387 src/view_dir_tree.c:482
+#: src/view_dir_list.c:379 src/view_dir_tree.c:474
 msgid "_Up to parent"
 msgstr ""
 
-#: src/view_dir_list.c:392 src/view_dir_tree.c:487
+#: src/view_dir_list.c:384 src/view_dir_tree.c:479
 #, fuzzy
 msgid "_Slideshow"
 msgstr "Resim þovu"
 
-#: src/view_dir_list.c:394 src/view_dir_tree.c:489
+#: src/view_dir_list.c:386 src/view_dir_tree.c:481
 #, fuzzy
 msgid "Slideshow recursive"
 msgstr "Resim þovu"
 
-#: src/view_dir_list.c:398 src/view_dir_tree.c:493
+#: src/view_dir_list.c:390 src/view_dir_tree.c:485
 #, fuzzy
 msgid "Find _duplicates..."
 msgstr "Yeniden adlandýr .."
 
-#: src/view_dir_list.c:400 src/view_dir_tree.c:495
+#: src/view_dir_list.c:392 src/view_dir_tree.c:487
 #, fuzzy
 msgid "Find duplicates recursive..."
 msgstr "Yeniden adlandýr .."
 
-#: src/view_dir_list.c:407 src/view_dir_tree.c:502
+#: src/view_dir_list.c:399 src/view_dir_tree.c:494
 msgid "_New folder..."
 msgstr ""
 
-#: src/view_dir_list.c:419 src/view_dir_tree.c:509
+#: src/view_dir_list.c:411 src/view_dir_tree.c:501
 #, fuzzy
 msgid "View as _tree"
 msgstr "Tam ekran"
 
-#: src/view_dir_list.c:421 src/view_dir_tree.c:511 src/view_file_icon.c:311
-#: src/view_file_list.c:423
+#: src/view_dir_list.c:413 src/view_dir_tree.c:503 src/view_file_icon.c:311
+#: src/view_file_list.c:424
 #, fuzzy
 msgid "Re_fresh"
 msgstr "Yenile"
 
-#: src/view_file_icon.c:304 src/view_file_list.c:416
+#: src/view_file_icon.c:304 src/view_file_list.c:417
 msgid "_Sort"
 msgstr ""
 
-#: src/view_file_icon.c:307 src/view_file_list.c:419
+#: src/view_file_icon.c:307 src/view_file_list.c:420
 #, fuzzy
 msgid "View as _icons"
 msgstr "Týrnaklar"
 
-#: src/view_file_list.c:421
+#: src/view_file_list.c:422
 #, fuzzy
 msgid "Show _thumbnails"
 msgstr "Týrnaklarý arabellekte tut"
 
-#: src/view_file_list.c:447
+#: src/view_file_list.c:448
 #, fuzzy, c-format
 msgid ""
 "Invalid file name:\n"
@@ -3496,9 +3509,6 @@ msgstr "geçerli opsiyonlar :\n"
 #, fuzzy
 #~ msgid "Remove"
 #~ msgstr "Yeniden adlandýr"
-
-#~ msgid "Command Line"
-#~ msgstr "Komuta"
 
 #, fuzzy
 #~ msgid "Help"

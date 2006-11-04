@@ -1,3 +1,6 @@
+SUBDIRS = svg
+DIST_SUBDIRS = svg
+
 ## GQview inline icons
 
 ICONS_INLINE = \
@@ -5,18 +8,28 @@ ICONS_INLINE = \
 	folder_locked.png	\
 	folder_open.png		\
 	folder_up.png		\
+	gqview_icon.png		\
+	gqview_logo.png		\
 	scroller.png		\
 	sheet_broken.png	\
-	gqview_logo.png
+	icon_book.png		\
+	icon_config.png		\
+	icon_tools.png		\
+	icon_view.png
 
 ICONS_INLINE_PAIRS = \
 	folder_closed		$(srcdir)/folder_closed.png	\
 	folder_locked		$(srcdir)/folder_locked.png	\
 	folder_open		$(srcdir)/folder_open.png	\
 	folder_up		$(srcdir)/folder_up.png		\
+	gqview_icon		$(srcdir)/gqview_icon.png	\
+	gqview_logo		$(srcdir)/gqview_logo.png	\
 	icon_scroller		$(srcdir)/scroller.png		\
 	icon_broken		$(srcdir)/sheet_broken.png	\
-	gqview_logo		$(srcdir)/gqview_logo.png
+	icon_book		$(srcdir)/icon_book.png		\
+	icon_config		$(srcdir)/icon_config.png	\
+	icon_tools		$(srcdir)/icon_tools.png	\
+	icon_view		$(srcdir)/icon_view.png
 
 icons_inline.h: $(ICONS_INLINE)
 	gdk-pixbuf-csource --raw --extern --build-list $(ICONS_INLINE_PAIRS) > icons_inline.h
@@ -29,13 +42,7 @@ CLEANFILES = $(noinst_DATA)
 
 EXTRA_DIST = \
 	$(ICONS_INLINE)		\
-	collect.xpm		\
-	config.xpm		\
-	dialog.xpm		\
-	icon.xpm		\
 	icon_float.xpm		\
 	icon_thumb.xpm		\
-	marker.xpm		\
-	tools.xpm		\
-	view.xpm
+	marker.xpm
 

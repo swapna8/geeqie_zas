@@ -738,8 +738,17 @@ GtkWidget *pref_toolbar_new(GtkWidget *parent_box, GtkToolbarStyle style)
 		}
 
 	tips = gtk_tooltips_new();
+
+	/* take ownership of tooltips */
+#ifdef GTK_OBJECT_FLOATING
+	/* GTK+ < 2.10 */
 	g_object_ref(G_OBJECT(tips));
-        gtk_object_sink(GTK_OBJECT(tips));
+	gtk_object_sink(GTK_OBJECT(tips));
+#else
+	/* GTK+ >= 2.10 */
+	g_object_ref_sink(G_OBJECT(tips));
+#endif
+
 	g_object_set_data(G_OBJECT(tbar), "tooltips", tips);
 	g_signal_connect(G_OBJECT(tbar), "destroy",
 			 G_CALLBACK(pref_toolbar_destroy_cb), tips);
@@ -863,7 +872,7 @@ static gint date_selection_popup_press_cb(GtkWidget *widget, GdkEventButton *eve
 
 static void date_selection_popup_sync(DateSelection *ds)
 {
-	gint day, month, year;
+	guint day, month, year;
 
 	gtk_calendar_get_date(GTK_CALENDAR(ds->calendar), &year, &month, &day);
 	date_selection_set(ds->box, day, month + 1, year);

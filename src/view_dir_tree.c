@@ -197,15 +197,7 @@ static gint vdtree_rename_row_cb(TreeEditData *td, const gchar *old, const gchar
 	new_path = concat_dir_and_file(base, new);
 	g_free(base);
 
-	if (!rename_file(old_path, new_path))
-		{
-		gchar *buf;
-
-		buf = g_strdup_printf(_("Failed to rename %s to %s."), old, new);
-		file_util_warning_dialog("Rename failed", buf, GTK_STOCK_DIALOG_ERROR, vdt->treeview);
-		g_free(buf);
-		}
-	else
+	if (file_util_rename_dir(old_path, new_path, vdt->treeview))
 		{
 		vdtree_populate_path(vdt, new_path, TRUE, TRUE);
 
@@ -567,7 +559,7 @@ static void vdtree_dnd_get(GtkWidget *widget, GdkDragContext *context,
 	if (uri_text)
 		{
 		gtk_selection_data_set(selection_data, selection_data->target,
-				       8, uri_text, length);
+				       8, (guchar *)uri_text, length);
 		g_free(uri_text);
 		}
 }
@@ -621,7 +613,7 @@ static void vdtree_dnd_drop_receive(GtkWidget *widget,
 		GList *list;
 		gint active;
 
-		list = uri_list_from_text(selection_data->data, TRUE);
+		list = uri_list_from_text((gchar *)selection_data->data, TRUE);
 		if (!list) return;
 
 		active = access_file(fd->path, W_OK | X_OK);
@@ -1300,7 +1292,7 @@ gint vdtree_set_path(ViewDirTree *vdt, const gchar *path)
 	g_free(vdt->path);
 	vdt->path = g_strdup(path);
 
-	fd = vdtree_populate_path(vdt, vdt->path, TRUE, TRUE);
+	fd = vdtree_populate_path(vdt, vdt->path, TRUE, FALSE);
 
 	if (!fd) return FALSE;
 
@@ -1524,6 +1516,7 @@ static void vdtree_row_expanded(GtkTreeView *treeview, GtkTreeIter *iter, GtkTre
 {
 	ViewDirTree *vdt = data;
 
+	vdtree_populate_path_by_iter(vdt, iter, FALSE, NULL);
 	vdtree_icon_set_by_iter(vdt, iter, vdt->pf->open);
 }
 
