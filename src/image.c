@@ -1746,13 +1746,7 @@ static void image_load_area_cb(ImageLoader *il, guint x, guint y, guint w, guint
 
 	if (imd->scale != 1.0)
 		{
-		x = (guint) floor((double)x * imd->scale);
-		y = (guint) floor((double)y * imd->scale);
-		w = (guint) ceil((double)w * imd->scale);
-		h = (guint) ceil((double)h * imd->scale);
-
-		if (w == 0) w = 1;
-		if (h == 0) h = 1;
+		gint x1, y1, x2, y2;
 
 		if ((GdkInterpType)zoom_quality != GDK_INTERP_NEAREST)
 			{
@@ -1764,6 +1758,18 @@ static void image_load_area_cb(ImageLoader *il, guint x, guint y, guint w, guint
 			h += 2;
 			}
 
+		x1 = (gint)floor((double)x * imd->scale);
+		y1 = (gint)floor((double)y * imd->scale);
+		x2 = (gint)ceil((double)(x + w) * imd->scale);
+		y2 = (gint)ceil((double)(y + h) * imd->scale);
+
+		x = x1;
+		y = y1;
+		w = x2 - x1;
+		h = y2 - y1;
+
+		if (w == 0) w = 1;
+		if (h == 0) h = 1;
 		}
 
 	image_queue(imd, (gint) x, (gint) y, (gint) w, (gint) h, FALSE, TILE_RENDER_AREA, TRUE);
@@ -2462,6 +2468,7 @@ static void image_scroller_start(ImageWindow *imd, gint x, gint y)
 		h = gdk_pixbuf_get_height(pixbuf);
 
 		imd->scroller_overlay = image_overlay_add(imd, pixbuf, x - w / 2, y - h / 2, FALSE, TRUE);
+		g_object_unref(pixbuf);
 		}
 
 	imd->scroller_x = x;
@@ -2836,14 +2843,14 @@ void image_change_from_image(ImageWindow *imd, ImageWindow *source)
 
 void image_area_changed(ImageWindow *imd, gint x, gint y, gint width, gint height)
 {
-	gint sx, sy, sw, sh;
+	gint x1, y1, x2, y2;
 
-	sx = (gint)floor((double)x * imd->scale);
-	sy = (gint)floor((double)y * imd->scale);
-	sw = (gint)ceil((double)width * imd->scale);
-	sh = (gint)ceil((double)height * imd->scale);
+	x1 = (gint)floor((double)x * imd->scale);
+	y1 = (gint)floor((double)y * imd->scale);
+	x2 = (gint)ceil((double)(x + width) * imd->scale);
+	y2 = (gint)ceil((double)(y + height) * imd->scale);
 
-	image_queue(imd, sx, sy, sw, sh, FALSE, TILE_RENDER_AREA, TRUE);
+	image_queue(imd, x1, y1, x2 - x1, y2 - y1, FALSE, TILE_RENDER_AREA, TRUE);
 }
 
 void image_reload(ImageWindow *imd)

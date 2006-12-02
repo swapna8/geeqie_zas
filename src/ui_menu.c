@@ -96,6 +96,22 @@ GtkWidget *menu_item_add_check(GtkWidget *menu, const gchar *label, gint active,
 	return item;
 }
 
+GtkWidget *menu_item_add_radio(GtkWidget *menu, GtkWidget *parent,
+			       const gchar *label, gint active,
+			       GCallback func, gpointer data)
+{
+	GtkWidget *item;
+	GSList *group = NULL;
+
+	if (parent) group = gtk_radio_menu_item_get_group(GTK_RADIO_MENU_ITEM(parent));
+
+	item = gtk_radio_menu_item_new_with_mnemonic(group, label);
+	if (active) gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(item), active);
+	menu_item_finish(menu, item, func, data);
+
+	return item;
+}
+
 void menu_item_add_divider(GtkWidget *menu)
 {
 	GtkWidget *item = gtk_menu_item_new();
@@ -130,8 +146,17 @@ GtkWidget *popup_menu_short_lived(void)
 	GtkWidget *menu;
 
 	menu = gtk_menu_new();
+
+	/* take ownership of menu */
+#ifdef GTK_OBJECT_FLOATING
+	/* GTK+ < 2.10 */
 	g_object_ref(G_OBJECT(menu));
 	gtk_object_sink(GTK_OBJECT(menu));
+#else
+	/* GTK+ >= 2.10 */
+	g_object_ref_sink(G_OBJECT(menu));
+#endif
+
 	g_signal_connect(G_OBJECT(menu), "selection_done",
 			 G_CALLBACK(popup_menu_short_lived_cb), menu);
 	return menu;

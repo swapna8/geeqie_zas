@@ -28,10 +28,9 @@
 #include "ui_misc.h"
 #include "ui_tabcomp.h"
 
-#include "icons/tools.xpm"
 
-#define MAINWINDOW_DEF_WIDTH 620
-#define MAINWINDOW_DEF_HEIGHT 400
+#define MAINWINDOW_DEF_WIDTH 700
+#define MAINWINDOW_DEF_HEIGHT 500
 
 #define MAIN_WINDOW_DIV_HPOS -1
 #define MAIN_WINDOW_DIV_VPOS 200
@@ -170,9 +169,6 @@ static GtkWidget *layout_tool_setup(LayoutWindow *lw)
 	GtkWidget *box;
 	GtkWidget *menu_bar;
 	GtkWidget *tabcomp;
-#if 0
-	GtkWidget *popwin;
-#endif
 
 	box = gtk_vbox_new(FALSE, 0);
 
@@ -190,9 +186,6 @@ static GtkWidget *layout_tool_setup(LayoutWindow *lw)
 	gtk_box_pack_start(GTK_BOX(box), tabcomp, FALSE, FALSE, 0);
 	gtk_widget_show(tabcomp);
 
-#if 0
-	popwin = gtk_widget_get_toplevel(GTK_COMBO(tabcomp)->list);
-#endif
 	g_signal_connect(G_OBJECT(lw->path_entry->parent), "changed",
 			 G_CALLBACK(layout_path_entry_changed_cb), lw);
 
@@ -232,6 +225,8 @@ static void layout_sort_menu_cb(GtkWidget *widget, gpointer data)
 	LayoutWindow *lw;
 	SortType type;
 
+	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) return;
+
 	lw = submenu_item_get_data(widget);
 	if (!lw) return;
 
@@ -262,9 +257,15 @@ static void layout_sort_button_press_cb(GtkWidget *widget, gpointer data)
 
 	menu = submenu_add_sort(NULL, G_CALLBACK(layout_sort_menu_cb), lw, FALSE, FALSE, TRUE, lw->sort_method);
 
-	/* apparently the menu is never sunk, even on a popup */
+	/* take ownership of menu */
+#ifdef GTK_OBJECT_FLOATING
+	/* GTK+ < 2.10 */
 	g_object_ref(G_OBJECT(menu));
 	gtk_object_sink(GTK_OBJECT(menu));
+#else
+	/* GTK+ >= 2.10 */
+	g_object_ref_sink(G_OBJECT(menu));
+#endif
 
         /* ascending option */
 	menu_item_add_divider(menu);
@@ -1085,7 +1086,7 @@ static void layout_tools_setup(LayoutWindow *lw, GtkWidget *tools, GtkWidget *fi
 
 		if (save_window_positions)
 			{
-			hints = GDK_HINT_USER_POS | GDK_HINT_USER_SIZE;
+			hints = GDK_HINT_USER_POS;
 			}
 		else
 			{
@@ -1105,7 +1106,7 @@ static void layout_tools_setup(LayoutWindow *lw, GtkWidget *tools, GtkWidget *fi
         	gtk_window_set_wmclass(GTK_WINDOW(lw->tools), "tools", "GQview");
         	gtk_container_set_border_width(GTK_CONTAINER(lw->tools), 0);
 
-		window_set_icon(lw->tools, (const gchar **)tools_xpm, NULL);
+		window_set_icon(lw->tools, PIXBUF_INLINE_ICON_TOOLS, NULL);
 
 		new_window = TRUE;
 		}
@@ -1397,10 +1398,6 @@ void layout_style_set(LayoutWindow *lw, gint style, const gchar *order)
 	lw->info_details = NULL;
 	lw->info_zoom = NULL;
 
-#if 0
-	if (lw->menu_fact) g_object_unref(G_OBJECT(lw->menu_fact));
-	lw->menu_fact = NULL;
-#endif
 	if (lw->ui_manager) g_object_unref(lw->ui_manager);
 	lw->ui_manager = NULL;
 	lw->action_group = NULL;
@@ -1589,9 +1586,6 @@ void layout_free(LayoutWindow *lw)
 
 	layout_bars_close(lw);
 
-#if 0
-	if (lw->menu_fact) g_object_unref(G_OBJECT(lw->menu_fact));
-#endif
 	if (lw->tooltips) g_object_unref(G_OBJECT(lw->tooltips));
 	gtk_widget_destroy(lw->window);
 
@@ -1671,7 +1665,7 @@ LayoutWindow *layout_new(const gchar *path, gint popped, gint hidden)
 
 	if (save_window_positions)
 		{
-		hints = GDK_HINT_USER_POS | GDK_HINT_USER_SIZE;
+		hints = GDK_HINT_USER_POS;
 		}
 	else
 		{
@@ -1704,13 +1698,17 @@ LayoutWindow *layout_new(const gchar *path, gint popped, gint hidden)
 
 	layout_keyboard_init(lw, lw->window);
 
-#if 0
-	gtk_widget_realize(lw->window);
-#endif
-
 	lw->tooltips = gtk_tooltips_new();
+
+	/* take ownership of tooltips */
+#ifdef GTK_OBJECT_FLOATING
+	/* GTK+ < 2.10 */
 	g_object_ref(G_OBJECT(lw->tooltips));
 	gtk_object_sink(GTK_OBJECT(lw->tooltips));
+#else
+	/* GTK+ >= 2.10 */
+	g_object_ref_sink(G_OBJECT(lw->tooltips));
+#endif
 
 	lw->main_box = gtk_vbox_new(FALSE, 0);
 	gtk_container_add(GTK_CONTAINER(lw->window), lw->main_box);

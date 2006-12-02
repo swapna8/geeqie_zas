@@ -1,6 +1,6 @@
 /*
  * GQview
- * (C) 2004 John Ellis
+ * (C) 2006 John Ellis
  *
  * Author: John Ellis
  *
@@ -23,6 +23,8 @@
 #include "image-overlay.h"
 #include "info.h"
 #include "menu.h"
+#include "pixbuf_util.h"
+#include "print.h"
 #include "slideshow.h"
 #include "utilops.h"
 #include "ui_bookmark.h"
@@ -30,8 +32,6 @@
 #include "ui_menu.h"
 
 #include <gdk/gdkkeysyms.h> /* for keyboard values */
-
-#include "icons/view.xpm"
 
 
 typedef struct _ViewWindow ViewWindow;
@@ -325,150 +325,52 @@ static gint view_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpoi
 {
 	ViewWindow *vw = data;
 	ImageWindow *imd;
-	gint stop_signal = FALSE;
+	gint stop_signal;
 	GtkWidget *menu;
 	gint x = 0;
 	gint y = 0;
 
 	imd = view_window_active_image(vw);
 
+	stop_signal = TRUE;
 	switch (event->keyval)
 		{
 		case GDK_Left: case GDK_KP_Left:
 			x -= 1;
-			stop_signal = TRUE;
 			break;
 		case GDK_Right: case GDK_KP_Right:
 			x += 1;
-			stop_signal = TRUE;
 			break;
 		case GDK_Up: case GDK_KP_Up:
 			y -= 1;
-			stop_signal = TRUE;
 			break;
 		case GDK_Down: case GDK_KP_Down:
 			y += 1;
-			stop_signal = TRUE;
+			break;
+		default:
+			stop_signal = FALSE;
 			break;
 		}
 
-	if ( !(event->state & GDK_CONTROL_MASK) )
-	    switch (event->keyval)
+	if (x != 0 || y!= 0)
 		{
-		case GDK_Page_Up: case GDK_KP_Page_Up:
-		case GDK_BackSpace:
-		case 'B': case 'b':
-			view_step_prev(vw);
-			stop_signal = TRUE;
-			break;
-		case GDK_Page_Down: case GDK_KP_Page_Down:
-		case GDK_space:
-		case 'N': case 'n':
-			view_step_next(vw);
-			stop_signal = TRUE;
-			break;
-		case GDK_Home: case GDK_KP_Home:
-			view_step_to_end(vw, FALSE);
-			stop_signal = TRUE;
-			break;
-		case GDK_End: case GDK_KP_End:
-			view_step_to_end(vw, TRUE);
-			stop_signal = TRUE;
-			break;
-		case '+': case '=': case GDK_KP_Add:
-			image_zoom_adjust(imd, get_zoom_increment());
-			break;
-		case '-': case GDK_KP_Subtract:
-			image_zoom_adjust(imd, -get_zoom_increment());
-			break;
-		case 'X': case 'x': case GDK_KP_Multiply:
-			image_zoom_set(imd, 0.0);
-			break;
-		case 'Z': case 'z': case GDK_KP_Divide: case '1':
-			image_zoom_set(imd, 1.0);
-			break;
-		case '2':
-			image_zoom_set(imd, 2.0);
-			break;
-		case '3':
-			image_zoom_set(imd, 3.0);
-			break;
-		case '4':
-			image_zoom_set(imd, 4.0);
-			break;
-		case '7':
-			image_zoom_set(imd, -4.0);
-			break;
-		case '8':
-			image_zoom_set(imd, -3.0);
-			break;
-		case '9':
-			image_zoom_set(imd, -2.0);
-			break;
-		case 'W': case 'w':
-			image_zoom_set_fill_geometry(imd, FALSE);
-			break;
-		case 'H': case 'h':
-			image_zoom_set_fill_geometry(imd, TRUE);
-			break;
-		case 'R': case 'r':
-			image_reload(imd);
-			break;
-		case 'S': case 's':
-			if (vw->ss)
-				view_slideshow_stop(vw);
-			else
-				view_slideshow_start(vw);
-			stop_signal = TRUE;
-			break;
-		case 'P': case 'p':
-			slideshow_pause_toggle(vw->ss);
-			break;
-		case 'F': case 'f':
-		case 'V': case 'v':
-			view_fullscreen_toggle(vw, FALSE);
-			stop_signal = TRUE;
-			break;
-		case 'I': case 'i':
-			view_overlay_toggle(vw);
-			break;
-		case ']':
-			image_alter(imd, ALTER_ROTATE_90);
-			stop_signal = TRUE;
-			break;
-		case '[':
-			image_alter(imd, ALTER_ROTATE_90_CC);
-			stop_signal = TRUE;
-			break;
-		case GDK_Delete: case GDK_KP_Delete:
-			if (enable_delete_key)
-				{
-				file_util_delete(image_get_path(imd), NULL, imd->widget);
-				stop_signal = TRUE;
-				}
-			break;
-		case GDK_Escape:
-			if (vw->fs)
-				{
-				view_fullscreen_toggle(vw, TRUE);
-				}
-			else
-				{
-				gtk_widget_destroy(vw->window);
-				}
-			stop_signal = TRUE;
-			break;
-		case GDK_Menu:
-		case GDK_F10:
-			menu = view_popup_menu(vw);
-			gtk_menu_popup(GTK_MENU(menu), NULL, NULL, view_window_menu_pos_cb, vw, 0, GDK_CURRENT_TIME);
-			stop_signal = TRUE;
-			break;
+		if (event->state & GDK_SHIFT_MASK)
+			{
+			x *= 3;
+			y *= 3;
+			}
+
+		keyboard_scroll_calc(&x, &y, event);
+		image_scroll(imd, x, y);
 		}
+
+	if (stop_signal) return stop_signal;
 
 	if (event->state & GDK_CONTROL_MASK)
 		{
 		gint n = -1;
+
+		stop_signal = TRUE;
 		switch (event->keyval)
 			{
 			case '1':
@@ -503,61 +405,180 @@ static gint view_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpoi
 				break;
 			case 'C': case 'c':
 				file_util_copy(image_get_path(imd), NULL, NULL, imd->widget);
-				stop_signal = TRUE;
 				break;
 			case 'M': case 'm':
 				file_util_move(image_get_path(imd), NULL, NULL, imd->widget);
-				stop_signal = TRUE;
 				break;
 			case 'R': case 'r':
 				file_util_rename(image_get_path(imd), NULL, imd->widget);
-				stop_signal = TRUE;
 				break;
 			case 'D': case 'd':
 				file_util_delete(image_get_path(imd), NULL, imd->widget);
-				stop_signal = TRUE;
 				break;
 			case 'P': case 'p':
 				info_window_new(image_get_path(imd), NULL);
-				stop_signal = TRUE;
 				break;
 			case 'W': case 'w':
 				view_window_close(vw);
 				break;
+			default:
+				stop_signal = FALSE;
+				break;
 			}
 		if (n != -1)
 			{
-			view_fullscreen_toggle(vw, TRUE);
+			if (!editor_window_flag_set(n))
+				{
+				view_fullscreen_toggle(vw, TRUE);
+				}
+			imd = view_window_active_image(vw);
 			start_editor_from_file(n, image_get_path(imd));
 			}
 		}
 	else if (event->state & GDK_SHIFT_MASK)
 		{
+		stop_signal = TRUE;
 		switch (event->keyval)
 			{
 			case 'R': case 'r':
 				image_alter(imd, ALTER_ROTATE_180);
-				stop_signal = TRUE;
 				break;
 			case 'M': case 'm':
 				image_alter(imd, ALTER_MIRROR);
-				stop_signal = TRUE;
 				break;
 			case 'F': case 'f':
 				image_alter(imd, ALTER_FLIP);
-				stop_signal = TRUE;
+				break;
+			case 'P': case 'p':
+				{
+				const gchar *path;
+
+				view_fullscreen_toggle(vw, TRUE);
+				imd = view_window_active_image(vw);
+				path = image_get_path(imd);
+				print_window_new(path,
+						 (path) ? g_list_append(NULL, g_strdup(path)) : NULL,
+						 path_list_copy(vw->list), vw->window);
+				}
 				break;
 			default:
+				stop_signal = FALSE;
 				break;
 			}
-		x *= 3;
-		y *= 3;
 		}
-
-	if (x != 0 || y!= 0)
+	else 
 		{
-		keyboard_scroll_calc(&x, &y, event);
-		image_scroll(imd, x, y);
+		stop_signal = TRUE;
+		switch (event->keyval)
+			{
+			case GDK_Page_Up: case GDK_KP_Page_Up:
+			case GDK_BackSpace:
+			case 'B': case 'b':
+				view_step_prev(vw);
+				break;
+			case GDK_Page_Down: case GDK_KP_Page_Down:
+			case GDK_space:
+			case 'N': case 'n':
+				view_step_next(vw);
+				break;
+			case GDK_Home: case GDK_KP_Home:
+				view_step_to_end(vw, FALSE);
+				break;
+			case GDK_End: case GDK_KP_End:
+				view_step_to_end(vw, TRUE);
+				break;
+			case '+': case '=': case GDK_KP_Add:
+				image_zoom_adjust(imd, get_zoom_increment());
+				break;
+			case '-': case GDK_KP_Subtract:
+				image_zoom_adjust(imd, -get_zoom_increment());
+				break;
+			case 'X': case 'x': case GDK_KP_Multiply:
+				image_zoom_set(imd, 0.0);
+				break;
+			case 'Z': case 'z': case GDK_KP_Divide: case '1':
+				image_zoom_set(imd, 1.0);
+				break;
+			case '2':
+				image_zoom_set(imd, 2.0);
+				break;
+			case '3':
+				image_zoom_set(imd, 3.0);
+				break;
+			case '4':
+				image_zoom_set(imd, 4.0);
+				break;
+			case '7':
+				image_zoom_set(imd, -4.0);
+				break;
+			case '8':
+				image_zoom_set(imd, -3.0);
+				break;
+			case '9':
+				image_zoom_set(imd, -2.0);
+				break;
+			case 'W': case 'w':
+				image_zoom_set_fill_geometry(imd, FALSE);
+				break;
+			case 'H': case 'h':
+				image_zoom_set_fill_geometry(imd, TRUE);
+				break;
+			case 'R': case 'r':
+				image_reload(imd);
+				break;
+			case 'S': case 's':
+				if (vw->ss)
+					{
+					view_slideshow_stop(vw);
+					}
+				else
+					{
+					view_slideshow_start(vw);
+					}
+				break;
+			case 'P': case 'p':
+				slideshow_pause_toggle(vw->ss);
+				break;
+			case 'F': case 'f':
+			case 'V': case 'v':
+			case GDK_F11:
+				view_fullscreen_toggle(vw, FALSE);
+				break;
+			case 'I': case 'i':
+				view_overlay_toggle(vw);
+				break;
+			case ']':
+				image_alter(imd, ALTER_ROTATE_90);
+				break;
+			case '[':
+				image_alter(imd, ALTER_ROTATE_90_CC);
+				break;
+			case GDK_Delete: case GDK_KP_Delete:
+				if (enable_delete_key)
+					{
+					file_util_delete(image_get_path(imd), NULL, imd->widget);
+					}
+				break;
+			case GDK_Escape:
+				if (vw->fs)
+					{
+					view_fullscreen_toggle(vw, TRUE);
+					}
+				else
+					{
+					view_window_close(vw);
+					}
+				break;
+			case GDK_Menu:
+			case GDK_F10:
+				menu = view_popup_menu(vw);
+				gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
+					       view_window_menu_pos_cb, vw, 0, GDK_CURRENT_TIME);
+				break;
+			default:
+				stop_signal = FALSE;
+				break;
+			}
 		}
 
 	return stop_signal;
@@ -720,8 +741,28 @@ static void view_slideshow_prev(ViewWindow *vw)
 static void view_slideshow_stop_func(SlideShowData *fs, gpointer data)
 {
 	ViewWindow *vw = data;
+	GList *work;
+	const gchar *path;
 
 	vw->ss = NULL;
+
+	work = vw->list;
+	path = image_get_path(view_window_active_image(vw));
+	while (work)
+		{
+		gchar *temp;
+
+		temp = work->data;
+		if (strcmp(path, temp) == 0)
+			{
+			vw->list_pointer = work;
+			work = NULL;
+			}
+		else
+			{
+			work = work->next;
+			}
+		}
 }
 
 static void view_slideshow_start(ViewWindow *vw)
@@ -754,15 +795,24 @@ static void view_slideshow_stop(ViewWindow *vw)
 	if (vw->ss) slideshow_free(vw->ss);
 }
 
-static void view_window_close(ViewWindow *vw)
+static void view_window_destroy_cb(GtkWidget *widget, gpointer data)
 {
+	ViewWindow *vw = data;
+
 	view_window_list = g_list_remove(view_window_list, vw);
 
 	view_slideshow_stop(vw);
-	view_fullscreen_toggle(vw, TRUE);
-	gtk_widget_destroy(vw->window);
+	fullscreen_stop(vw->fs);
+
 	path_list_free(vw->list);
 	g_free(vw);
+}
+
+static void view_window_close(ViewWindow *vw)
+{
+	view_slideshow_stop(vw);
+	view_fullscreen_toggle(vw, TRUE);
+	gtk_widget_destroy(vw->window);
 }
 
 static gint view_window_delete_cb(GtkWidget *w, GdkEventAny *event, gpointer data)
@@ -801,7 +851,7 @@ static ViewWindow *real_view_window_new(const gchar *path, GList *list, Collecti
         gtk_window_set_wmclass(GTK_WINDOW(vw->window), "view", "GQview");
         gtk_container_set_border_width(GTK_CONTAINER(vw->window), 0);
 
-	window_set_icon(vw->window, (const gchar **)view_xpm, NULL);
+	window_set_icon(vw->window, PIXBUF_INLINE_ICON_VIEW, NULL);
 
 	vw->imd = image_new(FALSE);
 
@@ -819,6 +869,8 @@ static ViewWindow *real_view_window_new(const gchar *path, GList *list, Collecti
 
 	view_image_set_buttons(vw, vw->imd);
 
+	g_signal_connect(G_OBJECT(vw->window), "destroy",
+			 G_CALLBACK(view_window_destroy_cb), vw);
 	g_signal_connect(G_OBJECT(vw->window), "delete_event",
 			 G_CALLBACK(view_window_delete_cb), vw);
 	g_signal_connect(G_OBJECT(vw->window), "key_press_event",
@@ -981,9 +1033,13 @@ gint view_window_find_image(ImageWindow *imd, gint *index, gint *total)
 			if (vw->ss)
 				{
 				gint n;
+				gint t;
+
 				n = g_list_length(vw->ss->list_done);
+				t = n + g_list_length(vw->ss->list);
+				if (n == 0) n = t;
 				if (index) *index = n - 1;
-				if (total) *total = n + g_list_length(vw->ss->list);
+				if (total) *total = t;
 				}
 			else
 				{
@@ -1024,14 +1080,20 @@ static void view_new_window_cb(GtkWidget *widget, gpointer data)
 static void view_edit_cb(GtkWidget *widget, gpointer data)
 {
 	ViewWindow *vw;
+	ImageWindow *imd;
 	gint n;
 
 	vw = submenu_item_get_data(widget);
 	n = GPOINTER_TO_INT(data);
 	if (!vw) return;
 
-	view_fullscreen_toggle(vw, TRUE);
-	start_editor_from_file(n, image_get_path(vw->imd));
+	if (!editor_window_flag_set(n))
+		{
+		view_fullscreen_toggle(vw, TRUE);
+		}
+
+	imd = view_window_active_image(vw);
+	start_editor_from_file(n, image_get_path(imd));
 }
 
 static void view_alter_cb(GtkWidget *widget, gpointer data)
@@ -1383,7 +1445,7 @@ static void view_window_get_dnd_data(GtkWidget *widget, GdkDragContext *context,
 			{
 			GList *work;
 
-			list = uri_list_from_text(selection_data->data, TRUE);
+			list = uri_list_from_text((gchar *)selection_data->data, TRUE);
 
 			work = list;
 			while (work)
@@ -1472,7 +1534,7 @@ static void view_window_set_dnd_data(GtkWidget *widget, GdkDragContext *context,
 		if (text)
 			{
 			gtk_selection_data_set (selection_data, selection_data->target,
-						8, text, len);
+						8, (guchar *)text, len);
 			g_free(text);
 			}
 		}

@@ -1,6 +1,6 @@
 /*
  * GQview
- * (C) 2004 John Ellis
+ * (C) 2006 John Ellis
  *
  * Author: John Ellis
  *
@@ -27,8 +27,6 @@
 #include "ui_misc.h"
 #include "ui_tabcomp.h"
 #include "ui_utildlg.h"
-
-#include "icons/config.xpm"
 
 #include <math.h>
 
@@ -396,7 +394,7 @@ static void add_quality_menu(GtkWidget *table, gint column, gint row, const gcha
 			 G_CALLBACK(quality_menu_cb), option_c);
 
 	gtk_table_attach(GTK_TABLE(table), combo, column + 1, column + 2, row, row + 1,
-			 GTK_EXPAND | GTK_FILL, FALSE, 0, 0);
+			 GTK_EXPAND | GTK_FILL, 0, 0, 0);
 	gtk_widget_show(combo);
 }
 
@@ -507,7 +505,7 @@ static void add_thumb_size_menu(GtkWidget *table, gint column, gint row, gchar *
 			 G_CALLBACK(thumb_size_menu_cb), NULL);
 
 	gtk_table_attach(GTK_TABLE(table), combo, column + 1, column + 2, row, row + 1,
-			 GTK_EXPAND | GTK_FILL, FALSE, 0, 0);
+			 GTK_EXPAND | GTK_FILL, 0, 0, 0);
 	gtk_widget_show(combo);
 }
 
@@ -771,7 +769,7 @@ static void config_window_create(void)
 	gtk_window_set_wmclass(GTK_WINDOW(configwindow), "config", "GQview");
 	gtk_container_set_border_width(GTK_CONTAINER(configwindow), PREF_PAD_BORDER);
 
-	window_set_icon(configwindow, (const gchar **)config_xpm, NULL);
+	window_set_icon(configwindow, PIXBUF_INLINE_ICON_CONFIG, NULL);
 
 	win_vbox = gtk_vbox_new(FALSE, PREF_PAD_SPACE);
 	gtk_container_add(GTK_CONTAINER(configwindow), win_vbox);
@@ -1075,7 +1073,7 @@ static void config_window_create(void)
 	label = pref_table_label(table, 1, 0, _("Menu name"), 0.0);
 	pref_label_bold(label, TRUE, FALSE);
 
-	label = pref_table_label(table, 2, 0, ("Command Line"), 0.0);
+	label = pref_table_label(table, 2, 0, _("Command Line"), 0.0);
 	pref_label_bold(label, TRUE, FALSE);
 
 	for (i = 0; i < GQVIEW_EDITOR_SLOTS; i++)
@@ -1091,7 +1089,7 @@ static void config_window_create(void)
 		gtk_widget_set_size_request(editor_name_entry[i],80,-1);
 		if (editor_name[i]) gtk_entry_set_text(GTK_ENTRY(editor_name_entry[i]),editor_name[i]);
 		gtk_table_attach(GTK_TABLE (table),editor_name_entry[i],1,2,i+1,i+2,
-				 GTK_FILL | GTK_EXPAND, FALSE, 0, 0);
+				 GTK_FILL | GTK_EXPAND, 0, 0, 0);
 		gtk_widget_show(editor_name_entry[i]);
 
 		editor_command_entry[i] = gtk_entry_new();
@@ -1100,7 +1098,7 @@ static void config_window_create(void)
 		tab_completion_add_to_entry(editor_command_entry[i], NULL, NULL);
 		if (editor_command[i]) gtk_entry_set_text(GTK_ENTRY(editor_command_entry[i]), editor_command[i]);
 		gtk_table_attach(GTK_TABLE (table),editor_command_entry[i],2,3,i+1,i+2,
-				 GTK_FILL | GTK_EXPAND, FALSE, 0, 0);
+				 GTK_FILL | GTK_EXPAND, 0, 0, 0);
 		gtk_widget_show(editor_command_entry[i]);
 		}
 
@@ -1303,7 +1301,7 @@ void show_about_window(void)
 
 	buf = g_strdup_printf(_("GQview %s\n\nCopyright (c) %s John Ellis\nwebsite: %s\nemail: %s\n\nReleased under the GNU General Public License"),
 			      VERSION,
-			      "2005",
+			      "2006",
 			      "gqview.sourceforge.net",
 			      "gqview@users.sourceforge.net");
 	label = gtk_label_new(buf);

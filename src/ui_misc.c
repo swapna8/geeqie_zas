@@ -613,7 +613,7 @@ GtkWidget *pref_table_box(GtkWidget *table, gint column, gint row,
 		}
 
 	gtk_table_attach(GTK_TABLE(table), shell, column, column + 1, row, row + 1,
-			 GTK_EXPAND | GTK_FILL, FALSE, 0, 0);
+			 GTK_EXPAND | GTK_FILL, 0, 0, 0);
 
 	gtk_widget_show(shell);
 
@@ -628,7 +628,7 @@ GtkWidget *pref_table_label(GtkWidget *table, gint column, gint row,
 
 	align = gtk_alignment_new(alignment, 0.50, 0.0, 0.0);
 	gtk_table_attach(GTK_TABLE(table), align, column, column + 1, row, row + 1,
-			 GTK_FILL, FALSE, 0, 0);
+			 GTK_FILL, 0, 0, 0);
 	gtk_widget_show(align);
 	label = gtk_label_new(text);
 	gtk_container_add(GTK_CONTAINER(align), label);
@@ -645,7 +645,7 @@ GtkWidget *pref_table_button(GtkWidget *table, gint column, gint row,
 
 	button = pref_button_new(NULL, stock_id, text, hide_stock_text, func, data);
 	gtk_table_attach(GTK_TABLE(table), button, column, column + 1, row, row + 1,
-			 GTK_FILL, FALSE, 0, 0);
+			 GTK_FILL, 0, 0, 0);
 	gtk_widget_show(button);
 
 	return button;
@@ -738,8 +738,17 @@ GtkWidget *pref_toolbar_new(GtkWidget *parent_box, GtkToolbarStyle style)
 		}
 
 	tips = gtk_tooltips_new();
+
+	/* take ownership of tooltips */
+#ifdef GTK_OBJECT_FLOATING
+	/* GTK+ < 2.10 */
 	g_object_ref(G_OBJECT(tips));
-        gtk_object_sink(GTK_OBJECT(tips));
+	gtk_object_sink(GTK_OBJECT(tips));
+#else
+	/* GTK+ >= 2.10 */
+	g_object_ref_sink(G_OBJECT(tips));
+#endif
+
 	g_object_set_data(G_OBJECT(tbar), "tooltips", tips);
 	g_signal_connect(G_OBJECT(tbar), "destroy",
 			 G_CALLBACK(pref_toolbar_destroy_cb), tips);
@@ -863,7 +872,7 @@ static gint date_selection_popup_press_cb(GtkWidget *widget, GdkEventButton *eve
 
 static void date_selection_popup_sync(DateSelection *ds)
 {
-	gint day, month, year;
+	guint day, month, year;
 
 	gtk_calendar_get_date(GTK_CALENDAR(ds->calendar), &year, &month, &day);
 	date_selection_set(ds->box, day, month + 1, year);

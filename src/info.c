@@ -30,8 +30,8 @@
 #define IMAGE_SIZE_W 200
 #define IMAGE_SIZE_H 200
 
-#define DEF_PROPERTY_WIDTH  510
-#define DEF_PROPERTY_HEIGHT 390
+#define DEF_PROPERTY_WIDTH  600
+#define DEF_PROPERTY_HEIGHT 400
 
 typedef struct _TabData TabData;
 struct _TabData
@@ -501,7 +501,7 @@ static void info_window_dnd_data_set(GtkWidget *widget, GdkDragContext *context,
 		g_list_free(list);
 
 		gtk_selection_data_set(selection_data, selection_data->target,
-				       8, text, len);
+				       8, (guchar *)text, len);
 		g_free(text);
 		}
 }

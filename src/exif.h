@@ -33,6 +33,8 @@
  *-----------------------------------------------------------------------------
  */
 
+#define EXIF_FORMAT_COUNT 13
+
 typedef enum {
 	EXIF_FORMAT_UNKNOWN		= 0,
 	EXIF_FORMAT_BYTE_UNSIGNED	= 1,
@@ -90,7 +92,7 @@ struct _ExifItem
 {
 	ExifFormatType format;
 	int tag;
-	ExifMarker *marker;
+	const ExifMarker *marker;
 	int elements;
 	gpointer data;
 	int data_len;

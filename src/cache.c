@@ -172,16 +172,14 @@ gint cache_sim_data_save(CacheData *cd)
  *-------------------------------------------------------------------
  */
 
-static gint cache_sim_read_comment(FILE *f, char *buf, int s, CacheData *cd)
+static gint cache_sim_read_skipline(FILE *f, int s)
 {
-	if (!f || !buf || !cd) return FALSE;
+	if (!f) return FALSE;
 
-	if (buf[0] != '#') return FALSE;
-
-	if (fseek(f, 0 - (s - 1), SEEK_CUR) == 0)
+	if (fseek(f, 0 - s, SEEK_CUR) == 0)
 		{
 		char b;
-		while(fread(&b, sizeof(b), 1, f) == 1)
+		while (fread(&b, sizeof(b), 1, f) == 1)
 			{
 			if (b == '\n') return TRUE;
 			}
@@ -189,6 +187,15 @@ static gint cache_sim_read_comment(FILE *f, char *buf, int s, CacheData *cd)
 		}
 
 	return FALSE;
+}
+
+static gint cache_sim_read_comment(FILE *f, char *buf, int s, CacheData *cd)
+{
+	if (!f || !buf || !cd) return FALSE;
+
+	if (s < 1 || buf[0] != '#') return FALSE;
+
+	return cache_sim_read_skipline(f, s - 1);
 }
 
 static gint cache_sim_read_dimensions(FILE *f, char *buf, int s, CacheData *cd)
@@ -375,12 +382,14 @@ static gint cache_sim_read_similarity(FILE *f, char *buf, int s, CacheData *cd)
 	return FALSE;
 }
 
+#define CACHE_LOAD_LINE_NOISE 8
+
 CacheData *cache_sim_data_load(const gchar *path)
 {
 	FILE *f;
 	CacheData *cd = NULL;
 	char buf[32];
-	gint success = TRUE;
+	gint success = CACHE_LOAD_LINE_NOISE;
 	gchar *pathl;
 
 	if (!path) return NULL;
@@ -398,17 +407,17 @@ CacheData *cache_sim_data_load(const gchar *path)
 	    strncmp(buf, "SIMcache", 8) != 0)
 		{
 		if (debug) printf("%s is not a cache file\n", cd->path);
-		success = FALSE;
+		success = 0;
 		}
 
-	while (success)
+	while (success > 0)
 		{
 		int s;
 		s = fread(&buf, sizeof(char), sizeof(buf), f);
 
 		if (s < 1)
 			{
-			success = FALSE;
+			success = 0;
 			}
 		else
 			{
@@ -418,14 +427,28 @@ CacheData *cache_sim_data_load(const gchar *path)
 			    !cache_sim_read_md5sum(f, buf, s, cd) &&
 			    !cache_sim_read_similarity(f, buf, s, cd))
 				{
-				success = FALSE;
+				if (!cache_sim_read_skipline(f, s))
+					{
+					success = 0;
+					}
+				else
+					{
+					success--;
+					}
+				}
+			else
+				{
+				success = CACHE_LOAD_LINE_NOISE;
 				}
 			}
 		}
 
 	fclose(f);
 
-	if (!cd->dimensions && !cd->similarity)
+	if (!cd->dimensions &&
+	    !cd->have_checksum &&
+	    !cd->have_md5sum &&
+	    !cd->similarity)
 		{
 		cache_sim_data_free(cd);
 		cd = NULL;

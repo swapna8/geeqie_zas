@@ -138,7 +138,8 @@ static void vflist_dnd_get(GtkWidget *widget, GdkDragContext *context,
 
 	if (debug) printf(uri_text);
 
-	gtk_selection_data_set(selection_data, selection_data->target, 8, uri_text, total);
+	gtk_selection_data_set(selection_data, selection_data->target,
+			       8, (guchar *)uri_text, total);
 	g_free(uri_text);
 }
 
@@ -305,6 +306,8 @@ static void vflist_pop_menu_sort_cb(GtkWidget *widget, gpointer data)
 {
 	ViewFileList *vfl;
 	SortType type;
+
+	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) return;
 	
 	vfl = submenu_item_get_data(widget);
 	if (!vfl) return;
@@ -733,10 +736,23 @@ static gboolean vflist_select_cb(GtkTreeSelection *selection, GtkTreeModel *stor
  *-----------------------------------------------------------------------------
  */
 
+static gboolean vflist_dummy_select_cb(GtkTreeSelection *selection, GtkTreeModel *store, GtkTreePath *tpath,
+				        gboolean path_currently_selected, gpointer data)
+{
+	return TRUE;
+}
+
 void vflist_sort_set(ViewFileList *vfl, SortType type, gint ascend)
 {
+	GtkTreeModel *model;
 	GtkListStore *store;
 	GList *work;
+	GtkTreeSelection *selection;
+	GtkTreePath *tpath;
+	GtkTreeIter iter;
+	GList *select_list;
+	FileData *cursor_fd = NULL;
+	gint single_select;
 
 	if (vfl->sort_method == type && vfl->sort_ascend == ascend) return;
 
@@ -747,9 +763,12 @@ void vflist_sort_set(ViewFileList *vfl, SortType type, gint ascend)
 
 	vfl->list = filelist_sort(vfl->list, vfl->sort_method, vfl->sort_ascend);
 
+	/* now reorder the treeview, maintaining current selection */
+
+#if 0
+	/* this is simpler, but much slower */
 	store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(vfl->listview)));
 
-	/* reorder the treeview, maintaining current selection */
 	work = g_list_last(vfl->list);
 	while (work)
 		{
@@ -764,6 +783,87 @@ void vflist_sort_set(ViewFileList *vfl, SortType type, gint ascend)
 
 		work = work->prev;
 		}
+#endif
+
+	selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(vfl->listview));
+
+	gtk_tree_selection_set_select_function(selection, vflist_dummy_select_cb, vfl, NULL);
+
+	select_list = gtk_tree_selection_get_selected_rows(selection, &model);
+	work = select_list;
+	while (work)
+		{
+		FileData *fd;
+
+		tpath = work->data;
+		gtk_tree_model_get_iter(model, &iter, tpath);
+		gtk_tree_model_get(model, &iter, FILE_COLUMN_POINTER, &fd, -1);
+		gtk_tree_path_free(tpath);
+
+		work->data = fd;
+		work = work->next;
+		}
+
+	select_list = filelist_sort(select_list, vfl->sort_method, vfl->sort_ascend);
+
+	gtk_tree_view_get_cursor(GTK_TREE_VIEW(vfl->listview), &tpath, NULL);
+	if (tpath)
+		{
+		if (gtk_tree_model_get_iter(model, &iter, tpath))
+			{
+			gtk_tree_model_get(model, &iter, FILE_COLUMN_POINTER, &cursor_fd, -1);
+			}
+		gtk_tree_path_free(tpath);
+		}
+
+	single_select = (select_list && !select_list->next);
+	if (single_select) cursor_fd = select_list->data;
+
+	store = GTK_LIST_STORE(model);
+	gtk_list_store_clear(store);
+
+	work = vfl->list;
+	while (work)
+		{
+		FileData *fd;
+		gchar *size;
+
+		fd = work->data;
+		size = text_from_size(fd->size);
+		gtk_list_store_append(store, &iter);
+		gtk_list_store_set(store, &iter, FILE_COLUMN_POINTER, fd,
+						 FILE_COLUMN_THUMB, (vfl->thumbs_enabled) ? fd->pixbuf : NULL,
+						 FILE_COLUMN_NAME, fd->name,
+						 FILE_COLUMN_SIZE, size,
+						 FILE_COLUMN_DATE, text_from_time(fd->date),
+						 FILE_COLUMN_COLOR, FALSE, -1);
+		g_free(size);
+
+		if (select_list && select_list->data == fd)
+			{
+			select_list = g_list_remove(select_list, fd);
+			gtk_tree_selection_select_iter(selection, &iter);
+			}
+
+		work = work->next;
+		}
+
+	g_list_free(select_list);
+
+	if (cursor_fd &&
+	    vflist_find_row(vfl, cursor_fd, &iter) >= 0)
+		{
+		if (single_select)
+			{
+			vflist_move_cursor(vfl, &iter);
+			}
+		else
+			{
+			tree_view_row_make_visible(GTK_TREE_VIEW(vfl->listview), &iter, TRUE);
+			}
+		}
+
+	gtk_tree_selection_set_select_function(selection, vflist_select_cb, vfl, NULL);
 }
 
 /*
@@ -1788,6 +1888,7 @@ gint vflist_maint_removed(ViewFileList *vfl, const gchar *path, GList *ignore_li
 
 	/* thumbnail loader check */
 	if (fd == vfl->thumbs_filedata) vfl->thumbs_filedata = NULL;
+	if (vfl->thumbs_count > 0) vfl->thumbs_count--;
 
 	vfl->list = g_list_remove(vfl->list, fd);
 	file_data_free(fd);

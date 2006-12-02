@@ -25,6 +25,8 @@ static void slideshow_timer_reset(SlideShowData *ss, gint reset);
 
 void slideshow_free(SlideShowData *ss)
 {
+	if (!ss) return;
+
 	slideshow_timer_reset(ss, FALSE);
 
 	if (ss->stop_func) ss->stop_func(ss, ss->stop_data);
@@ -117,6 +119,8 @@ gint slideshow_should_continue(SlideShowData *ss)
 {
 	const gchar *imd_path;
 	const gchar *path;
+
+	if (!ss) return FALSE;
 
 	imd_path = image_get_path(ss->imd);
 
@@ -284,6 +288,8 @@ static void slideshow_timer_reset(SlideShowData *ss, gint reset)
 
 void slideshow_next(SlideShowData *ss)
 {
+	if (!ss) return;
+
 	if (!slideshow_step(ss, TRUE))
 		{
 		slideshow_free(ss);
@@ -295,6 +301,8 @@ void slideshow_next(SlideShowData *ss)
 
 void slideshow_prev(SlideShowData *ss)
 {
+	if (!ss) return;
+
 	if (!slideshow_step(ss, FALSE))
 		{
 		slideshow_free(ss);
@@ -328,11 +336,9 @@ static SlideShowData *real_slideshow_start(ImageWindow *imd, LayoutWindow *lw,
 
 	ss->from_selection = FALSE;
 
-	ss->stop_func = stop_func;
-	ss->stop_data = stop_data;
+	ss->stop_func = NULL;
 
 	ss->timeout_id = -1;
-
 	ss->paused = FALSE;
 
 	if (ss->path_list)
@@ -374,9 +380,13 @@ static SlideShowData *real_slideshow_start(ImageWindow *imd, LayoutWindow *lw,
 	if (slideshow_step(ss, TRUE))
 		{
 		slideshow_timer_reset(ss, TRUE);
+
+		ss->stop_func = stop_func;
+		ss->stop_data = stop_data;
 		}
 	else
 		{
+		slideshow_free(ss);
 		ss = NULL;
 		}
 

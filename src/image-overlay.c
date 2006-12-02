@@ -86,6 +86,7 @@ static GdkPixbuf *image_overlay_info_render(ImageWindow *imd)
 				{
 				n = g_list_length(lw->slideshow->list_done);
 				t = n + g_list_length(lw->slideshow->list);
+				if (n == 0) n = t;
 				}
 			else
 				{

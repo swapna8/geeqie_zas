@@ -21,3 +21,4 @@ gqview.spec
 intl
 ABOUT-NLS
 depcomp
+autom4te.cache

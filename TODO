@@ -1,15 +1,11 @@
 TODO key: d = done, w = work in progress, ? = possibly fixed
           * = required before next release
 
+NOTE: For an up to date TODO list, please see TODO in latest devel release.
+
+
 Major (release blockers):
 ----------------------------------------------
-
- must Fix for 2.0.0:
- -------------------
-
-d> update translations: bg(x) es(x) it(x) ja(x) nl(x) pl(x) ru(x)
-
- -------------
 
  > document recent additions/changes:
     (none currently)

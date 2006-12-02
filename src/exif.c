@@ -1,6 +1,6 @@
 /*
  *  GQView
- *  (C) 2004 John Ellis
+ *  (C) 2006 John Ellis
  *
  *  Authors:
  *    Support for Exif file format, originally written by Eric Swalens.    
@@ -55,7 +55,6 @@
 #endif
 
 #include <stdio.h>
-#include <inttypes.h>   /* stdint.h is not available on all systems... */
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -435,30 +434,25 @@ ExifFormattedText ExifFormattedList[] = {
  *-----------------------------------------------------------------------------
  */
 
-#define BYTE_ORDER_INTEL	1
-#define BYTE_ORDER_MOTOROLA	2
-                                                                                                                          
-#define MARKER_UNKNOWN		0x00
-#define MARKER_SOI		0xD8
-#define MARKER_APP1		0xE1
-
-typedef struct {
-	char		byte_order[2];
-	uint16_t	magic;
-	uint32_t	IFD_offset;
-} TIFFHeader;
- 
-typedef struct {
-	uint16_t	tag;
-	uint16_t	format;
-	uint32_t	nb;
-	uint32_t	data;
-} IFDEntry;
+typedef enum {
+	EXIF_BYTE_ORDER_INTEL,
+	EXIF_BYTE_ORDER_MOTOROLA
+} ExifByteOrder;
 
 
-static ExifMarker *exif_marker_from_tag(uint16_t tag);
-static int parse_IFD_table(ExifData *exif, unsigned char *tiff, int offset,
-			   int size, int byte_order);
+#define EXIF_TIFF_MAX_LEVELS 4
+
+#define EXIF_TIFD_OFFSET_TAG 0
+#define EXIF_TIFD_OFFSET_FORMAT 2
+#define EXIF_TIFD_OFFSET_COUNT 4
+#define EXIF_TIFD_OFFSET_DATA 8
+#define EXIF_TIFD_SIZE 12
+
+
+static const ExifMarker *exif_marker_from_tag(guint16 tag);
+static int parse_IFD_table(ExifData *exif, unsigned char *tiff, guint offset,
+			   guint size, ExifByteOrder bo,
+			   gint level);
 
 /*
  *-----------------------------------------------------------------------------
@@ -466,7 +460,8 @@ static int parse_IFD_table(ExifData *exif, unsigned char *tiff, int offset,
  *-----------------------------------------------------------------------------
  */
 
-static ExifItem *exif_item_new(ExifFormatType format, unsigned int tag, unsigned int elements, ExifMarker *marker)
+static ExifItem *exif_item_new(ExifFormatType format, guint tag,
+			       guint elements, const ExifMarker *marker)
 {
 	ExifItem *item;
 
@@ -491,10 +486,10 @@ static ExifItem *exif_item_new(ExifFormatType format, unsigned int tag, unsigned
 			item->data_len = sizeof(char) * elements;
 			break;
 		case EXIF_FORMAT_SHORT_UNSIGNED:
-			item->data_len = sizeof(unsigned short int) * elements;
+			item->data_len = sizeof(guint16) * elements;
 			break;
 		case EXIF_FORMAT_LONG_UNSIGNED:
-			item->data_len = sizeof(unsigned long int) * elements;
+			item->data_len = sizeof(guint32) * elements;
 			break;
 		case EXIF_FORMAT_RATIONAL_UNSIGNED:
 			item->data_len = sizeof(ExifRational) * elements;
@@ -506,10 +501,10 @@ static ExifItem *exif_item_new(ExifFormatType format, unsigned int tag, unsigned
 			item->data_len = sizeof(char) * elements;
 			break;
 		case EXIF_FORMAT_SHORT:
-			item->data_len = sizeof(short int) * elements;
+			item->data_len = sizeof(gint16) * elements;
 			break;
 		case EXIF_FORMAT_LONG:
-			item->data_len = sizeof(long int) * elements;
+			item->data_len = sizeof(gint32) * elements;
 			break;
 		case EXIF_FORMAT_RATIONAL:
 			item->data_len = sizeof(ExifRational) * elements;
@@ -592,7 +587,7 @@ static GString *string_append_raw_bytes(GString *string, gpointer data, gint ne)
 	return string;
 }
 
-static gchar *text_list_find_value(ExifTextList *list, gint value)
+static gchar *text_list_find_value(ExifTextList *list, guint value)
 {
 	gchar *result = NULL;
 	gint i;
@@ -610,97 +605,34 @@ static gchar *text_list_find_value(ExifTextList *list, gint value)
 
 /*
  *-------------------------------------------------------------------
- * byte size utils
+ * byte order utils
  *-------------------------------------------------------------------
  */
 
-static uint16_t get_int16(unsigned char *f, int bo)
+/* note: the align_buf is used to avoid alignment issues (on sparc) */
+
+static guint16 exif_byte_get_int16(unsigned char *f, ExifByteOrder bo)
 {
-	if (bo == BYTE_ORDER_INTEL)
-		return *f + (*(f+1)<<8);
+	guint16 align_buf;
+
+	memcpy(&align_buf, f, sizeof(guint16));
+
+	if (bo == EXIF_BYTE_ORDER_INTEL)
+		return GUINT16_FROM_LE(align_buf);
 	else
-		return ((*f)<<8) + *(f+1);
+		return GUINT16_FROM_BE(align_buf);
 }
 
-#if 0
-/* not used ? */
-static uint32_t get_int32(unsigned char *f, int bo)
+static guint32 exif_byte_get_int32(unsigned char *f, ExifByteOrder bo)
 {
-	if (bo == BYTE_ORDER_INTEL)
-		return get_int16(f, BYTE_ORDER_INTEL) + (get_int16(f+2, BYTE_ORDER_INTEL)<<16);
+	guint32 align_buf;
+
+	memcpy(&align_buf, f, sizeof(guint32));
+
+	if (bo == EXIF_BYTE_ORDER_INTEL)
+		return GUINT32_FROM_LE(align_buf);
 	else
-		return (get_int16(f, BYTE_ORDER_MOTOROLA)<<16) + get_int16(f+2, BYTE_ORDER_MOTOROLA);
-}
-#endif
-
-static uint16_t swab_int16(uint16_t n, int bo)
-{
-#if BYTE_ORDER == LITTLE_ENDIAN
-	if (bo == BYTE_ORDER_MOTOROLA)
-#else
-	if (bo == BYTE_ORDER_INTEL)
-#endif
-		return n>>8 | n<<8 ;
-	else
-		return n;
-}
-
-static uint32_t swab_int32(uint32_t n, int bo)
-{
-#if BYTE_ORDER == LITTLE_ENDIAN
-	if (bo == BYTE_ORDER_MOTOROLA)
-#else
-	if (bo == BYTE_ORDER_INTEL)
-#endif
-		return n<<24 | n>>24 | (n & 0xFF0000)>>8 | (n & 0xFF00)<<8;
-	else
-		return n;
-}
-
-/*
- *-------------------------------------------------------------------
- * marker utils
- *-------------------------------------------------------------------
- */
-
-static int get_marker_size(unsigned char *f)
-{
-	/* Size is always in Motorola byte order */
-	return get_int16(f+2, BYTE_ORDER_MOTOROLA);
-}
-
-static int goto_next_marker(unsigned char **f, int *size, int *marker)
-{
-	int marker_size = 2;
-
-	*marker = MARKER_UNKNOWN;
-
-	/* It is safe to access the marker and its size since we have checked
-	 * the SOI and this function guaranties the whole next marker is
-	 * available
-	 */
-	if (*(*f+1) != MARKER_SOI)
-		{
-		marker_size += get_marker_size(*f);
-		}
-
-	*size -= marker_size;
-
-	/* size should be at least 4, so we can read the marker and its size
-	 * and check data are actually available
-	 */
-	if (*size < 4) return -1;
-
-	/* Jump to the next marker and be sure it begins with 0xFF
-	 */
-	*f += marker_size;
-	if (**f != 0xFF) return -1;
-
-	if (get_marker_size(*f)+2 > *size) return -1;
-
-	*marker = *(*f+1);
-
-	return 0;
+		return GUINT32_FROM_BE(align_buf);
 }
 
 /*
@@ -709,37 +641,41 @@ static int goto_next_marker(unsigned char **f, int *size, int *marker)
  *-------------------------------------------------------------------
  */
 
-static ExifMarker *exif_marker_from_tag(uint16_t tag)
+static const ExifMarker *exif_marker_from_tag(guint16 tag)
 {
-	static int len = sizeof(ExifKnownMarkersList)/sizeof(ExifMarker) - 1;
-	int i = 0;
+	gint i = 0;
 
-	while (i < len && ExifKnownMarkersList[i].tag != tag)
+	while (ExifKnownMarkersList[i].tag != 0 && ExifKnownMarkersList[i].tag != tag)
 		{
 		i++;
 		}
 
-	return (i >= len ? NULL : &ExifKnownMarkersList[i]);
+	return (ExifKnownMarkersList[i].tag == 0 ? NULL : &ExifKnownMarkersList[i]);
 }
 
-static void rational_from_data(ExifRational *r, void *src, int byte_order)
+static void rational_from_data(ExifRational *r, void *src, ExifByteOrder bo)
 {
-	r->num = swab_int32(*(uint32_t*)src, byte_order);
-	r->den = swab_int32(*(uint32_t*)(src + sizeof(uint32_t)), byte_order);
+	r->num = exif_byte_get_int32(src, bo);
+	r->den = exif_byte_get_int32(src + sizeof(guint32), bo);
 }
 
-static void exif_item_copy_data(ExifItem *item, void *src, int len, ExifFormatType src_format, int byte_order)
+/* src_format and item->format must be compatible
+ * and not overrun src or item->data.
+ */
+static void exif_item_copy_data(ExifItem *item, void *src, guint len,
+				ExifFormatType src_format, ExifByteOrder bo)
 {
-	int bs;
-	int ne;
+	gint bs;
+	gint ne;
 	gpointer dest;
-	int i;
+	gint i;
 
 	bs = ExifFormatList[item->format].size;
 	ne = item->elements;
 	dest = item->data;
 
-	if (!dest || len > item->data_len)
+	if (!dest ||
+	    ExifFormatList[src_format].size * ne > len)
 		{
 		printf("exif tag %s data size mismatch\n", exif_item_get_tag_name(item));
 		return;
@@ -763,7 +699,7 @@ static void exif_item_copy_data(ExifItem *item, void *src, int len, ExifFormatTy
 		case EXIF_FORMAT_SHORT:
 			for (i = 0; i < ne; i++)
 				{
-				((short *)dest)[i] = swab_int16(*(uint16_t*)(src + i * bs), byte_order);
+				((guint16 *)dest)[i] = exif_byte_get_int16(src + i * bs, bo);
 				}
 			break;
 		case EXIF_FORMAT_LONG_UNSIGNED:
@@ -772,19 +708,21 @@ static void exif_item_copy_data(ExifItem *item, void *src, int len, ExifFormatTy
 			    src_format == EXIF_FORMAT_SHORT)
 				{
 				/* a short fits into a long, so allow it */
-				int ss;
+				gint ss;
 
 				ss = ExifFormatList[src_format].size;
 				for (i = 0; i < ne; i++)
 					{
-					((long *)dest)[i] = (long)swab_int16(*(uint16_t*)(src + i * ss), byte_order);
+					((gint32 *)dest)[i] =
+						(gint32)exif_byte_get_int16(src + i * ss, bo);
 					}
 				}
 			else
 				{
 				for (i = 0; i < ne; i++)
 					{
-					((long *)dest)[i] = swab_int32(*(uint32_t*)(src + i * bs), byte_order);
+					((gint32 *)dest)[i] =
+						exif_byte_get_int32(src + i * bs, bo);
 					}
 				}
 			break;
@@ -792,13 +730,13 @@ static void exif_item_copy_data(ExifItem *item, void *src, int len, ExifFormatTy
 		case EXIF_FORMAT_RATIONAL:
 			for (i = 0; i < ne; i++)
 				{
-				rational_from_data(&((ExifRational *)dest)[i], src + i * bs, byte_order);
+				rational_from_data(&((ExifRational *)dest)[i], src + i * bs, bo);
 				}
 			break;
 		case EXIF_FORMAT_FLOAT:
 			for (i = 0; i < ne; i++)
 				{
-				((float *)dest)[i] = swab_int32(*(uint32_t*)(src + i * bs), byte_order);
+				((float *)dest)[i] = exif_byte_get_int32(src + i * bs, bo);
 				}
 			break;
 		case EXIF_FORMAT_DOUBLE:
@@ -806,43 +744,46 @@ static void exif_item_copy_data(ExifItem *item, void *src, int len, ExifFormatTy
 				{
 				ExifRational r;
 
-				rational_from_data(&r, src + i * bs, byte_order);
+				rational_from_data(&r, src + i * bs, bo);
 				if (r.den) ((double *)dest)[i] = (double)r.num / r.den;
 				}
 			break;
 		}
 }
 
-static int parse_IFD_entry(ExifData *exif, unsigned char *tiff, int offset,
-			   int size, int byte_order)
+static gint parse_IFD_entry(ExifData *exif, unsigned char *tiff, guint offset,
+			    guint size, ExifByteOrder bo,
+			    gint level)
 {
-	IFDEntry *ent = (IFDEntry*)(tiff+offset);
-	uint32_t swabed_data;
-	void *data;
-	int data_len;
-	ExifMarker *marker;
+	guint tag;
+	guint format;
+	guint count;
+	guint data_val;
+	guint data_offset;
+	guint data_length;
+	const ExifMarker *marker;
 	ExifItem *item;
 
-	ent->tag = swab_int16(ent->tag, byte_order);
-	ent->format = swab_int16(ent->format, byte_order);
-	ent->nb = swab_int32(ent->nb, byte_order);
-	swabed_data = swab_int32(ent->data, byte_order);
+	tag = exif_byte_get_int16(tiff + offset + EXIF_TIFD_OFFSET_TAG, bo);
+	format = exif_byte_get_int16(tiff + offset + EXIF_TIFD_OFFSET_FORMAT, bo);
+	count = exif_byte_get_int32(tiff + offset + EXIF_TIFD_OFFSET_COUNT, bo);
+	data_val = exif_byte_get_int32(tiff + offset + EXIF_TIFD_OFFSET_DATA, bo);
 
 	/* Check tag type. If it does not match, either the format is wrong,
 	 * either it is a unknown tag; so it is not really an error.
 	 */
-	marker = exif_marker_from_tag(ent->tag);
+	marker = exif_marker_from_tag(tag);
 	if (!marker)
 		{
-		if (ent->format > EXIF_FORMAT_DOUBLE)
+		if (format >= EXIF_FORMAT_COUNT)
 			{
-			printf("warning: exif tag 0x%4x has invalid format %d\n", ent->tag, ent->format);
+			printf("warning: exif tag 0x%4x has invalid format %d\n", tag, format);
 			return 0;
 			}
 		/* allow non recognized tags to be displayed */
-		marker = &ExifUnknownMarkersList[ent->format];
+		marker = &ExifUnknownMarkersList[format];
 		}
-	if (marker->format != ent->format)
+	if (marker->format != format)
 		{
 		/* Some cameras got mixed up signed/unsigned_rational
 		 * eg KODAK DC4800 on object_distance tag
@@ -850,22 +791,24 @@ static int parse_IFD_entry(ExifData *exif, unsigned char *tiff, int offset,
 		 * FIXME: what exactly is this test trying to do?
 		 * ok, so this test is to allow the case of swapped signed/unsigned mismatch to leak through?
 		 */
-		if ( !(marker->format == EXIF_FORMAT_RATIONAL_UNSIGNED && ent->format == EXIF_FORMAT_RATIONAL) &&
-		     !(marker->format == EXIF_FORMAT_RATIONAL && ent->format == EXIF_FORMAT_RATIONAL_UNSIGNED) &&
+		if (!(marker->format == EXIF_FORMAT_RATIONAL_UNSIGNED && format == EXIF_FORMAT_RATIONAL) &&
+		    !(marker->format == EXIF_FORMAT_RATIONAL && format == EXIF_FORMAT_RATIONAL_UNSIGNED) &&
 			/* short fits into a long so allow this mismatch
 			 * as well (some tags allowed to be unsigned short _or_ unsigned long)
 			 */
-		     !(marker->format == EXIF_FORMAT_LONG_UNSIGNED && ent->format == EXIF_FORMAT_SHORT_UNSIGNED) )
+		    !(marker->format == EXIF_FORMAT_LONG_UNSIGNED && format == EXIF_FORMAT_SHORT_UNSIGNED) )
 			{
-			if (ent->format <= EXIF_FORMAT_DOUBLE)
+			if (format < EXIF_FORMAT_COUNT)
 				{
 				printf("warning: exif tag %s format mismatch, found %s exif spec requests %s\n",
-					marker->key, ExifFormatList[ent->format].short_name, ExifFormatList[marker->format].short_name);
+					marker->key, ExifFormatList[format].short_name,
+					ExifFormatList[marker->format].short_name);
 				}
 			else
 				{
 				printf("warning: exif tag %s format mismatch, found unknown id %d exif spec requests %d (%s)\n",
-					marker->key, ent->format, marker->format, ExifFormatList[marker->format].short_name);
+					marker->key, format, marker->format,
+					ExifFormatList[marker->format].short_name);
 				}
 			return 0;
 			}
@@ -873,53 +816,61 @@ static int parse_IFD_entry(ExifData *exif, unsigned char *tiff, int offset,
 
 	/* Where is the data, is it available?
 	 */
-	if (marker->components > 0 && marker->components != ent->nb)
+	if (marker->components > 0 && marker->components != count)
 		{
-		printf("warning: exif tag %s has %d elements, exif spec requests %d\n", marker->key, ent->nb, marker->components);
+		printf("warning: exif tag %s has %d elements, exif spec requests %d\n",
+			marker->key, count, marker->components);
 		}
-	data_len = ExifFormatList[marker->format].size * ent->nb;
-	if (data_len > sizeof(ent->data))
+
+	data_length = ExifFormatList[marker->format].size * count;
+	if (data_length > 4)
 		{
-		if (size < swabed_data+data_len)
+		data_offset = data_val;
+		if (size < data_offset + data_length)
 			{
-			printf("warning: exif tag %s will overrun IFD segment, ignored.\n", marker->key);
+			printf("warning: exif tag %s data will overrun end of file, ignored.\n", marker->key);
 			return -1;
 			}
-		data = (void*)tiff + swabed_data;
 		}
 	else
 		{
-		data = (void*)(&(ent->data));
+		data_offset = offset + EXIF_TIFD_OFFSET_DATA;
 		}
 
-	item = exif_item_new(marker->format, ent->tag, ent->nb, marker);
-	exif_item_copy_data(item, data, data_len, ent->format, byte_order);
+	item = exif_item_new(marker->format, tag, count, marker);
+	exif_item_copy_data(item, tiff + data_offset, data_length, format, bo);
 	exif->items = g_list_prepend(exif->items, item);
 
 	if (item->tag == TAG_EXIFOFFSET)
 		{
-		parse_IFD_table(exif, tiff, swabed_data, size, byte_order);
+		parse_IFD_table(exif, tiff, data_val, size, bo, level + 1);
 		}
 
 	return 0;
 }
 
-static int parse_IFD_table(ExifData *exif, unsigned char *tiff, int offset,
-			   int size, int byte_order)
+static int parse_IFD_table(ExifData *exif, unsigned char *tiff, guint offset,
+			   guint size, ExifByteOrder bo,
+			   gint level)
 {
-	int i, nb_entries;
+	guint count;
+	guint i;
+
+	/* limit damage from infinite loops */
+	if (level > EXIF_TIFF_MAX_LEVELS) return -1;
 
 	/* We should be able to read number of entries in IFD0) */
-	if (size < offset+2) return -1;
+	if (size < offset + 2) return -1;
 
-	nb_entries = get_int16(tiff+offset, byte_order);
+	count = exif_byte_get_int16(tiff + offset, bo);
+	offset += 2;
 
 	/* Entries and next IFD offset must be readable */
-	if (size < offset+nb_entries*12+4) return -1;
+	if (size < offset + count * EXIF_TIFD_SIZE + 4) return -1;
 
-	for (i=0; i<nb_entries; ++i)
+	for (i = 0; i < count; i++)
 		{
-		parse_IFD_entry(exif, tiff, offset+2+i*sizeof(IFDEntry), size, byte_order);
+		parse_IFD_entry(exif, tiff, offset + i * EXIF_TIFD_SIZE, size, bo, level);
 		}
 
 	return 0;
@@ -927,53 +878,103 @@ static int parse_IFD_table(ExifData *exif, unsigned char *tiff, int offset,
 
 /*
  *-------------------------------------------------------------------
- * file formats
+ * tiff
  *-------------------------------------------------------------------
  */
 
-static int parse_TIFF(ExifData *exif, unsigned char *tiff, int size)
+static gint parse_TIFF(ExifData *exif, unsigned char *data, const guint len)
 {
-	int byte_order, offset=0;
+	ExifByteOrder bo;
+	guint offset;
 
-	if (size < sizeof(TIFFHeader))
-		{
-		return -1;
-		}
+	if (len < 8) return -1;
 
-	if (strncmp(((TIFFHeader*)tiff)->byte_order, "II", 2) == 0)
+	if (memcmp(data, "II", 2) == 0)
 		{
-		byte_order = BYTE_ORDER_INTEL;
+		bo = EXIF_BYTE_ORDER_INTEL;
 		}
-	else if (strncmp(((TIFFHeader*)tiff)->byte_order, "MM", 2) == 0)
+	else if (memcmp(data, "MM", 2) == 0)
 		{
-		byte_order = BYTE_ORDER_MOTOROLA;
+		bo = EXIF_BYTE_ORDER_MOTOROLA;
 		}
 	else
 		{
 		return -1;
 		}
 
-	if (swab_int16(((TIFFHeader*)tiff)->magic, byte_order) != 0x002A)
+	if (exif_byte_get_int16(data + 2, bo) != 0x002A)
 		{
 		return -1;
 		}
 
-	offset = swab_int32(((TIFFHeader*)tiff)->IFD_offset, byte_order);
+	offset = exif_byte_get_int32(data + 4, bo);
 
-	return parse_IFD_table(exif, tiff, offset, size, byte_order);
+	return parse_IFD_table(exif, data, offset, len, bo, 0);
 }
 
-static int parse_JPEG(ExifData *exif, unsigned char *f, int size)
-{
-	int marker, marker_size;
 
-	if (size<2 || *f!=0xFF || *(f+1)!=MARKER_SOI)
+/*
+ *-------------------------------------------------------------------
+ * jpeg
+ *-------------------------------------------------------------------
+ */
+
+#define MARKER_UNKNOWN		0x00
+#define MARKER_SOI		0xD8
+#define MARKER_APP1		0xE1
+
+static gint get_marker_size(unsigned char *data)
+{
+	/* Size is always in Motorola byte order */
+	return exif_byte_get_int16(data + 2, EXIF_BYTE_ORDER_MOTOROLA);
+}
+
+static gint goto_next_marker(unsigned char **data, gint *size, gint *marker)
+{
+	gint marker_size = 2;
+
+	*marker = MARKER_UNKNOWN;
+
+	/* It is safe to access the marker and its size since we have checked
+	 * the SOI and this function guaranties the whole next marker is
+	 * available
+	 */
+	if (*(*data + 1) != MARKER_SOI)
+		{
+		marker_size += get_marker_size(*data);
+		}
+
+	*size -= marker_size;
+
+	/* size should be at least 4, so we can read the marker and its size
+	 * and check data are actually available
+	 */
+	if (*size < 4) return -1;
+
+	/* Jump to the next marker and be sure it begins with 0xFF
+	 */
+	*data += marker_size;
+	if (**data != 0xFF) return -1;
+
+	if (get_marker_size(*data) + 2 > *size) return -1;
+
+	*marker = *(*data + 1);
+
+	return 0;
+}
+
+static gint parse_JPEG(ExifData *exif, unsigned char *data, gint size)
+{
+	gint marker;
+	gint marker_size;
+
+	if (size < 4 || *data != 0xFF || *(data + 1) != MARKER_SOI)
 		{
 		return -2;
 		}
 
 	do {
-		if (goto_next_marker(&f, &size, &marker) == -1)
+		if (goto_next_marker(&data, &size, &marker) == -1)
 			{
 			break;
 			}
@@ -984,14 +985,14 @@ static int parse_JPEG(ExifData *exif, unsigned char *f, int size)
 		return -2;
 		}
 
-	marker_size = get_marker_size(f)-2;
+	marker_size = get_marker_size(data) - 2;
 		
-	if (marker_size<6 || strncmp((char*)f+4, "Exif\0\0", 6)!=0)
+	if (marker_size < 6 || memcmp(data + 4, "Exif\x00\x00", 6) != 0)
 		{
 		return -2;
 		}
 
-	return parse_TIFF(exif, f+10, marker_size-6);
+	return parse_TIFF(exif, data + 10, marker_size - 6);
 }
 
 static gint map_file(const gchar *path, void **mapping, int *size)
@@ -1117,7 +1118,7 @@ ExifItem *exif_get_item(ExifData *exif, const gchar *key)
 
 gchar *exif_item_get_data_as_text(ExifItem *item)
 {
-	ExifMarker *marker;
+	const ExifMarker *marker;
 	gpointer data;
 	GString *string;
 	gchar *text;
@@ -1154,7 +1155,7 @@ gchar *exif_item_get_data_as_text(ExifItem *item)
 					val = (unsigned char)(((signed char *)data)[0]);
 					}
 
-				result = text_list_find_value(marker->list, (unsigned short)val);
+				result = text_list_find_value(marker->list, (guint)val);
 				string = g_string_append(string, result);
 				g_free(result);
 				}
@@ -1171,21 +1172,21 @@ gchar *exif_item_get_data_as_text(ExifItem *item)
 				{
 				gchar *result;
 
-				result = text_list_find_value(marker->list, ((unsigned short *)data)[0]);
+				result = text_list_find_value(marker->list, ((guint16 *)data)[0]);
 				string = g_string_append(string, result);
 				g_free(result);
 				}
 			else for (i = 0; i < ne; i++)
 				{
 				g_string_append_printf(string, "%s%hd", (i > 0) ? ", " : "",
-							((unsigned short *)data)[i]);
+							((guint16 *)data)[i]);
 				}
 			break;
 		case EXIF_FORMAT_LONG_UNSIGNED:
 			for (i = 0; i < ne; i++)
 				{
 				g_string_append_printf(string, "%s%ld", (i > 0) ? ", " : "",
-							((unsigned long *)data)[i]);
+							(unsigned long int)((guint32 *)data)[i]);
 				}
 			break;
 		case EXIF_FORMAT_RATIONAL_UNSIGNED:
@@ -1202,14 +1203,14 @@ gchar *exif_item_get_data_as_text(ExifItem *item)
 			for (i = 0; i < ne; i++)
 				{
 				g_string_append_printf(string, "%s%hd", (i > 0) ? ", " : "",
-							((short *)data)[i]);
+							((gint16 *)data)[i]);
 				}
 			break;
 		case EXIF_FORMAT_LONG:
 			for (i = 0; i < ne; i++)
 				{
 				g_string_append_printf(string, "%s%ld", (i > 0) ? ", " : "",
-							((long *)data)[i]);
+							(long int)((gint32 *)data)[i]);
 				}
 			break;
 		case EXIF_FORMAT_RATIONAL:
@@ -1251,20 +1252,20 @@ gint exif_item_get_integer(ExifItem *item, gint *value)
 	switch (item->format)
 		{
 		case EXIF_FORMAT_SHORT:
-			*value = (gint)(((short *)(item->data))[0]);
+			*value = (gint)(((gint16 *)(item->data))[0]);
 			return TRUE;
 			break;
 		case EXIF_FORMAT_SHORT_UNSIGNED:
-			*value = (gint)(((unsigned short *)(item->data))[0]);
+			*value = (gint)(((guint16 *)(item->data))[0]);
 			return TRUE;
 			break;
 		case EXIF_FORMAT_LONG:
-			*value = (gint)(((long *)(item->data))[0]);
+			*value = (gint)(((gint32 *)(item->data))[0]);
 			return TRUE;
 			break;
 		case EXIF_FORMAT_LONG_UNSIGNED:
 			/* FIXME: overflow possible */
-			*value = (gint)(((unsigned long *)(item->data))[0]);
+			*value = (gint)(((guint32 *)(item->data))[0]);
 			return TRUE;
 		default:
 			/* all other type return FALSE */
@@ -1466,7 +1467,7 @@ static gchar *exif_get_formatted_by_key(ExifData *exif, const gchar *key, gint *
 		if (!exif_get_integer(exif, "Flash", &n)) return NULL;
 
 		/* Exif 2.1 only defines first 3 bits */
-		if (n <= 0x07) return g_strdup(text_list_find_value(ExifFlashList, n));
+		if (n <= 0x07) return text_list_find_value(ExifFlashList, n);
 
 		/* must be Exif 2.2 */
 		string = g_string_new("");

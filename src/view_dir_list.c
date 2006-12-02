@@ -90,15 +90,7 @@ static gint vdlist_rename_row_cb(TreeEditData *td, const gchar *old, const gchar
 	new_path = concat_dir_and_file(base, new);
 	g_free(base);
 
-	if (!rename_file(old_path, new_path))
-		{
-		gchar *buf;
-
-		buf = g_strdup_printf(_("Failed to rename %s to %s."), old, new);
-		file_util_warning_dialog("Rename failed", buf, GTK_STOCK_DIALOG_ERROR, vdl->listview);
-		g_free(buf);
-		}
-	else
+	if (file_util_rename_dir(old_path, new_path, vdl->listview))
 		{
 		if (vdl->layout && strcmp(vdl->path, old_path) == 0)
 			{
@@ -489,7 +481,7 @@ static void vdlist_dnd_get(GtkWidget *widget, GdkDragContext *context,
 	if (text)
 		{
 		gtk_selection_data_set (selection_data, selection_data->target,
-				8, text, length);
+				8, (guchar *)text, length);
 		g_free(text);
 		}
 }
@@ -545,7 +537,7 @@ static void vdlist_dnd_drop_receive(GtkWidget *widget,
 		GList *list;
 		gint active;
 
-		list = uri_list_from_text(selection_data->data, TRUE);
+		list = uri_list_from_text((gchar *)selection_data->data, TRUE);
 		if (!list) return;
 
 		active = access_file(fd->path, W_OK | X_OK);
