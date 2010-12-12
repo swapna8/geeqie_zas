@@ -263,7 +263,8 @@ static void layout_menu_pan_cb(GtkAction *action, gpointer data)
 	LayoutWindow *lw = data;
 
 	layout_exit_fullscreen(lw);
-	pan_window_new(lw->dir_fd);
+        pan_window_new(lw->dir_fd);
+//	new_pan_calendar_window(lw->dir_fd);
 }
 
 static void layout_menu_print_cb(GtkAction *action, gpointer data)

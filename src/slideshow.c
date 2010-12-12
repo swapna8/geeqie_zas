@@ -431,6 +431,12 @@ SlideShowData *slideshow_start_from_filelist(LayoutWindow *target_lw, ImageWindo
 	return real_slideshow_start(target_lw, imd, list, -1, NULL, NULL, stop_func, stop_data);
 }
 
+SlideShowData *slideshow_start_from_filelist_position(LayoutWindow *target_lw, ImageWindow *imd, GList *list,
+						      void (*stop_func)(SlideShowData *, gpointer), gpointer stop_data,gint list_position)
+{
+  return real_slideshow_start(target_lw, imd, list, list_position, NULL, NULL, stop_func, stop_data);
+}
+
 SlideShowData *slideshow_start_from_collection(LayoutWindow *target_lw, ImageWindow *imd, CollectionData *cd,
 					       void (*stop_func)(SlideShowData *, gpointer), gpointer stop_data,
 					       CollectInfo *start_info)

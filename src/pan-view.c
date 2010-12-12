@@ -25,6 +25,7 @@
 #include "menu.h"
 #include "misc.h"
 #include "pan-types.h"
+#include "pan-cronos.h"
 #include "thumb.h"
 #include "ui_fileops.h"
 #include "ui_menu.h"
@@ -941,7 +942,7 @@ static void pan_layout_compute(PanWindow *pw, FileData *dir_fd,
 	*height = 0;
 	*scroll_x = 0;
 	*scroll_y = 0;
-
+	DEBUG_1("pan layour compute layout change: %d",pw->layout);
 	switch (pw->layout)
 		{
 		case PAN_LAYOUT_GRID:
@@ -959,6 +960,11 @@ static void pan_layout_compute(PanWindow *pw, FileData *dir_fd,
 			break;
 		case PAN_LAYOUT_TIMELINE:
 			pan_timeline_compute(pw, dir_fd, width, height);
+			break;
+		case PAN_LAYOUT_CRONOS:
+
+			DEBUG_1("pan layout compute: Enters Cronos");
+			pan_cronos_compute(pw, dir_fd, width, height);
 			break;
 		}
 
@@ -1111,7 +1117,7 @@ static gint pan_layout_update_idle_cb(gpointer data)
 			return FALSE;
 			}
 		}
-
+	//new_pan_calendar_window(pw->dir_fd);
 	pan_layout_compute(pw, pw->dir_fd, &width, &height, &scroll_x, &scroll_y);
 
 	pan_window_zoom_limit(pw);
@@ -1418,6 +1424,15 @@ static gboolean pan_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, g
 				case '/':
 					pan_search_toggle_visible(pw, TRUE);
 					break;
+
+				case GDK_BackSpace:
+				if (pw->layout == PAN_LAYOUT_CRONOS)
+				{
+				pan_cronos_update(pw,-1,NULL);
+				pan_layout_update(pw);
+				break;
+				}
+			
 				default:
 					stop_signal = FALSE;
 					break;
@@ -2074,10 +2089,18 @@ static void button_cb(PixbufRenderer *pr, GdkEventButton *event, gpointer data)
 				pi = pan_item_find_by_coord(pw, PAN_ITEM_BOX, rx, ry, "day");
 				pan_calendar_update(pw, pi);
 				}
+			else if (pi && pw->layout == PAN_LAYOUT_CRONOS && pw->depth != 99)
+				{
+				pan_cronos_update(pw,1,pi);
+                                pw->cronos_click = pi;
+				pan_layout_update(pw);
+				}
 			break;
 		case MOUSE_BUTTON_MIDDLE:
 			break;
 		case MOUSE_BUTTON_RIGHT:
+			if (!pi && pw->layout == PAN_LAYOUT_CRONOS) pan_cronos_update(pw,-1,NULL);
+		
 			pan_info_update(pw, pi);
 			menu = pan_popup_menu(pw);
 			gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, event->time);
@@ -2259,8 +2282,10 @@ static void pan_window_layout_change_cb(GtkWidget *combo, gpointer data)
 {
 	PanWindow *pw = data;
 
-	pw->layout = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
+        pw->layout = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
+	DEBUG_1("pan layout selected: %d",pw->layout);
 	pan_layout_update(pw);
+
 }
 
 static void pan_window_layout_size_cb(GtkWidget *combo, gpointer data)
@@ -2268,6 +2293,14 @@ static void pan_window_layout_size_cb(GtkWidget *combo, gpointer data)
 	PanWindow *pw = data;
 
 	pw->size = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
+	pan_layout_update(pw);
+}
+
+static void pan_window_thumbnail_number(GtkWidget *combo, gpointer data)
+{
+	PanWindow *pw = data;
+
+	pw->nthumbnails = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
 	pan_layout_update(pw);
 }
 
@@ -2356,6 +2389,8 @@ static void pan_window_new_real(FileData *dir_fd)
 	PanWindow *pw;
 	GtkWidget *vbox;
 	GtkWidget *box;
+	GtkWidget *vbox_cronos;
+	GtkWidget *box_cronos;
 	GtkWidget *combo;
 	GtkWidget *hbox;
 	GtkWidget *frame;
@@ -2364,12 +2399,13 @@ static void pan_window_new_real(FileData *dir_fd)
 
 	pw = g_new0(PanWindow, 1);
 
-	pw->dir_fd = file_data_ref(dir_fd);
-	pw->layout = PAN_LAYOUT_TIMELINE;
-	pw->size = PAN_IMAGE_SIZE_THUMB_NORMAL;
-	pw->thumb_size = PAN_THUMB_SIZE_NORMAL;
-	pw->thumb_gap = PAN_THUMB_GAP_NORMAL;
+	pw->dir_fd = file_data_ref(dir_fd);	/** Ref FileData */
+	pw->layout = PAN_LAYOUT_TIMELINE;      /** Type of oan layout : PAN_LAYOUT_NEW_CALENDAR */
+	pw->size = PAN_IMAGE_SIZE_THUMB_NORMAL;/** Image Size * /
+        pw->thumb_size = PAN_THUMB_SIZE_NORMAL; /** Image size */
+	pw->thumb_gap = PAN_THUMB_GAP_NORMAL;  /** spaces beteen items /deprected at this level */
 
+	/** Various options about using exif issues */
 	if (!pref_list_int_get(PAN_PREF_GROUP, PAN_PREF_EXIF_PAN_DATE, &pw->exif_date_enable))
 		{
 		pw->exif_date_enable = FALSE;
@@ -2382,28 +2418,31 @@ static void pan_window_new_real(FileData *dir_fd)
 		{
 		pw->info_includes_exif = TRUE;
 		}
-
+	/** Yes, ignore symbolic links */
 	pw->ignore_symlinks = TRUE;
-
+        /** Don't know yet */
 	pw->idle_id = 0;
-
+        /** new GTK window : initialization */
 	pw->window = window_new(GTK_WINDOW_TOPLEVEL, "panview", NULL, NULL, _("Pan View"));
 
+        /** Geometry issues */
 	geometry.min_width = DEFAULT_MINIMAL_WINDOW_SIZE;
 	geometry.min_height = DEFAULT_MINIMAL_WINDOW_SIZE;
 	gtk_window_set_geometry_hints(GTK_WINDOW(pw->window), NULL, &geometry, GDK_HINT_MIN_SIZE);
 
 	gtk_window_set_resizable(GTK_WINDOW(pw->window), TRUE);
 	gtk_container_set_border_width(GTK_CONTAINER(pw->window), 0);
-
+       
+        /** new Vbox*/
 	vbox = gtk_vbox_new(FALSE, 0);
 	gtk_container_add(GTK_CONTAINER(pw->window), vbox);
 	gtk_widget_show(vbox);
-
+	/** prefered orientation box */
 	box = pref_box_new(vbox, FALSE, GTK_ORIENTATION_HORIZONTAL, PREF_PAD_SPACE);
 
 	pref_spacer(box, 0);
 	pref_label_new(box, _("Location:"));
+	/** more bars */
 	combo = tab_completion_new_with_history(&pw->path_entry, dir_fd->path, "pan_view_path", -1,
 						pan_window_entry_activate_cb, pw);
 	g_signal_connect(G_OBJECT(pw->path_entry->parent), "changed",
@@ -2417,6 +2456,8 @@ static void pan_window_new_real(FileData *dir_fd)
 	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Folders"));
 	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Folders (flower)"));
 	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Grid"));
+	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Cronos"));
+
 
 	gtk_combo_box_set_active(GTK_COMBO_BOX(combo), pw->layout);
 	g_signal_connect(G_OBJECT(combo), "changed",
@@ -2436,16 +2477,20 @@ static void pan_window_new_real(FileData *dir_fd)
 	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("1:2 (50%)"));
 	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("1:1 (100%)"));
 
+
+
 	gtk_combo_box_set_active(GTK_COMBO_BOX(combo), pw->size);
 	g_signal_connect(G_OBJECT(combo), "changed",
 			 G_CALLBACK(pan_window_layout_size_cb), pw);
 	gtk_box_pack_start(GTK_BOX(box), combo, FALSE, FALSE, 0);
 	gtk_widget_show(combo);
 
+	combo = gtk_combo_box_new_text();
+
 	table = pref_table_new(vbox, 2, 2, FALSE, TRUE);
 	gtk_table_set_row_spacings(GTK_TABLE(table), 2);
 	gtk_table_set_col_spacings(GTK_TABLE(table), 2);
-
+	/** new real image, in fact it's a widget */
 	pw->imd = image_new(TRUE);
 	pw->imd_normal = pw->imd;
 
@@ -2558,6 +2603,13 @@ static void pan_window_new_real(FileData *dir_fd)
 	gtk_widget_show(pw->window);
 
 	pan_window_list = g_list_append(pan_window_list, pw);
+
+
+	/** Pan Cronos */
+
+	pw->depth = PAN_DATE_LENGTH_YEAR;
+	pw->nthumbnails = 1;
+
 }
 
 /*

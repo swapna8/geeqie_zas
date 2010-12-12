@@ -70,6 +70,8 @@ static void view_window_dnd_init(ViewWindow *vw);
 
 static void view_window_notify_cb(FileData *fd, NotifyType type, gpointer data);
 
+
+
 /*
  *-----------------------------------------------------------------------------
  * misc
@@ -871,8 +873,10 @@ static ViewWindow *real_view_window_new(FileData *fd, GList *list, CollectionDat
 	else if (list)
 		{
 		view_window_set_list(vw, list);
-		vw->list_pointer = vw->list;
-		image_change_fd(vw->imd, (FileData *)vw->list->data, image_zoom_get_default(NULL));
+		if (!fd) vw->list_pointer = vw->list;
+
+		if (!fd) image_change_fd(vw->imd, (FileData *)vw->list->data, image_zoom_get_default(NULL));
+		else image_change_fd(vw->imd, fd, image_zoom_get_default(NULL));
 
 		if (options->image.enable_read_ahead)
 			{
@@ -1710,4 +1714,32 @@ static void view_window_notify_cb(FileData *fd, NotifyType type, gpointer data)
 			break;
 		}
 }
+
+
+
+/*
+ *-----------------------------------------------------------------------------
+ * pan-cronos
+ *-----------------------------------------------------------------------------
+ */
+void view_window_new_from_list_position(GList *list,FileData *click_fd)
+{
+   ViewWindow *vw = real_view_window_new(click_fd, list, NULL, NULL);
+   view_fullscreen_toggle(vw,FALSE);
+    
+  
+   /*   GList *work = list;
+   GList *newlist=NULL;
+   FileData *fd = work->data;
+   while(work && fd!=click_fd)
+     {
+       fd = work->data;
+       work = work->next;
+     }
+ 
+   vw->list_pointer = work;
+
+   view_list_step(vw,TRUE);*/
+}
+
 /* vim: set shiftwidth=8 softtabstop=0 cindent cinoptions={1s: */

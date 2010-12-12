@@ -88,6 +88,7 @@ typedef enum {
 	PAN_LAYOUT_FOLDERS_LINEAR,
 	PAN_LAYOUT_FOLDERS_FLOWER,
 	PAN_LAYOUT_GRID,
+	PAN_LAYOUT_CRONOS,
 	PAN_LAYOUT_COUNT
 } PanLayoutType;
 
@@ -134,6 +135,14 @@ typedef enum {
 #define PAN_BORDER_BOTTOM	PAN_BORDER_3
 #define PAN_BORDER_LEFT		PAN_BORDER_4
 
+typedef enum {
+	PAN_DATE_LENGTH_EXACT,
+	PAN_DATE_LENGTH_HOUR,
+	PAN_DATE_LENGTH_DAY,
+	PAN_DATE_LENGTH_WEEK,
+	PAN_DATE_LENGTH_MONTH,
+	PAN_DATE_LENGTH_YEAR
+} PanDateLengthType;
 
 typedef struct _PanItem PanItem;
 struct _PanItem {
@@ -225,6 +234,16 @@ struct _PanWindow
 	PanItem *search_pi;
 
 	gint idle_id;
+
+	/** Pan cronos */
+	PanDateLengthType depth;
+	gint current_year;
+	gint current_month;
+	gint current_day;
+	gint nthumbnails;
+	gint current_list_position;
+	SlideShowData *slide_show;
+        PanItem *cronos_click;
 };
 
 typedef struct _PanGrid PanGrid;
@@ -324,14 +343,6 @@ void pan_text_alignment_calc(PanTextAlignment *ta, PanItem *box);
 
 /* utils in pan-util.c */
 
-typedef enum {
-	PAN_DATE_LENGTH_EXACT,
-	PAN_DATE_LENGTH_HOUR,
-	PAN_DATE_LENGTH_DAY,
-	PAN_DATE_LENGTH_WEEK,
-	PAN_DATE_LENGTH_MONTH,
-	PAN_DATE_LENGTH_YEAR
-} PanDateLengthType;
 
 gboolean pan_date_compare(time_t a, time_t b, PanDateLengthType length);
 gint pan_date_value(time_t d, PanDateLengthType length);
@@ -348,6 +359,7 @@ GList *pan_list_tree(FileData *dir_fd, SortType sort, gboolean ascend,
 
 void pan_calendar_update(PanWindow *pw, PanItem *pi_day);
 void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *height);
+void pan_cronos_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *height);
 void pan_flower_compute(PanWindow *pw, FileData *dir_fd,
 			gint *width, gint *height,
 			gint *scroll_x, gint *scroll_y);

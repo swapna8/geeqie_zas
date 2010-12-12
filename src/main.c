@@ -781,6 +781,7 @@ gint main(gint argc, gchar *argv[])
 		exit(1);
 		}
 #else
+	gtk_clutter_init(&argc, &argv);
 	gtk_init(&argc, &argv);
 #endif
 #else

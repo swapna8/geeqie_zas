@@ -31,6 +31,8 @@ gboolean slideshow_should_continue(SlideShowData *ss);
 void slideshow_next(SlideShowData *ss);
 void slideshow_prev(SlideShowData *ss);
 
+SlideShowData *slideshow_start_from_filelist_position(LayoutWindow *target_lw, ImageWindow *imd, GList *list,
+						   void (*stop_func)(SlideShowData *, gpointer), gpointer stop_data,gint start_point);
 SlideShowData *slideshow_start_from_filelist(LayoutWindow *target_lw, ImageWindow *imd, GList *list,
 					      void (*stop_func)(SlideShowData *, gpointer), gpointer stop_data);
 SlideShowData *slideshow_start_from_collection(LayoutWindow *target_lw, ImageWindow *imd, CollectionData *cd,

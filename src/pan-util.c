@@ -21,7 +21,19 @@
  * date functions
  *-----------------------------------------------------------------------------
  */
-
+/**
+ * \brief Compare if a = b.
+ *
+ * Compares time_t a with time_b.It uses length to determinate if it has
+ * to be compared by day,week,month,years or you want to compare exactly
+ * whole time_t date.
+ * \param a First time_t to compare
+ * \param b Second time_t to compare
+ * \return
+ *    TRUE if (a == b)    
+ *    FALSE if ( a!= b)
+ *   
+ */
 gboolean pan_date_compare(time_t a, time_t b, PanDateLengthType length)
 {
 	struct tm ta;
@@ -216,22 +228,24 @@ GList *pan_list_tree(FileData *dir_fd, SortType sort, gboolean ascend,
 	GList *result;
 	GList *folders;
 
-	filelist_read(dir_fd, &flist, &dlist);
+	filelist_read(dir_fd, &flist, &dlist); /** reads current directory */
 	if (sort != SORT_NONE)
 		{
 		flist = filelist_sort(flist, sort, ascend);
 		dlist = filelist_sort(dlist, sort, ascend);
 		}
 
-	result = flist;
-	folders = dlist;
+	result = flist; /** result = files read in current directory */
+	folders = dlist; /** folders = folders read in current directory */
+
+	/** Iterates all found directories */
 	while (folders)
 		{
 		FileData *fd;
 
 		fd = folders->data;
 		folders = g_list_remove(folders, fd);
-
+		/** Looks for more folders inside previous folders found */
 		if (!pan_is_ignored(fd->path, ignore_symlinks) &&
 		    filelist_read(fd, &flist, &dlist))
 			{
@@ -247,7 +261,7 @@ GList *pan_list_tree(FileData *dir_fd, SortType sort, gboolean ascend,
 
 		file_data_unref(fd);
 		}
-
+	/** here we have all files. We could then insert it in Sqlite */
 	return result;
 }
 /* vim: set shiftwidth=8 softtabstop=0 cindent cinoptions={1s: */

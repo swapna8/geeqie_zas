@@ -1,16 +1,3 @@
-/*
- * Geeqie
- * (C) 2006 John Ellis
- * Copyright (C) 2008 - 2010 The Geeqie Team
- *
- * Author: John Ellis
- *
- * This software is released under the GNU General Public License (GNU GPL).
- * Please read the included file COPYING for more information.
- * This software comes with no warranty of any kind, use at your own risk!
- */
-
-
 #include "main.h"
 #include "pan-types.h"
 
@@ -34,7 +21,7 @@
 #define PAN_CAL_DAY_TEXT_COLOR 0, 0, 0
 
 #define PAN_CAL_MONTH_COLOR 255, 255, 255
-#define PAN_CAL_MONTH_ALPHA 100
+#define PAN_CAL_MONTH_ALPHA 200
 #define PAN_CAL_MONTH_BORDER 4
 #define PAN_CAL_MONTH_BORDER_COLOR 0, 0, 0
 #define PAN_CAL_MONTH_TEXT_COLOR 0, 0, 0
@@ -44,149 +31,146 @@
 #define PAN_CAL_DOT_COLOR 128, 128, 128
 #define PAN_CAL_DOT_ALPHA 128
 
+gint current_depth_date;
+gint depth_date;
 
+gboolean pan_cronos_more_to_show(PanWindow *pw,time_t dt);
 /*
  *-----------------------------------------------------------------------------
- * calendar
+ * cronos
  *-----------------------------------------------------------------------------
  */
 
-void pan_calendar_update(PanWindow *pw, PanItem *pi_day)
+void pan_cronos_slideshow_stop(PanWindow *pw)
 {
-	PanItem *pbox;
-	PanItem *pi;
-	GList *list;
-	GList *work;
-	gint x1, y1, x2, y2, x3, y3;
-	gint x, y, w, h;
-	gint grid;
-	gint column;
+  if (!pw) return;
 
-	while ((pi = pan_item_find_by_key(pw, PAN_ITEM_NONE, "day_bubble"))) pan_item_remove(pw, pi);
-
-	if (!pi_day || pi_day->type != PAN_ITEM_BOX ||
-	    !pi_day->key || strcmp(pi_day->key, "day") != 0) return;
-
-	list = pan_layout_intersect(pw, pi_day->x, pi_day->y, pi_day->width, pi_day->height);
-
-	work = list;
-	while (work)
-		{
-		PanItem *dot;
-		GList *node;
-
-		dot = work->data;
-		node = work;
-		work = work->next;
-
-		if (dot->type != PAN_ITEM_BOX || !dot->fd ||
-		    !dot->key || strcmp(dot->key, "dot") != 0)
-			{
-			list = g_list_delete_link(list, node);
-			}
-		}
-
-#if 0
-	if (!list) return;
-#endif
-
-	grid = (gint)(sqrt(g_list_length(list)) + 0.5);
-
-	x = pi_day->x + pi_day->width + 4;
-	y = pi_day->y;
-
-#if 0
-	if (y + grid * (PAN_THUMB_SIZE + PAN_THUMB_GAP) + PAN_BOX_BORDER * 4 > pw->pr->image_height)
-		{
-		y = pw->pr->image_height - (grid * (PAN_THUMB_SIZE + PAN_THUMB_GAP) + PAN_BOX_BORDER * 4);
-		}
-#endif
-
-	pbox = pan_item_box_new(pw, NULL, x, y, PAN_BOX_BORDER, PAN_BOX_BORDER,
-				PAN_CAL_POPUP_BORDER,
-				PAN_CAL_POPUP_COLOR, PAN_CAL_POPUP_ALPHA,
-				PAN_CAL_POPUP_BORDER_COLOR, PAN_CAL_POPUP_ALPHA);
-	pan_item_set_key(pbox, "day_bubble");
-
-	if (pi_day->fd)
-		{
-		PanItem *plabel;
-		gchar *buf;
-
-		buf = pan_date_value_string(pi_day->fd->date, PAN_DATE_LENGTH_WEEK);
-		plabel = pan_item_text_new(pw, x, y, buf, PAN_TEXT_ATTR_BOLD | PAN_TEXT_ATTR_HEADING,
-					   PAN_TEXT_BORDER_SIZE,
-					   PAN_CAL_POPUP_TEXT_COLOR, 255);
-		pan_item_set_key(plabel, "day_bubble");
-		g_free(buf);
-
-		pan_item_size_by_item(pbox, plabel, 0);
-
-		y += plabel->height;
-		}
-
-	if (list)
-		{
-		column = 0;
-
-		x += PAN_BOX_BORDER;
-		y += PAN_BOX_BORDER;
-
-		work = list;
-		while (work)
-			{
-			PanItem *dot;
-
-			dot = work->data;
-			work = work->next;
-
-			if (dot->fd)
-				{
-				PanItem *pimg;
-
-				pimg = pan_item_thumb_new(pw, file_data_ref(dot->fd), x, y);
-				pan_item_set_key(pimg, "day_bubble");
-
-				pan_item_size_by_item(pbox, pimg, PAN_BOX_BORDER);
-
-				column++;
-				if (column < grid)
-					{
-					x += PAN_THUMB_SIZE + PAN_THUMB_GAP;
-					}
-				else
-					{
-					column = 0;
-					x = pbox->x + PAN_BOX_BORDER;
-					y += PAN_THUMB_SIZE + PAN_THUMB_GAP;
-					}
-				}
-			}
-		}
-
-	x1 = pi_day->x + pi_day->width - 8;
-	y1 = pi_day->y + 8;
-	x2 = pbox->x + 1;
-	y2 = pbox->y + MIN(42, pbox->height);
-	x3 = pbox->x + 1;
-	y3 = MAX(pbox->y, y2 - 30);
-	util_clip_triangle(x1, y1, x2, y2, x3, y3,
-			   &x, &y, &w, &h);
-
-	pi = pan_item_tri_new(pw, NULL, x, y, w, h,
-			      x1, y1, x2, y2, x3, y3,
-			      PAN_CAL_POPUP_COLOR, PAN_CAL_POPUP_ALPHA);
-	pan_item_tri_border(pi, PAN_BORDER_1 | PAN_BORDER_3, PAN_CAL_POPUP_BORDER_COLOR, PAN_CAL_POPUP_ALPHA);
-	pan_item_set_key(pi, "day_bubble");
-	pan_item_added(pw, pi);
-
-	pan_item_box_shadow(pbox, PAN_SHADOW_OFFSET * 2, PAN_SHADOW_FADE * 2);
-	pan_item_added(pw, pbox);
-
-	pan_layout_resize(pw);
+  slideshow_free(pw->slide_show);
 }
 
-void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *height)
+void pan_cronos_update(PanWindow *pw,int advance,PanItem *pi)
+{
+   /** We advance or go backwards through cronos */
+   if (advance==1)
+   {
+   if (pw->depth == PAN_DATE_LENGTH_YEAR && advance==1) pw->depth = PAN_DATE_LENGTH_MONTH;
+   else if (pw->depth == PAN_DATE_LENGTH_MONTH && advance==1) pw->depth = PAN_DATE_LENGTH_DAY;
+     
+   
+   else if (pw->depth == PAN_DATE_LENGTH_DAY && advance==1) pw->depth = PAN_DATE_LENGTH_EXACT;
+  
+
+   else if (pw->depth == PAN_DATE_LENGTH_EXACT && advance==1) pw->depth = 99; /** It means:start slideshow */
+   }
+
+   else
+   {
+ if (pw->depth == 99 && advance==-1) pw->depth = PAN_DATE_LENGTH_EXACT;
+ else if (pw->depth == PAN_DATE_LENGTH_EXACT && advance==-1) pw->depth = PAN_DATE_LENGTH_DAY;
+   else if (pw->depth == PAN_DATE_LENGTH_DAY && advance==-1) pw->depth = PAN_DATE_LENGTH_MONTH;
+   else if (pw->depth == PAN_DATE_LENGTH_MONTH && advance==-1) pw->depth = PAN_DATE_LENGTH_YEAR;
+
+
+   return;
+   }
+  
+   switch(pw->depth)
+   {
+
+	case PAN_DATE_LENGTH_EXACT:
+	pw->depth = PAN_DATE_LENGTH_EXACT;
+	pw->current_day = pan_date_value (pi->fd->date,PAN_DATE_LENGTH_DAY);
+	break;
+
+ 	case PAN_DATE_LENGTH_DAY:
+	pw->depth = PAN_DATE_LENGTH_DAY;
+	pw->current_month = pan_date_value (pi->fd->date,PAN_DATE_LENGTH_MONTH);
+	break;
+
+        case PAN_DATE_LENGTH_MONTH:
+   	pw->depth = PAN_DATE_LENGTH_MONTH;
+	pw->current_year = pan_date_value (pi->fd->date,PAN_DATE_LENGTH_YEAR);
+	break;
+
+
+   
+   }
+}
+
+GList *glist_split(PanWindow *pw,GList *list)
+{
+  FileData *fd;
+  FileData *fd_prev=NULL;
+  gboolean begin=FALSE;
+  GList *res=NULL;
+  GList *work=NULL;
+
+ 
+  work = list;
+DEBUG_1("List size before split %d",g_list_length(work));
+
+  fd = work->data;
+  depth_date = 0;
+  current_depth_date = 1;
+  /** Find first date that matchs */
+  while(work && !pan_cronos_more_to_show(pw,fd->date))
+  {  
+    fd = work->data;
+    work = work->next; 
+  }
+    /** Starts addiding days until it founds a different date */
+  fd = work->data;
+    while(work && pan_cronos_more_to_show(pw,fd->date))
+  {
+    if (fd!=fd_prev) res = g_list_append(res,fd);
+    fd_prev = fd;
+    fd = work->data;
+    work = work->next;
+   
+  }
+
+    DEBUG_1("List size %d",g_list_length(res));
+
+  return res;
+
+ 
+}
+/** TODO: Add n thumbnails control */
+gboolean pan_cronos_more_to_show(PanWindow *pw,time_t dt)
+{
+   gint current_year;
+   gint current_month; 
+   gint current_day;
+
+   switch(pw->depth)
+   {
+      case PAN_DATE_LENGTH_YEAR:
+      return (current_depth_date!=depth_date);
+      break;
+
+      case PAN_DATE_LENGTH_MONTH:
+      current_year = pan_date_value(dt, PAN_DATE_LENGTH_YEAR);
+      return (current_depth_date!=depth_date) && (pw->current_year == current_year);
+      break;
+
+      case PAN_DATE_LENGTH_DAY:
+      current_year = pan_date_value(dt, PAN_DATE_LENGTH_YEAR);
+      current_month = pan_date_value(dt,PAN_DATE_LENGTH_MONTH); 
+      return (current_depth_date!=depth_date) && (pw->current_year == current_year) && (pw->current_month == current_month);
+      break;
+
+      case PAN_DATE_LENGTH_EXACT:
+      current_year = pan_date_value(dt, PAN_DATE_LENGTH_YEAR);
+      current_month = pan_date_value(dt,PAN_DATE_LENGTH_MONTH); 
+      current_day = pan_date_value(dt,PAN_DATE_LENGTH_DAY);
+      return (pw->current_day == current_day) && (pw->current_year == current_year) && (pw->current_month == current_month);
+      break;
+         
+   }
+
+}
+
+void pan_cronos_calendar_compute(PanWindow *pw,FileData *dir_fd,gint *width,gint *height)
 {
 	GList *list;
 	GList *work;
@@ -260,8 +244,8 @@ void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *he
 	if (work)
 		{
 		FileData *fd = work->data;
-		end_year = pan_date_value(fd->date, PAN_DATE_LENGTH_YEAR);
-		end_month = pan_date_value(fd->date, PAN_DATE_LENGTH_MONTH);
+		end_year = year;
+		end_month = month;
 		}
 	/** Update height and weigth with borders length; and sets x and y to their value,respectively*/
 	*width = PAN_BOX_BORDER * 2;
@@ -270,7 +254,11 @@ void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *he
 	x = PAN_BOX_BORDER;
 	y = PAN_BOX_BORDER;
 
-	work = list;
+	work = (GList *)glist_split(pw,list);
+	year = pw->current_year;
+	month = pw->current_month;
+	end_year = year;
+        end_month = month;
 	/** While we have¡n reached end_year; and if so we haven't reached end_motnh, do work */
 	while (work && (year < end_year || (year == end_year && month <= end_month)))
 		{
@@ -289,7 +277,7 @@ void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *he
 		dt -= 60 * 60 * 24;
 
 		/* anything to show this month? */
-		if (!pan_date_compare(((FileData *)(work->data))->date, dt, PAN_DATE_LENGTH_MONTH))
+		/*	if (!pan_date_compare(((FileData *)(work->data))->date, dt, PAN_DATE_LENGTH_MONTH))
 			{
 			month ++;
 			if (month > 12)
@@ -297,8 +285,8 @@ void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *he
 				year++;
 				month = 1;
 				}
-			continue;
-			}
+			//continue;
+			}*/
 		/** Get day and week values */
 		days = pan_date_value(dt, PAN_DATE_LENGTH_DAY);
 		dt = pan_date_to_time(year, month, 1);
@@ -378,6 +366,14 @@ void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *he
 					/* must keep all dots within respective day even if it gets ugly */
 					dy = y + PAN_CAL_DOT_GAP * 2;
 					}
+				/** Adittionally put a thumbnail*/
+				if (n<pw->nthumbnails)
+				{
+				pi_image = pan_item_thumb_new(pw, fd, pi_day->x , pi_day->y);
+			
+
+				pan_item_adjust_size_to_item(pi_image,pi_day);
+				}
 				/** Updates numbers of pics found. */
 				n++;
 			
@@ -401,6 +397,8 @@ void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *he
 				/** Positionates numbers of pictures found*/
 				pi->x = pi_day->x + (pi_day->width - pi->width) / 2;
 				pi->y = pi_day->y + (pi_day->height - pi->height) / 2;
+
+		
 				}
 		
 			buf = g_strdup_printf("%d", day);
@@ -442,5 +440,158 @@ void pan_calendar_compute(PanWindow *pw, FileData *dir_fd, gint *width, gint *he
 	*height = MAX(*height, grid + PAN_BOX_BORDER * 2 * 2);
 
 	g_list_free(list);
+  
 }
-/* vim: set shiftwidth=8 softtabstop=0 cindent cinoptions={1s: */
+void pan_cronos_compute(PanWindow *pw,FileData *dir_fd,gint *width,gint *height)
+{
+       if (pw->depth == PAN_DATE_LENGTH_DAY)
+       {
+          pan_cronos_calendar_compute(pw,dir_fd,width,height);
+	  return;
+       }
+    
+
+	GList *list;
+     	GList *work;
+	gint x, y;
+	time_t tc;
+	gint count;
+	gint day_max;
+	gint day_width;
+	gint day_height;
+	gint grid;
+	depth_date = 0;
+	gint month = 0;
+	gint end_year = 0;
+	gint end_month = 0;
+	current_depth_date = 0;
+	gint current_list_position = 0;
+	DEBUG_1("PAN CRONOS----------------")     ;
+        list = pan_list_tree(dir_fd, SORT_NONE, TRUE, pw->ignore_symlinks);
+	/** If cache is enabled and exif data; sort it BY NAME, and sync with new list */
+	if (pw->cache_list && pw->exif_date_enable)
+		{
+		pw->cache_list = pan_cache_sort(pw->cache_list, SORT_NAME, TRUE);
+		list = filelist_sort(list, SORT_NAME, TRUE);
+		pan_cache_sync_date(pw, list);
+		}
+        /** Now sync it by time , to get earlier pics at first of the list */
+	pw->cache_list = pan_cache_sort(pw->cache_list, SORT_TIME, TRUE);
+	list = filelist_sort(list, SORT_TIME, TRUE);
+
+	 
+       if (pw->depth == 99)
+       {
+	 view_window_new_from_list_position(list,pw->cronos_click->fd);
+	 return;
+       }
+	work = list;
+		while (work)
+		{
+		FileData *fd;
+
+		fd = work->data;
+		work = work->next;
+		/** Compares new considered file date with day 'tc'. If tc=fd->date ; then increments the total
+		    amount of pics found for that day; and updates day_max if that day has more pics than
+		    all the days considered since now.If not, it updates 'tc' with the new day, and resets counting */
+		if (!pan_date_compare(fd->date, tc, pw->depth))
+			{
+			count = 0;
+			tc = fd->date;
+			}
+		else
+			{
+			count++;
+			if (day_max < count) day_max = count;
+			}
+		}
+
+	DEBUG_1("biggest day contains %d images", day_max);
+	grid = (gint)(sqrt((gdouble)day_max) + 0.5) * (PAN_THUMB_SIZE + PAN_SHADOW_OFFSET * 2 + PAN_THUMB_GAP);
+	day_width = MAX(PAN_CAL_DAY_WIDTH, grid);
+	day_height = MAX(PAN_CAL_DAY_HEIGHT, grid);
+
+
+	/** Now we have all the diferent dat depth's. Now we can create the  boxes */
+	    /** Create "year" boxs*/
+	   /** Get first year*/	  
+	
+	   if (list)
+		{
+		FileData *fd = list->data;
+
+		depth_date = pan_date_value(fd->date, PAN_DATE_LENGTH_YEAR);
+		}
+//           DEBUG_1("First year is: %d",year);
+	   *width = PAN_BOX_BORDER * 2;
+   	   *height = PAN_BOX_BORDER * 2;
+
+	   x = PAN_BOX_BORDER;
+	   y = PAN_BOX_BORDER;
+
+	   work = list;
+	                                         
+	   /** If depyh*/
+	   while (work)
+	   {
+	      FileData *fd;
+	      fd = work->data;
+	      work = work->next;
+   	      depth_date = pan_date_value(fd->date, pw->depth);
+	      if (pan_cronos_more_to_show(pw,fd->date))
+	      {
+		/** we have to create a new box */
+			/** New pan item : month */
+		PanItem *pi_month;
+		PanItem *pi_text;
+		PanItem *pi_image;
+		gint day;
+		gint days;
+		gint col;
+		gint row;
+		time_t dt;
+		gchar *buf;
+		dt = fd->date;
+		DEBUG_1("Placing x and y in: %d , %d ",x,y);
+		pi_month = pan_item_box_new(pw, NULL, x, y, PAN_CAL_DAY_WIDTH * 2, PAN_CAL_DAY_HEIGHT *2,
+					    PAN_CAL_MONTH_BORDER,
+					    PAN_CAL_MONTH_COLOR, PAN_CAL_MONTH_ALPHA,
+					    PAN_CAL_MONTH_BORDER_COLOR, PAN_CAL_MONTH_ALPHA);
+	
+		buf = pan_date_value_string(dt, pw->depth);
+		/** Date text */
+		pi_text = pan_item_text_new(pw, x, y, buf,
+					    PAN_TEXT_ATTR_BOLD | PAN_TEXT_ATTR_HEADING,
+					    PAN_TEXT_BORDER_SIZE,
+					    PAN_CAL_MONTH_TEXT_COLOR, 255);
+		g_free(buf);
+		/** pi_text x and y position.To make it start at left upper corner of month box. */
+		pi_text->x = pi_month->x + (pi_month->width - pi_text->width) / 2;
+//		if (pw->depth == PAN_DATE_LENGTH_EXACT) pi_image = pan_item_image_new (pw,fd,pi_month->x,pi_month->y + PAN_CAL_MONTH_BORDER,10,10);
+		pi_image = pan_item_thumb_new(pw, fd, pi_month->x , pi_month->y + PAN_CAL_MONTH_BORDER);
+
+		pan_item_size_by_item(pi_month,pi_image,PAN_CAL_MONTH_BORDER);
+		pan_item_center_by_item(pi_month,pi_image);
+	 	pan_item_size_coordinates(pi_month, PAN_BOX_BORDER, width, height);
+
+		/** Update x */
+		x += pi_month->width + PAN_THUMB_GAP;
+		current_depth_date = depth_date;
+	
+	      
+              }
+	      /** Update list postiion. We need this for further slideshow start */
+	      current_list_position++;
+
+	}
+	*width += grid;
+	*height = MAX(*height, grid + PAN_BOX_BORDER * 2 * 2);
+
+	if (pw->depth == PAN_DATE_LENGTH_EXACT) pw->current_list_position = current_list_position -1;
+
+	g_list_free(list);
+
+
+
+}

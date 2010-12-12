@@ -189,6 +189,7 @@ geeqie_SOURCES = \
 	options.c	\
 	options.h	\
 	pan-calendar.c	\
+	pan-cronos.c	\
 	pan-folder.c	\
 	pan-grid.c	\
 	pan-item.c	\

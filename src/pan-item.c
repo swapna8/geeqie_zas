@@ -65,6 +65,29 @@ void pan_item_remove(PanWindow *pw, PanItem *pi)
 	pan_item_free(pi);
 }
 
+
+void pan_item_adjust_size_to_item(PanItem *pi,PanItem *parent)
+{
+	if (!pi || !parent) return;
+
+	pi->width = parent->width - parent->border;
+	pi->height = parent->height - parent->border;
+
+}
+/**
+ *  \brief Sets PanItem *pi as a parent of PanItem *chield
+ *
+ *  Updates pi->width & pi->height to fit with child->width & child->height.
+ */
+
+void pan_item_center_by_item(PanItem *pi, PanItem *child)
+{
+	if (!pi || !child) return;
+
+	child->x += ((pi->width - child->width)/2);
+	child->y += ((pi->height - child->height)/2);
+
+}
 void pan_item_size_by_item(PanItem *pi, PanItem *child, gint border)
 {
 	if (!pi || !child) return;
@@ -75,7 +98,21 @@ void pan_item_size_by_item(PanItem *pi, PanItem *child, gint border)
 	if (pi->y + pi->height < child->y + child->height + border)
 		pi->height = child->y + child->height + border - pi->y;
 }
-
+/**
+ *  \brief It updates weigth and height of pan item.
+ *
+ *  Updates weigth 'w' and heigth 'h' of pan item 'pi'.It does so if
+ *  weigth 'w' is less that current pi->x coordinate plus border plus
+ *  pi->width ;with exactly this summatory.In other words, it positionates
+ *  w to the rigth of the item box. Same for height 'w'; but positionates it
+ *  to the bottom of the box.
+ *
+ *  \param[in] pi The pan item argument
+ *  \param[in] border Pan item's border
+ *  \param[out] w Updated weigth
+ *  \param[out] h Updated height
+ * 
+ */
 void pan_item_size_coordinates(PanItem *pi, gint border, gint *w, gint *h)
 {
 	if (!pi) return;
@@ -444,7 +481,18 @@ gint pan_item_text_draw(PanWindow *pw, PanItem *pi, GdkPixbuf *pixbuf, PixbufRen
  * item thumbnail type
  *-----------------------------------------------------------------------------
  */
-
+/**
+*   \brief Creates a new thumbnail.
+*
+*   Creates a new thumbnail in PanWindow pw;using FileData 'fd'; and puts it
+*   int 'x' and 'y' coordinates
+*  
+*   \param[in] pw Pan Window
+*   \param[in] fd FileData strcture that contains the image that we want to thumbnail.
+*   \param[in] x  x coordinate for new pan item thumbnail
+*   \param[in] y  y coordinate for new pan item thumbnail
+*  
+*/
 PanItem *pan_item_thumb_new(PanWindow *pw, FileData *fd, gint x, gint y)
 {
 	PanItem *pi;
@@ -455,9 +503,10 @@ PanItem *pan_item_thumb_new(PanWindow *pw, FileData *fd, gint x, gint y)
 	pi->fd = fd;
 	pi->x = x;
 	pi->y = y;
+	/** Default pan thumbnails size + default pan shadow size */
 	pi->width = PAN_THUMB_SIZE + PAN_SHADOW_OFFSET * 2;
 	pi->height = PAN_THUMB_SIZE + PAN_SHADOW_OFFSET * 2;
-
+	/** Add to the Pan Window list in order to be considered by pan-view */
 	pw->list = g_list_prepend(pw->list, pi);
 
 	return pi;
