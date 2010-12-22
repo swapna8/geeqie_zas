@@ -22,6 +22,8 @@
 #include "trash.h"
 #include "histogram.h"
 
+#include "exif.h"
+
 #include <errno.h>
 
 static GHashTable *file_data_pool = NULL;
@@ -30,6 +32,8 @@ static GHashTable *file_data_planned_change_hash = NULL;
 static gint sidecar_file_priority(const gchar *path);
 static FileData *file_data_new_local(const gchar *path, struct stat *st, gboolean check_sidecars, GHashTable *basename_hash);
 
+static SortType filelist_sort_method = SORT_NONE;
+static gboolean filelist_sort_ascend = TRUE;
 
 /*
  *-----------------------------------------------------------------------------
@@ -592,6 +596,63 @@ static FileData *file_data_new_local(const gchar *path, struct stat *st, gboolea
 	return ret;
 }
 
+void init_exif_time_data(GList *files) {
+	FileData *file;
+	DEBUG_1("%s init_exif_time_data: ...", get_exec_time());
+	while (files)
+		{
+		file = files->data;
+
+		if (file)
+			file->exifdate = 0;
+
+		files = files->next;
+		}
+}
+
+void set_exif_time_data(GList *files) {
+	gchar *tmp;
+	uint year, month, day, hour, min, sec;
+	struct tm time_str;
+	FileData *file;
+	DEBUG_1("%s set_exif_time_data: ...", get_exec_time());
+	while (files)
+		{
+		file = files->data;
+
+		if (file->exifdate > 0)
+			{
+			files = files->next;
+			DEBUG_1("%s set_exif_time_data: Already exists for %s", get_exec_time(), file->path);
+			continue;
+			}
+
+		DEBUG_1("%s set_exif_time_data: Getting exiftime for %s", get_exec_time(), file->path);
+
+		file->exif = exif_read_fd(file);
+
+		if (file->exif)
+			{
+			tmp = exif_get_data_as_text(file->exif, "Exif.Photo.DateTimeOriginal");
+			if (tmp)
+				{
+				sscanf(tmp, "%4d:%2d:%2d %2d:%2d:%2d", &year, &month, &day, &hour, &min, &sec);
+				time_str.tm_year = year - 1900;
+				time_str.tm_mon = month - 1;
+				time_str.tm_mday = day;
+				time_str.tm_hour = hour;
+				time_str.tm_min = min;
+				time_str.tm_sec = sec;
+				time_str.tm_isdst = 0;
+
+				file->exifdate = mktime(&time_str);
+				}
+			}
+		files = files->next;
+		}
+
+}
+
 FileData *file_data_new_simple(const gchar *path_utf8)
 {
 	struct stat st;
@@ -911,9 +972,6 @@ static gint sidecar_file_priority(const gchar *path)
  *-----------------------------------------------------------------------------
  */
 
-static SortType filelist_sort_method = SORT_NONE;
-static gboolean filelist_sort_ascend = TRUE;
-
 
 gint filelist_sort_compare_filedata(FileData *fa, FileData *fb)
 {
@@ -936,6 +994,11 @@ gint filelist_sort_compare_filedata(FileData *fa, FileData *fb)
 		case SORT_TIME:
 			if (fa->date < fb->date) return -1;
 			if (fa->date > fb->date) return 1;
+			/* fall back to name */
+			break;
+		case SORT_EXIFTIME:
+			if (fa->exifdate < fb->exifdate) return -1;
+			if (fa->exifdate > fb->exifdate) return 1;
 			/* fall back to name */
 			break;
 #ifdef HAVE_STRVERSCMP
@@ -981,6 +1044,10 @@ GList *filelist_insert_sort_full(GList *list, gpointer data, SortType method, gb
 
 GList *filelist_sort(GList *list, SortType method, gboolean ascend)
 {
+	if (method == SORT_EXIFTIME)
+		{
+		set_exif_time_data(list);
+		}
 	return filelist_sort_full(list, method, ascend, (GCompareFunc) filelist_sort_file_cb);
 }
 
@@ -1098,6 +1165,9 @@ static gboolean filelist_read_real(FileData *dir_fd, GList **files, GList **dirs
 
 	if (dirs) *dirs = dlist;
 	if (files) *files = filelist_filter_out_sidecars(flist);
+
+	// Call a separate function to initialize the exif datestamps for the found files..
+	if (files) init_exif_time_data(*files);
 
 	return TRUE;
 }
