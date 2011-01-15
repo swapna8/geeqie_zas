@@ -2915,7 +2915,7 @@ static gboolean pr_queue_draw_idle_cb(gpointer data)
 		}
 
 #if GTK_CHECK_VERSION(2,20,0)
-	if (gtk_widget_get_realized(pr))
+	if (gtk_widget_get_realized(GTK_WIDGET(pr)))
 #else
 	if (GTK_WIDGET_REALIZED(pr))
 #endif
@@ -3932,7 +3932,7 @@ static gboolean pr_mouse_release_cb(GtkWidget *widget, GdkEventButton *bevent, g
 		}
 
 #if GTK_CHECK_VERSION(2,20,0)
-	if (gdk_pointer_is_grabbed() && gtk_widget_has_grab(pr))
+	if (gdk_pointer_is_grabbed() && gtk_widget_has_grab(GTK_WIDGET(pr)))
 #else
 	if (gdk_pointer_is_grabbed() && GTK_WIDGET_HAS_GRAB(pr))
 #endif
