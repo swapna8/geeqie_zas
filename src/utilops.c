@@ -36,7 +36,7 @@
 
 #define DIALOG_WIDTH 750
 
-static GdkPixbuf *file_util_get_error_icon(FileData *fd, GtkWidget *widget);
+static GdkPixbuf *file_util_get_error_icon(FileData *fd, GList *list, GtkWidget *widget);
 
 /*
  *--------------------------------------------------------------------------
@@ -473,7 +473,7 @@ static GtkWidget *file_util_dialog_add_list(GtkWidget *box, GList *list, gboolea
 		gchar *sidecars;
 		
 		sidecars = with_sidecars ? file_data_sc_list_to_string(fd) : NULL;
-		GdkPixbuf *icon = file_util_get_error_icon(fd, view);
+		GdkPixbuf *icon = file_util_get_error_icon(fd, list, view);
 		gtk_list_store_append(store, &iter);
 		gtk_list_store_set(store, &iter,
 				   UTILITY_COLUMN_FD, fd,
@@ -893,7 +893,7 @@ void file_util_perform_ci(UtilityData *ud)
 		}
 }
 
-static GdkPixbuf *file_util_get_error_icon(FileData *fd, GtkWidget *widget)
+static GdkPixbuf *file_util_get_error_icon(FileData *fd, GList *list, GtkWidget *widget)
 {
 	static GdkPixbuf *pb_warning;
 	static GdkPixbuf *pb_error;
@@ -915,7 +915,7 @@ static GdkPixbuf *file_util_get_error_icon(FileData *fd, GtkWidget *widget)
 		pb_apply = gtk_widget_render_icon(widget, GTK_STOCK_APPLY, GTK_ICON_SIZE_MENU, NULL);
 		}
 	
-	error = file_data_sc_verify_ci(fd);
+	error = file_data_sc_verify_ci(fd, list);
 	
 	if (!error) return pb_apply;
 
@@ -959,7 +959,7 @@ void file_util_check_ci(UtilityData *ud)
 		else if (ud->dir_fd)
 			{
 			g_assert(ud->dir_fd->sidecar_files == NULL); // directories should not have sidecars
-			error = file_data_verify_ci(ud->dir_fd);
+			error = file_data_verify_ci(ud->dir_fd, ud->flist);
 			if (error) desc = file_data_get_error_string(error);
 			}
 		else
@@ -1193,11 +1193,26 @@ static void file_util_rename_preview_update(UtilityData *ud)
 			gtk_tree_model_get(store, &iter, UTILITY_COLUMN_FD, &fd, -1);
 			g_assert(ud->with_sidecars); /* sidecars must be renamed too, it would break the pairing otherwise */
 			file_data_sc_update_ci_rename(fd, dest);
+
 			gtk_list_store_set(GTK_LIST_STORE(store), &iter,
-					   UTILITY_COLUMN_PIXBUF, file_util_get_error_icon(fd, ud->listview),
-					   UTILITY_COLUMN_DEST_PATH, fd->change->dest,
-					   UTILITY_COLUMN_DEST_NAME, filename_from_path(fd->change->dest),
+				   UTILITY_COLUMN_DEST_PATH, fd->change->dest,
+				   UTILITY_COLUMN_DEST_NAME, filename_from_path(fd->change->dest),
+				   -1);
+
+			/* Check the other entries in the list - if there are
+			 * multiple destination filenames with the same name the
+			 * error icons must be updated
+			 */
+			valid = gtk_tree_model_get_iter_first(store, &iter);
+			while (valid)
+				{
+				gtk_tree_model_get(store, &iter, UTILITY_COLUMN_FD, &fd, -1);
+
+				gtk_list_store_set(GTK_LIST_STORE(store), &iter,
+					   UTILITY_COLUMN_PIXBUF, file_util_get_error_icon(fd, ud->flist, ud->listview),
 					   -1);
+				valid = gtk_tree_model_iter_next(store, &iter);
+				}
 			}
 		return;
 		}
@@ -1239,7 +1254,7 @@ static void file_util_rename_preview_update(UtilityData *ud)
 		g_assert(ud->with_sidecars); /* sidecars must be renamed too, it would break the pairing otherwise */
 		file_data_sc_update_ci_rename(fd, dest);
 		gtk_list_store_set(GTK_LIST_STORE(store), &iter,
-				   UTILITY_COLUMN_PIXBUF, file_util_get_error_icon(fd, ud->listview),
+				   UTILITY_COLUMN_PIXBUF, file_util_get_error_icon(fd, ud->flist, ud->listview),
 				   UTILITY_COLUMN_DEST_PATH, fd->change->dest,
 				   UTILITY_COLUMN_DEST_NAME, filename_from_path(fd->change->dest),
 				   -1);
@@ -1784,7 +1799,7 @@ static gchar *file_util_details_get_message(UtilityData *ud, FileData *fd, const
 	
 	g_string_append(message, _("\nStatus: "));
 	
-	error = ud->with_sidecars ? file_data_sc_verify_ci(fd) : file_data_verify_ci(fd);
+	error = ud->with_sidecars ? file_data_sc_verify_ci(fd, ud->flist) : file_data_verify_ci(fd, ud->flist);
 
 	if (error)
 		{
