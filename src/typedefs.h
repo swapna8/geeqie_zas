@@ -139,7 +139,7 @@ typedef enum {
 	NOTIFY_PRIORITY_MEDIUM,
 	NOTIFY_PRIORITY_LOW
 } NotifyPriority;
-	
+
 typedef enum {
 	NOTIFY_MARKS		= 1 << 1, /* changed marks */
 	NOTIFY_PIXBUF		= 1 << 2, /* image was read into fd->pixbuf */
@@ -465,7 +465,9 @@ struct _FileData {
 	gint64 size;
 	time_t date;
 	mode_t mode; /* this is needed at least for notification in view_dir because it is preserved after the file/directory is deleted */
-	
+	ino_t st_inode;
+	dev_t st_device;
+
 	guint marks; /* each bit represents one mark */
 	guint valid_marks; /* zero bit means that the corresponding mark needs to be reread */
 
@@ -477,7 +479,7 @@ struct _FileData {
 
 	GdkPixbuf *pixbuf; /* full-size image, only complete images, NULL during loading
 			      all FileData with non-NULL pixbuf are referenced by image_cache */
-			      
+
 	HistMap *histmap;
 
 	gint ref;
@@ -486,7 +488,7 @@ struct _FileData {
 
 	gint user_orientation;
 	gint exif_orientation;
-	
+
 	ExifData *exif;
 	GHashTable *modified_xmp; // hash table which contains unwritten xmp metadata in format: key->list of string values
 };
@@ -637,7 +639,7 @@ struct _LayoutWindow
 	GtkWidget *info_details;
 	GtkWidget *info_zoom;
 	GtkWidget *info_pixel;
-	
+
 	/* slide show */
 
 	SlideShowData *slideshow;
@@ -746,7 +748,7 @@ struct _ViewFile
 	gboolean marks_enabled;
 	gint active_mark;
 	gint clicked_mark;
-	
+
 	/* refresh */
 	guint refresh_idle_id; /* event source id */
 	time_t time_refresh_set; /* time when refresh_idle_id was set */
