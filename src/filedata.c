@@ -386,6 +386,7 @@ gboolean file_data_check_changed_files(FileData *fd)
 static FileData *file_data_new(const gchar *path_utf8, struct stat *st, gboolean check_sidecars, GHashTable *basename_hash)
 {
 	FileData *fd;
+	struct stat st_target;
 
 	DEBUG_2("file_data_new: '%s' %d %d", path_utf8, check_sidecars, !!basename_hash);
 
@@ -403,9 +404,24 @@ static FileData *file_data_new(const gchar *path_utf8, struct stat *st, gboolean
 		fd = g_hash_table_lookup(file_data_planned_change_hash, path_utf8);
 		if (fd)
 			{
-			DEBUG_1("planned change: using %s -> %s", path_utf8, fd->path);
-			file_data_ref(fd);
-			file_data_apply_ci(fd);
+			/* If the inode of the target file is the same as that in the
+			 * FileData structure returned above, then the event
+			 * described in commit ID a3c139eafad2246f8bde6cef391def6ab4670127 on 20/07/2008
+			 * is taking place - a renamed file is detected by directory
+			 * scanning before the external rename commands exits. Do not
+			 * generate a new fd, use the existing one
+			 */
+			stat(path_utf8, &st_target);
+			if (fd->st_inode == st_target.st_ino && fd->st_device == st_target.st_dev)
+				{
+				DEBUG_1("planned change: using %s -> %s", path_utf8, fd->path);
+				file_data_ref(fd);
+				file_data_apply_ci(fd);
+				}
+			else
+				{
+				fd = NULL;
+				}
 			}
 		}
 		
@@ -435,6 +451,8 @@ static FileData *file_data_new(const gchar *path_utf8, struct stat *st, gboolean
 	fd->size = st->st_size;
 	fd->date = st->st_mtime;
 	fd->mode = st->st_mode;
+	fd->st_inode = st->st_ino;
+	fd->st_device = st->st_dev;
 	fd->ref = 1;
 	fd->magick = 0x12345678;
 
@@ -2150,10 +2168,10 @@ gint file_data_verify_ci(FileData *fd, GList *list)
 		g_free(dest_dir);
 		}
 		
-	/* During a rename operation, check if another destination file has
-	 * the same filename
+	/* During copy/move/rename operations, check if another
+	 * destination file has the same filename
 	 */
- 	if(fd->change->type == FILEDATA_CHANGE_RENAME)
+ 	if(fd->change->type == FILEDATA_CHANGE_RENAME || fd->change->type == FILEDATA_CHANGE_COPY || fd->change->type == FILEDATA_CHANGE_MOVE)
 		{
 		work = list;
 		while (work)
