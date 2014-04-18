@@ -223,9 +223,9 @@ gchar *alter_type_get_text(AlterType type)
 		case ALTER_ROTATE_180:
 			return _("Rotate _180");
 			break;
-		case ALTER_MIRROR:
+	/*	case ALTER_MIRROR:
 			return _("_Mirror");
-			break;
+			break;*/
 		case ALTER_FLIP:
 			return _("_Flip");
 			break;
@@ -265,7 +265,7 @@ static GtkWidget *real_submenu_add_alter(GtkWidget *menu, GCallback func, gpoint
 	submenu_add_alter_item(submenu, func, ALTER_ROTATE_90, accel_group, ']', 0);
 	submenu_add_alter_item(submenu, func, ALTER_ROTATE_90_CC, accel_group, '[', 0);
 	submenu_add_alter_item(submenu, func, ALTER_ROTATE_180, accel_group, 'R', GDK_SHIFT_MASK);
-	submenu_add_alter_item(submenu, func, ALTER_MIRROR, accel_group, 'M', GDK_SHIFT_MASK);
+//	submenu_add_alter_item(submenu, func, ALTER_MIRROR, accel_group, 'M', GDK_SHIFT_MASK);
 	submenu_add_alter_item(submenu, func, ALTER_FLIP, accel_group, 'F', GDK_SHIFT_MASK);
 	submenu_add_alter_item(submenu, func, ALTER_NONE, accel_group, 'O', GDK_SHIFT_MASK);
 
